@@ -1,0 +1,505 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+    <div class="container">
+        <div class="bread-crumb-head">
+            <div class="breadcrumb-title">
+                <h2>Nos Propriétés</h2>
+            </div>
+            <div class="breadcrumb-list">
+                <ul>
+                    <li><a routerLink="/">Accueil </a></li>
+                    <li>Nos Propriétés</li>
+                </ul>
+            </div>
+        </div>
+        <div class="breadcrumb-border-img">
+            <img src="assets/img/bg/line-bg.png" alt="Line Image">
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <div class="banner-search" data-aos="fade-down">
+                    <div class="banner-tab">
+                        <ul class="nav nav-tabs" id="bannerTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="buy-property" data-bs-toggle="tab" href="#buy_property"
+                                    role="tab" aria-controls="buy_property" aria-selected="true">
+                                    <img src="assets/img/icons/buy-icon.svg" alt="icon"> En Vente
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="rent-property" data-bs-toggle="tab" href="#rent_property"
+                                    role="tab" aria-controls="rent_property" aria-selected="false">
+                                    <img src="assets/img/icons/rent-icon.svg" alt="icon"> A Louer
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="bannerTabContent">
+                        <div class="tab-pane fade show active" id="buy_property" role="tabpanel"
+                            aria-labelledby="buy-property">
+                            <div class="banner-tab-property">
+                                <form action="#">
+                                    <div class="banner-property-info">
+                                        <div class="banner-property-grid">
+                                            <input type="text" class="form-control" placeholder="Mots Clés">
+                                        </div>
+                                        <div class="banner-property-grid">
+                                            <select class="select">
+                                                <option value="0">Type De Propriétés</option>
+                                                <option value="1">Buy Property</option>
+                                                <option value="2">Rent Property</option>
+                                            </select>
+                                        </div>
+                                        <div class="banner-property-grid">
+                                            <input type="email" class="form-control" placeholder="Localisation">
+                                        </div>
+                                        <div class="banner-property-grid">
+                                            <input type="number" class="form-control" placeholder="Prix Min">
+                                        </div>
+                                        <div class="banner-property-grid">
+                                            <input type="number" class="form-control" placeholder="Prix Max">
+                                        </div>
+                                        <div class="banner-property-grid">
+                                            <a href="buy-property-grid.html" class="btn-primary"><span><i
+                                                        class='feather-search'></i></span></a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="rent_property" role="tabpanel" aria-labelledby="rent-property">
+                            <div class="banner-tab-property">
+                                <form action="#">
+                                    <div class="banner-property-info">
+                                        <div class="banner-property-grid">
+                                            <input type="text" class="form-control" placeholder="Mots Clés">
+                                        </div>
+                                        <div class="banner-property-grid">
+                                            <select class="select">
+                                                <option value="0">Type De Propriétés</option>
+                                                <option value="1">Buy Property</option>
+                                                <option value="2">Rent Property</option>
+                                            </select>
+                                        </div>
+                                        <div class="banner-property-grid">
+                                            <input type="email" class="form-control" placeholder="Localisation">
+                                        </div>
+                                        <div class="banner-property-grid">
+                                            <input type="number" class="form-control" placeholder="Prix Min">
+                                        </div>
+                                        <div class="banner-property-grid">
+                                            <input type="number" class="form-control" placeholder="Prix Max">
+                                        </div>
+                                        <div class="banner-property-grid">
+                                            <a href="buy-property-grid.html" class="btn-primary"><span><i
+                                                        class='feather-search'></i></span></a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb -->
+
+ <!-- Feature Property For Rent -->
+ <div class="property-sidebar">
+    <section class="feature-property-sec for-rent content">
+        <div class="container">
+            <!-- Sort Result -->
+            <div class="showing-result-head">
+                <div class="row align-items-center">
+                    <div class="col-lg-3">
+                        <div class="result-show">
+                            <h5>Affichage du résultat <span>06</span> sur <span>125</span></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="sort-result">
+                            <div class="sort-by grid-head">
+                                <div>
+                                    <p>Trier Par</p>
+                                </div>
+                                <div class="review-form">
+                                    <select class="select">
+                                        <option value="0">Défaut</option>
+                                        <option value="1" >A-Z</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="price-range grid-head">
+                                <div>
+                                    <p>Prix</p>
+                                </div>
+                                <div class="review-form">
+                                    <select class="select">
+                                        <option>Du plus élevé au moins élevé</option>
+                                        <option>Du moins élevé au plus élevé</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-xl-3 theiaStickySidebar">
+                    <div class="left-sidebar-widget property-sidebar">
+
+                        <!-- Advanced Search -->
+                        <div class="collapse-card">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#advance-search"
+                                    aria-expanded="false">Recherche Avancée</a>
+                            </h4>
+                            <div id="advance-search" class="card-collapse collapse show">
+                                <ul class="show-list">
+                                    <li class="review-form form-wrap">
+                                        <input type="text" class="form-control" placeholder="Mots Clés">
+                                        <span class="form-icon">
+                                            <i class="bx bx-search-alt"></i>
+                                        </span>
+                                    </li>
+                                    <li class="review-form">
+                                        <select class="select">
+                                            <option>Choisir un lieu</option>
+                                            <option>Chicago</option>
+                                            <option>Newyork</option>
+                                        </select>
+                                    </li>
+                                    <li class="review-form">
+                                        <select class="select">
+                                            <option>Pas de salle à coucher</option>
+                                            <option>4</option>
+                                            <option>2</option>
+                                        </select>
+                                    </li>
+                                    <li class="review-form">
+                                        <select class="select">
+                                            <option>Pas de salle de bain</option>
+                                            <option>3</option>
+                                            <option>2</option>
+                                        </select>
+                                    </li>
+                                    <li class="review-form">
+                                        <input type="text" class="form-control" placeholder="Min Sqft">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /Advanced Search -->
+
+                        <!-- Categories -->
+                        <div class="collapse-card">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#categiries"
+                                    aria-expanded="false">Catégories</a>
+                            </h4>
+                            <div id="categiries" class="card-collapse collapse show">
+                                <ul class="checkbox-list term-list">
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Appartements (45)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Villas (32)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Studios (24)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Bureaux (41)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Résidences meublées (15)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Terrains (11)
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /Categories -->
+
+                        <!-- Amenities -->
+                        <div class="collapse-card">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#amenities"
+                                    aria-expanded="false">Equipements</a>
+                            </h4>
+                            <div id="amenities" class="card-collapse collapse show">
+                                <ul class="checkbox-list amene-list">
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Arrière-cour (35)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Climatisation centrale (32)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Accessible aux chaises (24)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Ascenceur (41)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Cheminée (15)
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span> Cour avant (11)
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /Amenities -->
+
+                        <!-- Pricing -->
+                        <div class="collapse-card">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#pricing"
+                                    aria-expanded="false">Prix</a>
+                            </h4>
+                            <div id="pricing" class="card-collapse collapse show">
+                                <ul class="price-filter">
+                                    <li class="d-flex justify-content-between">
+                                        <div class="caption d-block w-100">
+                                            <h5>Echelle des prix : </h5>
+                                            <div class="d-block mt-3 w-100">
+                                                <div class="review-form w-100">
+                                                    <input type="number" class="form-control w-100" placeholder="Prix Min">
+                                                </div>
+                                                <div class="review-form w-100">
+                                                    <input type="number" class="form-control w-100" placeholder="Prix Max">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="price-filter-inner">
+                                        <div id="slider-range" class="range-bottom"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /Pricing -->
+
+                        <!-- Reviews -->
+                        <div class="collapse-card">
+                            <h4 class="card-title">
+                                <a class="collapsed" data-bs-toggle="collapse" href="#review"
+                                    aria-expanded="false">Notes</a>
+                            </h4>
+                            <div id="review" class="card-collapse collapse show">
+                                <ul class="price-filter">
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="custom_check">
+                                            <input type="checkbox" name="username">
+                                            <span class="checkmark"></span>
+                                            <i class="fa fa-star"></i>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /Reviews -->
+
+                        <!-- Apply filter -->
+                        <div class="apply-btn">
+                            <button type="submit" class="btn btn-primary">Appliquer le filtre</button>
+                            <a href="javascript:void(0);" class="reset-btn">Réinitialiser la sélection</a>
+                        </div>
+                        <!-- /Apply filter -->
+
+                    </div>
+                </div>
+                <!-- /Sidebar -->
+
+                <div class="col-xl-9">
+            
+                    <div class="row justify-content-center buy-list">
+
+                        <!-- Buy List -->
+                        <div class="col-lg-12">                                    
+                            <div class="product-custom">
+                                <div class="profile-widget rent-list-view" *ngFor="let n of touslesBiens">
+                                    <div class="doc-img">
+                                        <a href="properties/0" class="property-img">
+                                            <img class="img-fluid" alt="Product image" src="{{urlg}}{{n.bienImage}}">
+                                        </a>
+                                        <div class="featured">
+                                            <span>En vedette</span>
+                                        </div>
+                                        <div class="new-featured ms-2">
+                                            <span>{{ n.bienCategorie }}</span>
+                                        </div>
+                                        <a href="javascript:void(0)">
+                                            <div class="favourite">
+                                                <span><i class="fa-regular fa-heart"></i></span>
+                                            </div>
+                                        </a>
+                                        <div class="user-avatar">
+                                            <img src="assets/img/profiles/avatar-02.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="pro-content">
+                                        <div class="list-head">
+                                            <div class="rating">
+                                                <i class="fa fa-star checked"></i>
+                                                <i class="fa fa-star checked"></i>
+                                                <i class="fa fa-star checked"></i>
+                                                <i class="fa fa-star checked"></i>
+                                                <i class="fa fa-star checked"></i>
+                                                <span class="me-1">5.0</span> (20 Reviews)
+                                                <div class="product-name-price">
+                                                    <h3 class="title">
+                                                        <a href="properties/0" tabindex="-1">{{ n.bienLibelle }}</a>
+                                                    </h3>
+                                                    <div class="product-amount">
+                                                        <h5><span>{{ n.bienPrix | number }} FCFA  </span></h5>
+                                                    </div>
+                                                </div>
+                                                <p><i class="feather-map-pin"></i> {{ n.bienAdresse }}</p>
+                                            </div>
+                                        
+                                        </div>
+                                        <ul class="d-flex details">
+                                            <li>
+                                                <img src="assets/img/icons/bed-icon.svg" alt="bed-icon" >
+                                                {{ n.bienNbrePiece }} Pièces
+                                            </li>
+                                            <li>
+                                               
+                                            </li>
+                                            <li>
+                                                <img src="assets/img/icons/building-icon.svg" alt="building-icon">
+                                                {{ n.bienSurface }} m2
+                                            </li>
+                                        </ul>
+                                        <ul class="property-category d-flex justify-content-between">
+                                            <li>
+                                                <span class="list">Ajouté le : </span>
+                                                <span class="date">17 Jan 2023</span>
+                                            </li>
+                                            <li>
+                                                <span class="category list">Catégorie : </span>
+                                                <span class="category-value date">{{
+                                                    n.typebien.libelleTypebien
+                                                  }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>		
+                            </div>
+                        </div>
+                        <!-- /Buy List -->
+
+
+                        <!-- Pagination -->
+                        <div class="grid-pagination">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item prev">
+                                    <a class="page-link" href="#"><i class="fa-solid fa-arrow-left"></i> Prev</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a class="page-link" href="#">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">3</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">4</a>
+                                </li>
+                                <li class="page-item next">
+                                    <a class="page-link" href="#">Next <i class="fa-solid fa-arrow-right"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /Pagination -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- /Feature Property For Rent -->

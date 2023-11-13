@@ -1,0 +1,137 @@
+/*-----------------	
+    20. Property Grid Sidebar
+-----------------------*/
+
+.left-sidebar-widget {
+    .collapse-card {
+        @include margin-padding(0 0 24px, 24px);
+        .card-title {
+            font-size: $__font__size__20;
+            padding-bottom: 0;
+        }
+        ul {
+            display: $__block;
+            @include margin-padding(20px 0 0,20px 0 0);
+            border-top: 1px solid $__light__ash;
+            li {
+                @include margin-padding(0 0 15px 0,null);
+                &:last-child {
+                    @include margin-padding(0 ,null);
+                }
+            }
+            .custom_check {
+                @include margin-padding(0,null);
+                i {
+                    color: $__warning;
+                }
+            }
+        }
+        .review-form {
+            @include margin-padding(0 0 15px,null);
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .cat-list {
+            @include margin-padding(15px 0 0,15px 0 0);
+            border-top: 1px solid $__light__ash;
+        }
+        .select2-container--default {
+            &.select2-container--focus {
+                .select2-selection--single {
+                    .select2-selection__rendered {
+                        color: $__dark__black;
+                    }
+                }
+            }
+            .select2-selection--single {
+                .select2-selection__rendered {
+                    color: $__body__color;
+                }
+            }
+        }
+        &:last-child {
+            margin-bottom: 0;      
+            @include respond-below(custom991) {
+                margin-bottom: 24px;
+            }
+        }
+    }
+}
+.price-filter {
+    .caption {
+        color: $__primarycolor;
+        @extend %flex-center;
+        font-weight: $__medium;
+        h5 {
+            color: $__body__color;
+            font-size: $__font__size__16;
+            font-weight: $__medium;
+            margin-bottom: 0;
+        }
+        span {
+            color: $__primarycolor;
+            font-size: $__font__size__16;
+            margin-right: 4px;
+            &:last-child {
+                margin-left: 4px;
+                margin-right: 0;
+            }
+        }
+    }
+}
+.apply-btn {
+    text-align: $__center;
+    .btn {
+        @include margin-padding(0 0 24px, 18px 15px);
+        width: $__full__width;         
+        @include respond-below(custom991) {
+            @include margin-padding(0 0 24px, 12px 15px); 
+        }
+    }
+    .reset-btn {
+        font-weight: $__bold;
+        font-size: $__font__size__15;
+        color: $__light__red;
+        &:hover {
+            color: $__primarycolor;
+        }
+    }    
+    @include respond-below(custom991) {
+        @include margin-padding(0 0 24px, null); 
+    }
+}
+.form-wrap {
+    position: $__relative;
+    .form-icon {
+        @include position($__absolute, 50%, 10px, null, null);
+        @include transform(translateY(-50%));
+    }
+    .form-control {
+        @include margin-padding(null, 10px 25px 10px 15px)
+    }
+}
+.more, .less {
+    font-weight: $__bold;
+    font-size: $__font__size__15;
+    color: $__primarycolor;
+    cursor: $__pointer;
+    a {
+        font-weight: $__bold;
+        font-size: $__font__size__15;
+        @extend %flex-center;
+        i {
+            margin-right: 8px;
+        }
+    }
+}
+#review {
+    .price-filter {
+        li {
+            i {
+                font-size: $__font__size__16;
+                margin-right: 2px;
+            }
+        }
+    }
+}

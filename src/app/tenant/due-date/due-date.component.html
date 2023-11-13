@@ -1,0 +1,59 @@
+<!-- Sort Result -->
+<div class="showing-result-head">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="sort-result">
+                <div class="sort-by grid-head">
+                    <div>
+                        <p>Trier Par Mois</p>
+                    </div>
+                    <div class="review-form">
+                        <select class="select">
+                            <option value="0">Janvier</option>
+                            <option value="1">Février</option>
+                            <option value="1">...</option>
+                            <option value="1">Décembre</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="price-range grid-head">
+                    <div>
+                        <p>Du</p>
+                    </div>
+                    <div class="review-form">
+                        <select class="select">
+                            <ng-container *ngFor="let n of [].constructor(30); let i = index">
+                                <option>{{ i + 1 }}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="price-range grid-head">
+                    <div>
+                        <p>Au</p>
+                    </div>
+                    <div class="review-form">
+                        <select class="select">
+                            <ng-container *ngFor="let n of [].constructor(30); let i = index">
+                                <option>{{ i + 1 }}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 mb-3">
+            <div class="result-show">
+                <a href="#" class="btn-secondary">
+                    <i class="feather-printer me-3"></i>
+                    Afficher
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <ngx-extended-pdf-viewer [src]="pdfUrl" height="500px" [showOpenFileButton]="false" [showPrintButton]="false"
+        [showTextEditor]="false" [enableDragAndDrop]="false" [showStampEditor]="false" [showDrawEditor]="false"
+        [useBrowserLocale]="true"></ngx-extended-pdf-viewer>
+</div>

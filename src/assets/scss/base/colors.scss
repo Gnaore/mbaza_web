@@ -1,0 +1,101 @@
+/*-----------------
+	2. Colors
+-----------------------*/
+
+$__primarycolor: #6C60FE;
+$__secondarycolor: #1E1D85;
+$__body__color: #8A909A;
+$__black: #000;
+$__dark__black: #0E0E46;
+$__light__black: #727272;
+$__white: #FFF;
+$__light__grey: #F7F6FF;
+$__light__white: #ECF4EF;
+$__snow__light: #F6F4FF;
+$__dark__gray: #041B29;
+$__light__gray: #F6F6F9;
+$__grey__light: #7C7C7C;
+$__snow__gray: #7D858F;
+$__subtitle__color: #162B38;
+$__white__snow: #EEEEEE;
+$__blue__color: #0185FF;
+$__light__blue: #0185FF;
+$__red__color: #FF0000;
+$__light__snow:	#D7D7D7;
+$__green__color: #10B990;
+$__white__silver: #A9A9A9;
+$__white__shade: #E4E4E8;
+$__grey__whitish: #292E40;
+$__light__green: #ECF4EF;
+$__bg__green: #10B94A;
+$__gray__light: #FAFAFA;
+$__light__red: #FD3358;
+$__Light__redish: #EC4040;
+$__light__ash: #E3E3E3;
+$__warning: #FCAF3D;
+$__white__light: #f2f2f2;
+$__white__grey: #F2F7F6;
+$__green__light: #0DCA95;
+$__white__border: #f4f4f4;
+$__dark__blue: #151476;
+$__ink-blue: #1E1D85;
+$__dark__green: #1FBC2F;
+$__verified__green: #28a745;
+$__fb__color: #3080F8;
+$__dark__orange: #FF2D20;
+$__theme__blue: #0066FF;
+$__sky__blue: #35B6FF;
+$__black__currant: #10162E;
+$__black__russian: #0D1329;
+$__black_grey: #737373;
+$__black__grey: #828282;
+$__black__grey_light: #EDECF8;
+$__danger__dark: #D90000;
+$__orange__dark: #EC6B40;
+$__navy__dark: #4040C1;
+$__pink__dark: #EC6B96;
+$__blue__light: #6B96EC;
+$__skyblue__light: #15C1EC;
+$__skyblue__dark: #1596EC;
+$__white__shade: #F5F5F5;
+$__dark__yellow: #FF8A00;
+$__light__yellow: #f4c150;
+$__black__color: #2F2F2F;
+$__light__gray__light: #DBDBDB;
+$__light__has__light: #4F5665;
+$__light__gray__smoke: #D6D6D63D;
+$__white__gray__smoke: #EAEDF0;
+$__black_blue: #030325;
+$__black__dark: #111111;
+$__black__black: #212121;
+$__white__color: #FCFBFB;
+$__white__dark: #DBDBDB;
+$__blue_black: #15152F;
+$__mid_blue: #675dd7;
+$__sidebar__overlay: rgba(0, 0, 0, 0.7);
+$__card__shadow: 0px 4px 24px rgba(234, 234, 234, 0.3);
+$__dropdown__shadow: 0px 24px 94px rgba(176, 176, 176, 0.1);
+$__shadow__1: 0px 4px 4px #F5F5F5;
+$__white__shadow:rgba(255, 255, 255, 0.9);
+$__lightgray__shadow: 0px 4px 14px rgba(214, 214, 214, 0.24);
+$__lightred__shadow:rgba(253, 51, 88, 0.05);
+$__card__white__shadow:0px 4px 24px rgba(225, 225, 225, 0.25);
+$__white_shade: rgba(255,255,255,0.9);
+$__shadow2: 0px 4px 24px rgba(189, 189, 189, 0.24);
+
+
+.primary {
+	background-color: $__primarycolor;
+}
+.secondary{
+	background-color: $__secondarycolor;
+}
+.bg-red {
+	background-color: $__light__red !important;
+}
+.bg-green {
+	background-color: $__green__light !important;
+}
+.text-primary {
+	color: $__primarycolor !important;
+}

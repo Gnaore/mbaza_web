@@ -1,0 +1,89 @@
+<!-- Sort Result -->
+<div class="showing-result-head">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="result-show">
+                <a href="tenant/pay-online" class="btn-secondary">Cliquez pour payer mon loyer</a>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="sort-result">
+                <div class="sort-by grid-head">
+                    <div>
+                        <p>Trier Par Mois</p>
+                    </div>
+                    <div class="review-form">
+                        <select class="select">
+                            <option value="0">Janvier</option>
+                            <option value="1">Février</option>
+                            <option value="1">...</option>
+                            <option value="1">Décembre</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="price-range grid-head">
+                    <div>
+                        <p>Du</p>
+                    </div>
+                    <div class="review-form">
+                        <select class="select">
+                            <ng-container *ngFor="let n of [].constructor(30); let i = index">
+                                <option>{{ i + 1 }}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="price-range grid-head">
+                    <div>
+                        <p>Au</p>
+                    </div>
+                    <div class="review-form">
+                        <select class="select">
+                            <ng-container *ngFor="let n of [].constructor(30); let i = index">
+                                <option>{{ i + 1 }}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="invoice-table table table-bordered">
+        <thead>
+            <tr>
+                <th>Réf.</th>
+                <th>Montant versé</th>
+                <th>Pénalité</th>
+                <th>Versé le</th>
+                <th>Moyen de paiement</th>
+                <th>Régler par</th>
+                <th>Etat</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let n of [].constructor(4); let i = index">
+                <tr>
+                    <td>TRS0786AYY</td>
+                    <td>$150,000</td>
+                    <td>$20,000</td>
+                    <td>Lun 15 janvier 2023</td>
+                    <td>Orange Money</td>
+                    <td>Moi</td>
+                    <td align="center">
+                        <div style="width: 10px; height: 10px;" class="rounded-circle"
+                            [ngClass]="{ 'bg-danger': i%2 === 0, 'bg-success': i%2 === 1 }"></div>
+                    </td>
+                    <td>
+                        <a type="submit" href="assets/quittance.pdf" target="_blank" class="btn-primary">
+                            <i class="feather-download"></i>
+                        </a>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

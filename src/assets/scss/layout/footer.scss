@@ -1,0 +1,234 @@
+/*-----------------	
+    11. Footer
+-----------------------*/
+
+.footer {
+	background: $__black__currant;
+	position: $__relative;
+	.footer-top {
+		@include margin-padding(null,60px 0);
+		@include respond-below(custom991) {
+			@include margin-padding(null,40px 0 10px);
+		}
+		.footer-border-img {
+			img {
+				@include position($__absolute,0,0,null,null);
+			}
+		}
+		.footer-content-heading {
+			h4 {
+				color: $__white;
+				font-size: $__font__size__24;
+				margin-bottom: 30px;
+				@include respond-below(custom1199) {
+					font-size: $__font__size__22;
+				}
+				@include respond-below(custom991) {
+					font-size: $__font__size__20;
+					margin-bottom: 24px;
+				}
+				@include respond-below(custom767) {
+					font-size: $__font__size__18;
+				}
+			}
+			p {
+				color: $__white__light;
+				margin-bottom: 15px;
+			}
+		}
+		.download-app {
+			margin-bottom: 50px;
+			display: $__flex;
+			img {
+				margin-right: 5px;
+				@include respond-below(custom991) {
+					max-width: 140px;
+				}
+			}
+			@include respond-below(custom575) {
+				flex-direction: $__column;
+				margin-bottom: 20px;
+				img {
+					margin-right: 0;
+					margin-bottom: 10px;
+				}
+			}
+			@include respond-below(custom991) {
+				margin-bottom: 30px;
+			}
+		}
+		.footer-about {
+			@include respond-below(custom991) {
+				margin-bottom: 30px;
+			}
+		}
+	}
+}
+.social-links {
+	h4 {
+		font-size: $__font__size__24;
+		font-weight: $__semibold;
+		color: $__white;
+		margin-bottom: 15px;
+		text-transform: $__capitalize;
+		@include respond-below(custom1199) {
+			font-size: $__font__size__22;
+		}
+		@include respond-below(custom991) {
+			font-size: $__font__size__20;
+		}
+		@include respond-below(custom767) {
+			font-size: $__font__size__18;
+		}
+	}
+	ul {
+		display: $__flex;
+		li {
+			a {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				@extend %flex-align-center;
+				background: $__white;
+				color: $__dark__black;
+				font-size: $__font__size__18;
+				@include transition(0.5s all);
+				&:hover {
+					background: $__primarycolor;
+					color: $__white;
+				}
+				@include respond-below(custom767) {
+					width: 35px;
+					height: 35px;
+					font-size: $__font__size__16;
+				}
+			}
+			margin-right: 10px;
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
+}
+.footer-widget-list {
+	@include respond-below(custom991) {
+		margin-bottom: 30px;
+	}
+	ul {
+		li {
+			margin-bottom: 20px;
+			position: $__relative;
+			@extend %flex-center;	
+			padding-left: 18px;		
+			&:after {
+				font-family: $__fontawesome; 
+				font-size: $__font__size__14; 
+				content: "\f054"; 
+				@include position($__absolute, 50%, null, null, 0);
+				@include transform(translateY(-50%));
+				color: $__warning;
+			} 
+			i {
+				color: $__warning;
+				margin-right: 10px;
+			}
+			a {
+				color: $__white__light;
+				@include transition(0.5s all);
+				&:hover {				
+					color: $__warning;
+				}
+			}
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
+}
+.footer-bottom {
+	background: $__black__russian;
+	@include margin-padding(null,15px 0);
+}
+.footer-bottom-content {
+	@extend %flex-center;
+	@extend %flex-between;
+	color: $__white;
+	@include respond-below(custom767) {
+		flex-direction: $__column;
+		align-items: $__start;
+	}
+	p {
+		color: $__white;
+		font-size: $__font__size__14;
+		font-weight: $__medium;
+		margin-bottom: 0;
+		@include respond-below(custom767) {
+			margin-bottom: 10px;
+		}
+	}
+	.company-logo {
+		@extend %flex-center;
+		img {
+			margin-left: 5px;
+		}
+	}
+
+}
+.login-body {	
+	.footer-social-links {
+		@include margin-padding(10px 0 30px, null);
+		h6 {
+			font-size: $__font__size__18;
+			color: $__white;
+			margin-bottom: 15px;
+			@include respond-below(custom767) {
+				margin-bottom: 10px;
+			}
+		}
+		.nav {
+		@extend %flex-align-center;
+			li {
+				margin-right: 10px;
+				&:last-child {
+					margin-right: 0;
+				}
+				a {
+					@extend %flex-align-center;
+					cursor: $__pointer;
+					text-align: $__center;
+					position: $__relative;
+					z-index: 1;
+					overflow: $__hidden;
+					color: $__primarycolor;
+					background: $__snow__light;
+					border-radius: 50px;
+					min-width: 36px;
+					height: 36px;
+					@include transition(0.2s all);
+					&:hover {
+						background: $__primarycolor;
+						color: $__white;
+						@include transition(0.2s all);
+					}
+				}
+			}
+		}
+	}
+	.footer-social-widget {
+		@include margin-padding(20px 0 0, null);
+		.nav-social {
+			@extend %flex-align-start;
+			li {
+				margin-right: 10px;
+				&:last-child {
+					margin-right: 0;
+				}
+				a {
+					&:hover {
+						color: $__black;
+					}
+				}
+			}
+		}
+	}
+}

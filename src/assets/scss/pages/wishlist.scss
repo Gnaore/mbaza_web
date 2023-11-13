@@ -1,0 +1,234 @@
+/*-----------------	
+    34. Wishlist
+-----------------------*/
+
+.wishlist-section {
+    .table-responsive {
+        .table {
+            thead {
+                background: $__light__gray;
+                vertical-align: $__middle;
+                text-align: $__left;
+                border-bottom: $__transparent;
+
+                    th {
+                    font-weight: $__medium;
+                    font-size: $__font__size__16;
+                    text-transform: $__capitalize;
+                    color: $__black;
+                    white-space: $__nowrap;
+                    @include margin-padding(null, 15px 15px);
+                    
+                        &.wishlist-action {
+                            @include margin-padding(null, 0 60px 0 0);
+                            text-align: $__end;
+                        }
+                        &.wishlist-product {
+                            @include margin-padding(null, 0 0 0 40px);
+                        }
+                    }
+                
+            }
+            tbody {
+                .cart-action {
+                    border: $__none;
+                    background: $__transparent;
+
+                    i {
+                        color: $__light__red;
+                    }
+                }
+                .cart-img {
+                    @include margin-padding(0 15px, null);
+                    img{
+                        width: 80px;
+                    }
+                }
+                .cart-item {
+                    p {
+                        font-weight: $__medium;
+                        font-size: $__font__size__16;
+                        text-transform: $__capitalize;
+                        color: $__dark__black;
+                        @include respond-below(custom991) {
+                            font-size: $__font__size__14;             
+                        }
+                    }
+                }
+                td {
+                    @include margin-padding(null, 15px);
+                    vertical-align: $__middle;
+                    text-align: $__left;
+                    white-space: $__nowrap;
+                    .cart-item-price {
+                        font-weight: $__medium;
+                        font-size: $__font__size__14;
+                        color: $__light__red;
+                    }
+                }
+                td {
+                    vertical-align: $__middle;
+                    text-align: $__left;
+                    white-space: $__nowrap;
+                    .cart-availability {
+                        span {
+                            font-weight: $__medium;
+                            font-size: $__font__size__14;
+                            color: $__green__light;
+                        }
+                    }
+                }
+                .cart-btn {
+                    text-align: $__end;                    
+                    @include margin-padding(null, 0 40px 0 0);
+                    
+                    @include respond-below(custom991) {    
+                        @include margin-padding(null, 0 20px 0 0);    
+                    }
+                    .btn-primary {
+                        @include margin-padding(null, 10px 20px);
+                        display: $__inline;
+                        
+                        @include respond-below(custom991) {    
+                            @include margin-padding(null, 10px);  
+                            font-size: $__font__size__12; 
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.wishlist-section {
+    .table-responsive {
+        .table {
+            thead {
+                .cart-bg {
+                    background: $__light__grey;
+                }               
+            }
+            tbody {
+                tr {
+                    td {
+                        .cart-img {
+                            img{
+                                width: 80px;
+                            }
+                        }
+                    }
+                    td {
+                        .cart-item-price-two {
+                        font-weight: $__medium;
+                        font-size: $__font__size__14;
+                        color: $__grey__whitish;
+                        }                   
+                    }
+                    td {
+                        .product-quantity {
+                            border: 1px solid $__white__silver;
+                            width: 75px;
+                            border-radius: 5px;
+                            height: 40px;
+                            @include margin-padding(null, 5px 0); 
+                            span {
+                                cursor: pointer;
+                            }
+                            .quntity-input{
+                                width: 20px;
+                                @include margin-padding(0 10px, null); 
+                                border: $__none;
+                                text-align: $__center;
+                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.promo-cart {
+    background: $__white;
+    box-shadow: $__lightgray__shadow;
+    @include margin-padding(null, 24px); 
+    .promo-content {
+        display: $__flex;
+        justify-content: $__end;
+        @include respond-below(custom575) {    
+            justify-content: $__center;   
+        }
+        .promo-wrap {
+            h6 {
+                font-weight: $__medium;
+                font-size: $__font__size__16;
+                text-transform: $__capitalize;
+                color: $__dark__black;
+                @include margin-padding(0 0 15px 0, null); 
+                line-height: 27px;
+            }
+            .promo-form {
+                display: $__flex;
+                @include respond-below(custom575) {    
+                    display: $__block; 
+                }
+                input {
+                    width: 370px;
+                    @include margin-padding(0 20px 0 0, 20px); 
+                    background: $__light__gray;
+                    border: 1px solid $__white__border;
+                    border-radius: 5px;
+                    &.focus {
+                        outline: none;
+                    }
+                    @include respond-below(custom575) {  
+                        width: 270px;                        
+                        @include margin-padding(0 0 15px 0, null); 
+                        
+                    }
+                }
+                .btn-primary {
+                    @include respond-below(custom767) {  
+                        @include margin-padding(null, 10px);                         
+                    }
+                    @include respond-below(custom575) {  
+                        width: 270px    ;                      
+                    }
+                }
+            }
+        }
+       
+    }
+}
+.cart-purchase {
+    .cart-discount-amount {
+        background: $__light__grey;
+        border: 1px solid $__white__border;
+        display: $__flex;
+        justify-content: $__center;
+        @include margin-padding(null, 40px);
+        p {
+            font-weight: $__regular;
+            font-size: $__font__size__16;
+            color: $__light__black;
+            @include margin-padding(0 20px 0 0,null);
+        }
+    }
+}
+.shop-section {
+    .shop-content {
+        display: flex;
+        justify-content: end;
+        .cart-continue {
+            @include margin-padding(0 20px 0 0,null);
+            a {
+                background:$__light__gray ;
+                color: $__grey__whitish;
+                font-weight: $__bold;
+                font-size: $__font__size__15;
+                :hover {
+                    color: $__white;
+                    background: $__primarycolor;
+                }
+            }
+        }
+    }
+}

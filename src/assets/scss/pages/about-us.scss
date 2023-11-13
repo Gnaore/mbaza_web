@@ -1,0 +1,217 @@
+/*-----------------	
+    29. About Us
+-----------------------*/
+
+.aboutus-page {
+	.aboutus-section {
+		@include margin-padding(null, 80px 0 0);
+		@include respond-below(custom991) { 
+			@include margin-padding(null, 50px 0 0);
+		}
+	}
+	.about-img {
+		position: $__relative;
+		@include margin-padding(0 0 24px 0, null);
+		img {
+			border-radius: 10px;
+			@include margin-padding(null, 0 0 0 10px);
+		}
+		.about-exp {
+			position: $__absolute;
+			background: $__primarycolor;
+			border-radius: 10px;
+			width: 370px;
+			height: 100%;
+			@include respond-below(custom767) {
+				width: 230px;
+			}			
+			span {
+				font-weight: $__medium;
+				font-size: $__font__size__28;
+				color: $__white;
+				display: inline-block;
+				@include margin-padding(250px -122px, null);
+				transform: rotate(-90deg);
+					@include respond-below(custom767) {
+						font-size: $__font__size__18;
+						@include margin-padding(275px -90px, null);
+					}							
+					@include respond-below(custom575) {
+						font-size: $__font__size__16;
+						@include margin-padding(115px -75px, null);
+					}
+			}
+		}
+	}
+	.about-content {
+			@include respond-below(custom991) {
+				@include margin-padding(0 0 40px 0, null);
+			}
+		h6 {
+			font-size: $__font__size__15;
+			color: $__primarycolor;
+			font-weight: $__bold;
+			@include margin-padding(0 0 20px, null);
+		}
+		h1 {
+			font-size: $__font__size__48;
+			font-weight: $__bold;
+			max-width: 657px;
+			@include margin-padding(0 0 20px, null);
+			@include respond-below(custom991) { 
+				@include margin-padding(0 0 24px, null);
+				font-size: $__font__size__38;
+			}
+			@include respond-below(custom767) { 
+				@include margin-padding(0 0 20px, null);
+				font-size: $__font__size__28;
+			}
+		}
+		p {
+			@include margin-padding(0 0 20px, null);
+		}
+	}
+	.about-counter-sec {
+		position: $__relative;			
+		@include margin-padding(60px 0 0, null);
+		@include respond-below(custom991) { 
+			@include margin-padding(50px 0 0, null);
+		}
+		@include respond-below(custom767) { 
+			@include margin-padding(36px 0 0, null);
+		}
+		&:before {
+			content: "";
+			position: $__absolute;
+			display: block;
+			width: 100%;
+			height: 769px;
+			background: $__light__grey;
+			text-align: center;
+			left: 0;
+			right: 0;
+			top: 29%;
+		}
+		.about-listing-img {		
+			.about-listing {	
+				position: $__relative;
+				overflow: $__hidden;
+				border-radius: 20px;
+				img {
+					border-radius: 20px;
+					transform: translateZ(0);
+					transition: all 2000ms cubic-bezier(0.19, 1, 0.22, 1) 0ms;
+					max-width: 415px;
+					@include respond-below(custom767) { 
+						width: 100%;
+    					max-width: 100%;
+					}
+					&:hover {
+						-webkit-transform: scale(1.15);
+						-moz-transform: scale(1.15);
+						transform: scale(1.15);
+					}
+				}
+				@include respond-below(custom767) { 
+					margin-bottom: 24px;
+				}
+			}
+			.about-img-middle {
+				@include margin-padding(-34px 0 0 , null);
+				@include respond-below(custom767) { 
+					@include margin-padding(24px 0, null);
+				}
+			}
+		}
+		.counter-sec {
+			position: $__relative;
+			background: transparent;
+			@include respond-below(custom991) {
+				@include margin-padding(null, 50px 0 26px);
+			}
+			@include respond-below(custom767) {
+				@include margin-padding(null, 24px 0 26px);
+			}
+			.counter-box {
+				background: $__white;
+				box-shadow: 0px 4px 14px rgba(214, 214, 214, 0.24);
+				@include transition(0.2s all);
+				&:hover {
+					background-color: $__primarycolor;
+					@include transition(0.2s all);
+					h3 {
+						color: $__white;
+						@include transition(0.2s all);
+					}
+					h5 {
+						color: $__white;
+						@include transition(0.2s all);
+					}
+				}
+				h3 {
+					font-size: $__font__size__36;
+					color: $__dark__black;
+					@include transition(0.2s all);
+					@include respond-below(custom991) { 
+						font-size: $__font__size__30;
+					}
+					@include respond-below(custom767) { 
+						font-size: $__font__size__24;
+					}
+				}
+				h5 {
+					@include transition(0.2s all);
+					color: $__body__color;
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+				@include respond-below(custom991) { 
+					@include margin-padding(0 0 24px, null);
+				}
+			}
+		}
+	}
+	.book-section {
+		background: $__secondarycolor;
+		.book-listing {
+			h2 {
+				font-size: $__font__size__48;
+				color: $__white;
+				@include margin-padding(0 0 34px, null);
+				@include respond-below(custom991) {
+					font-size: $__font__size__38;
+					@include margin-padding(0 0 24px, null);
+				}
+				@include respond-below(custom767) {
+					font-size: $__font__size__26;
+					@include margin-padding(0 0 20px, null);
+				}
+			}
+			@include respond-below(custom991) {
+				@include margin-padding(0 0 24px, null);
+			}
+			img {
+				border: 11px solid $__white;
+			}
+		}
+		.book-content {
+			p {
+				color: $__white;
+				span {
+					color: $__warning;
+				}
+			}
+		}
+	}
+	.partners-sec {
+		border-top: none;
+		@include margin-padding(null, 80px 0);
+		@include respond-below(custom991) {
+			@include margin-padding(null, 50px 0);
+		}
+		@include respond-below(custom767) {
+			@include margin-padding(null, 40px 0);
+		}
+	}
+}

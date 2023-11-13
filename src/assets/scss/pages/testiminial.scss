@@ -1,0 +1,28 @@
+/*-----------------	
+    27. Testimonial
+-----------------------*/
+
+
+.testimonial-group {
+	@include margin-padding(0 0 26px, null);
+	.testimonial-card {
+		box-shadow: $__shadow2;
+		position: $__relative;
+	}		
+	.quotes-head {		
+		&::before {
+			@include position($__absolute, 20px, null, null, 20px);
+			content: "";
+			display: $__block;
+			width: 34px;
+			height: 34px;
+			background: url(../img/quote.svg) no-repeat center center;			
+			@include margin-padding(0 0 20px, null);
+			@include respond-below(custom991) {           
+				width: 18px;
+				height: 18px; 
+				@include margin-padding(0 0 20px, null);
+			}
+		}
+	}
+}

@@ -1,0 +1,58 @@
+<!-- Loader -->
+<div class="page-loader">
+    <div class="page-loader-inner">
+        <img src="assets/img/icons/loader.svg" alt="Loader">
+        <label><i class="fa-solid fa-circle"></i></label>
+        <label><i class="fa-solid fa-circle"></i></label>
+        <label><i class="fa-solid fa-circle"></i></label>
+    </div>
+</div>
+<!-- /Loader -->
+
+<!-- Main Wrapper -->
+<div class="main-wrapper login-body">
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="loginbox">	
+            <a href="index.html"><img class="img-fluid logo-dark mb-5" src="assets/img/logo.svg" alt="Logo"></a>
+
+                <div class="login-auth">
+                    <div class="login-auth-wrap">
+                        <h1>Salut !!! Content de te revoir.</h1>
+
+                        <form [formGroup]="formGroup" (ngSubmit)="login(formGroup.value)" >
+                            <div class="form-group">
+                                <label class="form-label">Email <span>*</span></label>
+                                <input type="email" class="form-control"  placeholder="Entrez Votre Email" formControlName="email">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Mot de passe <span>*</span></label>
+                                <div class="pass-group">
+                                    <input [type]="showPwd ? 'text' : 'password'" class="form-control pass-input" placeholder="Entrez Votre Mot De Passe" formControlName="password">
+                                    <span class="fas {{ !showPwd ? 'fa-eye' : 'fa-eye-slash' }} toggle-password" (click)="showPwd = !showPwd"></span>
+                                </div>
+                            </div>								
+                            <div class="form-group mb-5">
+                                <a class="forgot-link" href="forgot-password.html">Mot de passe oublié ?</a>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom_check mt-0 mb-0"><span>Se souvenir de moi</span>
+                                    <input type="checkbox" name="remeber">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="alert alert-danger mt-3" *ngIf="afficheErreur">
+                                <small>Problème d'authentification, verifiez votre login et mot de passe.</small>
+                                <small>Assurez-vous aussi de l'état de la touche Majuscule</small>
+                            </div>
+                            <button href="#" type="submit" class="btn btn-outline-light w-100 btn-size" [disabled]="formGroup.invalid" >Se connecter</button>
+                            <div class="text-center dont-have">Je n'ai pas de compte ? <a (click)="logout()">Retour au site</a></div>
+                        </form>							
+                    </div>
+                </div>
+            </div>
+        </div>	
+    </div>		
+</div>
+
+<!-- /Main Wrapper -->

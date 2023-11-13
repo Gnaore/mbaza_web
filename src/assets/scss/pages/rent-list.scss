@@ -1,0 +1,174 @@
+/*-----------------	
+    19. Rent List
+-----------------------*/
+
+.profile-widget {
+    &.rent-list-view {
+        @extend %display-flex;
+        @include margin-padding(0 0 24px, null);
+        .pro-img, .doc-img {
+            flex-shrink: 0;
+            border-radius: 10px 0 0 10px;
+            max-width: 345px;
+            img {
+                border-radius: 0;
+                max-width: 345px;  
+                height: $__full__height;
+                @include respond-below(custom991) {
+                    border-radius: 10px;
+                    max-width: 390px;
+                }        
+                @include respond-below(custom575) {
+                    max-width: $__full__width;
+                    border-radius: 10px 10px 0 0;
+                }            
+            }
+            &::before {
+                border-radius: 0;
+            }
+            .favourite {
+                @include position($__absolute,20px,20px,null,null)
+            } 
+            .property-img {
+                border-radius: 0;
+                height: $__full__height;
+            }             
+            @include respond-below(custom1399) {
+                max-width: 392px;
+            }             
+            @include respond-below(custom991) {
+                @include margin-padding(0 $__auto 0, null);
+                max-width: 390px;
+                border-radius: 10px;
+            }              
+            @include respond-below(custom575) {
+                max-width: $__full__width;
+                width: $__full__width;
+                border-radius: 10px 10px 0 0;
+            }
+        }
+        .pro-content {
+            width: $__full__width;
+            .list-head {
+                .rating {
+                    display: $__block;
+                    @include margin-padding(0 0 10px,null);
+                }
+                h3 {
+                    @include margin-padding(0 0 11px,null);
+                }
+                p {
+                    @include margin-padding(0 0 20px,null);
+                    @extend %flex-center;
+                    i {
+                        margin-right: 5px;
+                    }    
+                    @include respond-below(custom991) {
+                        justify-content: $__center;
+                    }
+                }
+                .product-amount {
+                    position: $__static;
+                    h5 {
+                        color: $__dark__black;
+                        font-size: $__font__size__24;
+                        font-weight: $__semibold;
+                        span {
+                            color: $__dark__black;
+                            font-weight: $__semibold;
+                            @include respond-below(custom1199) {
+                                font-size: $__font__size__22;
+                            }
+                            @include respond-below(custom767) {
+                                font-size: $__font__size__18;
+                            }
+                        }
+                        @include respond-below(custom1199) {
+                            font-size: $__font__size__22;
+                        }
+                        @include respond-below(custom767) {
+                            font-size: $__font__size__18;
+                        }
+                    }
+                }            
+                @include respond-below(custom991) {
+                    text-align: $__center;
+                }
+            }
+            .details {
+                @extend %justify-content-start;
+                li {
+                    margin-right: 50px;
+                    @include respond-below(custom1399) {
+                        font-size: $__font__size__13;
+                        margin-right: 35px;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }         
+                @include respond-below(custom991) {
+                    justify-content: $__center;
+                }
+            }
+            .user-info {
+                width: calc(100% - 108px);
+            }
+        }  
+        @include respond-below(custom991) {
+            display: $__block;
+            @include margin-padding(null, 24px 0 0);
+        }             
+        @include respond-below(custom575) {
+            @include margin-padding(null, 0);
+        }
+    }
+}
+.list-sidebar {
+    .apply-btn {
+        @include respond-below(custom1199) {
+            @include margin-padding(0 0 24px, null); 
+        }
+    }
+}
+.property-sidebar {
+    .apply-btn {
+        @include respond-below(custom1199) {
+            @include margin-padding(0 0 24px, null); 
+        }
+    }
+    .profile-widget {
+        &.rent-list-view {
+            .pro-img, .doc-img {
+                max-width: 345px;
+            }
+        }
+    }
+}
+.rental-map{
+    .profile-widget{
+        &.rent-list-view{
+            .doc-img img {
+                max-width: $__initial;
+            }
+        }
+    }
+}
+.buy-list {
+    .product-custom {
+        .product-amount {
+            h5 {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+.profile-widget {
+    &.rent-list-view {
+        .feature-rating {
+            .favourite {
+                @include position($__relative, 0, 0, null, null);
+            }
+        }
+    }
+}

@@ -1,0 +1,102 @@
+/*-----------------
+	5. Buttons
+-----------------------*/
+
+.btn-primary {
+    font-weight: $__bold;
+	font-size: $__font__size__15;
+    color: $__white;
+	background-color: $__primarycolor;
+	border: 1px solid $__primarycolor;
+    box-shadow: inset 0 0 0 0 $__light__gray;
+    @include rounded(10px);
+	@include margin-padding(null, 12px 15px);
+    @extend %flex-align-center;
+    @include transition(0.5s);
+    @include respond-below(custom767) {
+        font-size: $__font__size__14;
+        @include margin-padding(null, 10px 15px);
+    }
+    &:focus, &:hover, &:active, &.active {
+        color: $__body__color;
+        background-color: $__light__gray;
+        border-color: $__light__gray;    
+        box-shadow: inset 0 50px 0 0 $__light__gray;
+        @include transition(0.5s);
+    }
+}
+.btn-secondary {
+    font-weight: $__bold;
+    font-size: $__font__size__15;
+    color: $__body__color;
+    background-color: $__light__gray;
+    border: 1px solid $__light__gray;
+    box-shadow: inset 0 0 0 0 $__primarycolor;
+    @include rounded(10px);
+    @include margin-padding(null, 12px 15px);
+    @extend %flex-align-center;
+    @include transition(0.5s);
+    @include respond-below(custom767) {
+        font-size: $__font__size__14;
+        @include margin-padding(null, 10px 15px);
+    }
+    &:focus, &:hover, &:active, &.active {
+        color: $__white;
+        background-color: $__primarycolor;
+        border-color: $__primarycolor;    
+        box-shadow: inset 0 50px 0 0 $__primarycolor;
+        @include transition(0.5s);
+    }
+}
+.btn-lightred{
+    font-weight: $__bold;
+    font-size: $__font__size__15;
+    font-weight: $__bold;
+    color: $__white;
+    background: $__light__red;
+    border: 1px solid $__light__red;
+    @extend %flex-align-center;
+    @include transition(0.5s);
+    box-shadow: inset 0 0 0 0 $__white;
+    @include rounded(10px);
+    @include margin-padding(null, 12px 15px);
+    &:focus, &:hover, &:active, &.active {
+        color: $__light__red;
+        background-color: $__white;
+        border-color: $__light__red;    
+        box-shadow: inset 0 50px 0 0 $__white;
+        @include transition(0.5s);
+    }
+}
+.btn-check:active+.btn-dark:focus, 
+.btn-check:checked+.btn-dark:focus, 
+.btn-dark.active:focus, 
+.btn-dark:active:focus, 
+.show>.btn-dark.dropdown-toggle:focus {
+    box-shadow: $__inherit;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    background-color: $__white;
+    border-color: $__primarycolor;
+    color: $__primarycolor;
+}
+.btn-primary.active:focus:not(:disabled):not(.disabled), 
+.btn-primary:active:focus:not(:disabled):not(.disabled), 
+.show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: $__unset;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+    background-color: $__white;
+    border-color: $__primarycolor;
+    color: $__primarycolor;
+}
+.btn-secondary.active:focus:not(:disabled):not(.disabled), 
+.btn-secondary:active:focus:not(:disabled):not(.disabled), 
+.show > .btn-secondary.dropdown-toggle:focus {
+    box-shadow: $__unset;
+}
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    background-color: $__white;
+    border-color: $__secondarycolor;
+    color: $__secondarycolor;
+}

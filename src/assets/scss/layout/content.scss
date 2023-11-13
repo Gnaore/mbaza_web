@@ -1,0 +1,31 @@
+/*-----------------	
+    10. Content
+-----------------------*/
+
+.content {
+    @include margin-padding(null, 60px 0);
+	&.inner-content {
+		background: $__light__grey;
+	}
+	@include respond-below(custom991) {
+		@include margin-padding(null,50px 0);
+	}
+	@include respond-below(custom767) {
+		@include margin-padding(null,40px 0);
+	}
+	&.feature-property-sec {
+		background-color: $__transparent;
+		@include margin-padding(null, 60px 0);
+		@include respond-below(custom991) {
+			@include margin-padding(null,50px 0);
+		}
+		@include respond-below(custom767) {
+			@include margin-padding(null,40px 0);
+		}
+	}
+}
+.main-wrapper {
+	overflow: $__clip;
+	width: $__full__width;
+	float: $__left;
+}

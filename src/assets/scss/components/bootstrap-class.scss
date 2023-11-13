@@ -1,0 +1,114 @@
+/*-----------------
+	6. Bootstrap Class
+-----------------------*/
+
+.form-group {
+	margin-bottom: 20px;
+	.forgot-link {
+		color: $__light__red;
+		font-weight: $__bold;
+		font-size: $__font__size__15;
+		float: $__right;
+		&:hover {
+			color: $__primarycolor;
+		}
+	}
+	.pass-group {
+		position: $__relative;
+	}
+}
+.form-control {
+	font-size: $__font__size__14;
+	background: $__light__gray;
+	border: 1px solid $__white__border;
+	@include rounded(5px);
+	color: $__dark__black;
+	min-height: 50px;
+	@include margin-padding(0, 9px 15px);
+	@include respond-below(custom991) {
+		min-height: 40px;
+	}  
+	&::-webkit-input-placeholder {
+		font-size: $__font__size__14;
+		color: $__body__color;
+		font-weight: $__regular;
+	}
+	&::-moz-placeholder {
+		font-size: $__font__size__14;
+		color: $__body__color;
+		font-weight: $__regular;
+	}
+	&:-ms-input-placeholder {
+		font-size: $__font__size__14;
+		color: $__body__color;
+		font-weight: $__regular;
+	}
+	&::-ms-input-placeholder {
+		font-size: $__font__size__14;
+		color: $__body__color;
+		font-weight: $__regular;
+	}
+	&::placeholder {
+		font-size: $__font__size__14;
+		color: $__body__color;
+		font-weight: $__regular;
+	}
+    &:focus {
+        box-shadow: $__none;
+        outline: 0 $__none;
+        border-color: $__white__snow;
+    }
+}
+.card {
+	border: 1px solid $__white__snow;
+	background: $__white;
+	border-radius: 0;
+	margin-bottom: 24px;
+	box-shadow: $__card__shadow;
+	.card-header {
+		background-color: $__transparent;
+		border: 0;
+		padding: 24px;
+		.card-title {
+			margin-bottom: 0;
+			font-weight: $__bold;
+			font-size: $__font__size__20;
+			color: $__black;
+		}
+	}
+	.card-body {
+		padding: 24px;	
+	}
+}
+label {
+	color: $__dark__black;
+    display: $__block;
+    font-weight: $__bold;
+    margin-bottom: 10px;
+    span {
+    	color: $__red__color;
+    }
+}
+.modal-backdrop {
+	background-color: $__blue_black;
+	opacity: 0.95;
+	&.show {
+		opacity: 0.95;
+	}
+}
+.bootstrap-datetimepicker-widget {
+	table td {
+		&.active { 
+			background-color: $__primarycolor;
+			&:hover {
+				background-color: $__primarycolor;
+			}
+		}
+	}
+}
+.card {
+	color: $__inherit;
+}
+.card-title {
+	color: $__dark__black;
+}

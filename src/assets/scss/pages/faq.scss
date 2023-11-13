@@ -1,0 +1,28 @@
+/*-----------------	
+    23. FAQ
+-----------------------*/
+
+.faq-section {
+    .faq-card {
+            @include respond-below(custom991) {
+                @include margin-padding(0 0 15px, null);
+            }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .faq-title {
+        >a {
+            &:after {
+                font-size: $__font__size__15;
+                transition: all 0.3s ease-in-out;
+            }
+            &:not(.collapsed) {
+                &:after {
+                    transition: all 0.3s ease-in-out;
+                    
+                }
+            }
+        }
+    }
+}

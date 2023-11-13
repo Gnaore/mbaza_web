@@ -1,0 +1,80 @@
+/*-----------------	
+    14. Breadcrumb
+-----------------------*/
+
+.breadcrumb {
+    @include margin-padding(0, 90px 0);
+    background-image: url(../img/bg/breadcrumb-bg.jpg);
+    @include background-properties($__cover, $__no_repeat, $__center $__bottom);
+    position: $__relative;
+    &:before {
+        content: '';
+        background: $__dark__black;
+        opacity: 0.8;
+        @include position($__absolute,0,null,null,0);
+        width: $__full__width;
+        height: $__full__height;
+    }
+    .bread-crumb-head {
+        text-align: $__center;
+        position: $__relative;
+        .breadcrumb-title {
+            h2 {
+                color: $__white;
+                font-size: $__font__size__36;
+                margin-bottom: 10px;
+                text-transform: $__capitalize;
+                @include respond-below(custom991) {
+                    font-size: $__font__size__28;
+                }  
+                @include respond-below(custom767) {
+                    font-size: $__font__size__24;
+                }
+            }
+        }
+        .breadcrumb-list {
+            ul {
+                @extend %display-flex;
+                @extend %justify-content-center;
+                li {
+                    color: $__white;
+                    font-size: $__font__size__14;
+                    font-weight: $__medium;
+                    text-transform: $__capitalize;
+                    span {
+                        color: $__warning;
+                        @include margin-padding(0 7px 0 7px,0)
+                    }
+                    a {
+                        color: $__white;
+                        &:hover {
+                            color: $__warning;
+                        }
+                    }
+                    & + li {
+                        padding-left: 7px;
+                        &::before {
+                            content: "/";
+                            float: $__left;
+                            padding-right: 7px;
+                            color: $__warning;
+                            font-size: $__font__size__14;
+                            font-weight: $__semibold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .breadcrumb-border-img {
+        img {
+            @include position($__absolute,null,0,0,null);
+        }
+    }    
+    @include respond-below(custom991) {
+        @include margin-padding(null, 60px 0);
+    }  
+    @include respond-below(custom767) {
+        @include margin-padding(null, 50px 0);
+    }
+}

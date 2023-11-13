@@ -1,0 +1,71 @@
+<!-- Sort Result -->
+<div class="showing-result-head">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="sort-result">
+                <div class="sort-by grid-head">
+                    <div>
+                        <p>Trier Par Mois</p>
+                    </div>
+                    <div class="review-form">
+                        <select class="select">
+                            <option value="" selected disabled>Choisissez le mois</option>
+                            <option value="Janvier">Janvier</option>
+                            <option value="Février">Février</option>
+                            <option value="Mars">Mars</option>
+                            <option value="Avril">Avril</option>
+                            <option value="Mai">Mai</option>
+                            <option value="Juin">Juin</option>
+                            <option value="Juillet">Juillet</option>
+                            <option value="Août">Août</option>
+                            <option value="Septembre">Septembre</option>
+                            <option value="Octobre">Octobre</option>
+                            <option value="Novembre">Novembre</option>
+                            <option value="Décembre">Décembre</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="price-range grid-head">
+                    <div>
+                        <p>Locataire</p>
+                    </div>
+                    <div class="review-form">
+                        <select class="select">
+                            <option value="" selected disabled>Choisissez le Locataire</option>
+                            <option value="861669To">Toto</option>
+                            
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="invoice-table table table-bordered">
+        <thead>
+            <tr>
+                <th>Réf.</th>
+                <th>Date de paiement</th>
+                <th>Montant du paiement</th>
+                <th>Référence du locataire</th>
+                <th> Mois</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let payement of listPayement; let i = index">
+                <tr>
+                    <td>{{payement.idWaveCallback}}</td>
+                    <td>{{payement.when_completed | date: 'EEEE d MMMM yyyy' }}</td>
+                    <td>{{payement.currency}} {{payement.amount | number:'1.0':'fr' }}</td>
+                    <td>{{payement.locataireRef}}</td>
+                    <td>{{payement.loyer_mois}}</td>
+                    <td>{{payement.payment_status}}</td>
+                   
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

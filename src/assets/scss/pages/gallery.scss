@@ -1,0 +1,30 @@
+/*-----------------	
+    26. Gallery
+-----------------------*/
+
+.gallery-section {
+    @include margin-padding(null, 60px 0 36px);
+    @include respond-below(custom991) {
+        @include margin-padding(null, 50px 0 26px);
+    }
+    @include respond-below(custom767) {
+        @include margin-padding(null, 40px 0 16px);
+    }
+    .gallery-widget {
+        position: $__relative;
+        @include margin-padding(0 0 24px, null);
+        -webkit-transition: all 0.7s;
+        -moz-transition: all 0.7s;
+        -o-transition: all 0.7s;
+        transition: all 0.7s;
+        img {
+            @include respond-below(custom767) {
+                width: 100%;
+            }
+        }
+    }
+}    
+.fancybox-image {
+    border-radius: 10px;
+    border: 1px solid $__white;
+}

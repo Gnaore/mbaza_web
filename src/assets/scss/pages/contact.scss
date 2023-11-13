@@ -1,0 +1,123 @@
+/*-----------------	
+    30. Contact
+-----------------------*/
+
+.contact-section {
+    background: $__light__grey;
+    @include margin-padding(null, 80px 0 56px);
+    @include respond-below(custom991) {
+        @include margin-padding(null, 50px 0 26px);
+    }
+    @include respond-below(custom767) {
+        @include margin-padding(null, 40px 0 16px);
+    }
+    .contact-content {
+        .card {
+            box-shadow: $__shadow2;
+            border: 0;
+            border-radius: 0;
+            @include margin-padding(0 0 24px, null);
+            .contact-info {
+                h3 {
+                    font-weight: $__semibold;
+                    @include margin-padding(0 0 16px, null);
+                    @include respond-below(custom767) {
+                        font-size: $__font__size__20;
+                    }
+                }
+                p {
+                    @include margin-padding(0 0 15px, null);
+                }
+            }
+            img {
+                max-width: 636px;
+                border-radius: 10px;
+            }
+        }
+    }
+    img {
+        border-radius: 10px;
+        margin-bottom: 24px;
+    }
+}
+.contact-info-sec {   
+    @include margin-padding(null, 80px 0 56px);
+	@include respond-below(custom991) {
+		@include margin-padding(null,50px 0 26px);
+	}
+	@include respond-below(custom767) {
+		@include margin-padding(null,40px 0 16px);
+	}
+    label {
+        font-size: $__font__size__14;
+        font-weight: $__medium;
+    }
+    h3 {
+        font-size: $__font__size__28;
+        font-weight: $__semibold;
+        @include margin-padding(0 0 40px, null);
+        @include respond-below(custom991) {
+            font-size: $__font__size__26;
+            @include margin-padding(0 0 30px, null);
+        }
+        @include respond-below(custom767) {
+            font-size: $__font__size__22;
+            @include margin-padding(0 0 20px, null);
+        }
+    } 
+    .btn-primary {
+        @include margin-padding(null, 13px 15px);
+        @include respond-below(custom767) {
+            @include margin-padding(null, 10px 15px);
+        }
+    }
+    .card {
+        border: 1px solid $__white__border;
+        border-radius: 0;
+        .card-header {
+            padding-bottom: 0;
+            h3 {
+                font-weight: $__semibold;
+                border-bottom: 1px solid $__white__border;
+                @include margin-padding(0, 0 0 20px);
+            }
+        }
+        .card-body {
+            padding-top: 20px;
+        }
+    }
+    .contact-info-details {
+        @include margin-padding(0 0 37px, null);
+        span {
+            border: 1px solid $__white__border;
+            border-radius: 10px;
+            @include margin-padding(0 8px 0 0, null);
+            height: 72px;
+            width: 72px;
+            @extend %flex-align-center;
+        }
+        h4 {
+            font-size: $__font__size__20;
+            font-weight: $__semibold;
+            @include margin-padding(0 0 10px, null);
+            @include respond-below(custom991) {
+                font-size: $__font__size__18;
+            }
+        }
+        a {             
+            color: $__body__color;
+        }
+        p {
+            max-width: 254px;
+        }
+        @include respond-below(custom767) {
+            @include margin-padding(0 0 24px, null);
+        }
+    }
+}
+.map-location {
+    margin-bottom: 24px;
+    iframe {
+        width: $__full__width;
+    }
+}

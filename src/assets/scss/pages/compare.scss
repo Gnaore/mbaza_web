@@ -1,0 +1,95 @@
+/*-----------------	
+    17. Compare
+-----------------------*/
+
+.compare-head{
+	text-align:$__center ;
+	h4{
+		background: $__light__grey;
+		font-size: 16px;
+		font-weight: 500;
+		padding: 30px;
+		margin-bottom: 20px;
+		@include respond-below(custom991) {
+			padding: 15px;                      
+		}
+	}
+	.compare-action{
+		position: $__relative;
+		margin-bottom: 20px;
+		img{
+			border-radius: 10px;
+		}
+		a{
+			position: $__absolute;
+			left: 10px;
+			top: 10px;
+			background: $__light__red;
+			width: 34px;
+			height: 34px;
+			border-radius: 50px;
+			color: $__white;
+			@extend %flex-align-center;
+		}
+	}
+	span{
+		color:$__dark__black;
+		margin-bottom: 8px;
+		font-size: $__font__size__14;
+		font-weight: $__medium;
+		display: $__block;
+	}
+	h5{
+		color: $__primarycolor;
+		font-size: 20px;
+		font-weight: 600;
+		margin: 0;
+	}
+}
+.compare-table{
+	.table{
+		tr{
+			&:nth-child(2n + 1){
+				background: $__snow__light;
+			}
+			&:first-child{
+				background: $__transparent;
+				&:hover{
+					background: $__transparent;
+				}
+			}
+			&:hover{
+				background: $__snow__light;
+			}
+			th {
+				color: $__dark__black;
+				font-weight: $__medium;
+				padding: 15px;
+				text-align: $__center;
+				border: 0;
+			}
+			td{
+				padding: 15px;
+				color: $__body__color;
+				text-align: $__center;
+				min-width: 300px;
+				font-weight: 400;
+				border: 0;
+				@include respond-below(custom991) {
+					min-width: 200px;       
+					padding: 10px;           
+				}
+				.text-success{
+					color: $__green__light !important;
+				}
+				&:first-child{
+					font-weight: 500;
+				}
+				
+			}
+		}
+	}
+}
+.table>:not(caption)>*>* {
+    background-color: $__transparent
+}

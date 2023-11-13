@@ -1,0 +1,64 @@
+<div class="p-3 container">
+    <h3 class="mb-4">Avis aux locataires</h3>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa fa-inbox me-3"></i> Boîte de reception <span class="badge bg-danger ms-3">4</span></button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa fa-message me-3"></i> Nouveau message</button>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <p-table #dt1 [value]="messages" selectionMode="single" styleClass="p-datatable-striped p-datatable-sm" [(selection)]="selectedMessage" dataKey="code" [paginator]="true" [rows]="5" [selectionPageOnly]="true" [tableStyle]="{'min-width': '50rem'}">
+                <ng-template pTemplate="caption">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <p-button type="button" icon="fa fa-refresh" styleClass="p-button-text"></p-button>
+                        <span class="p-input-icon-left ml-auto">
+                            <i class="fa fa-search"></i>
+                            <input pInputText  type="text" (input)="dt1.filterGlobal($event.target, 'contains')" placeholder="Mots clés..." />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="body" let-message>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="message"></p-tableCheckbox>
+                        </td>
+                        <td>
+                            <div style="width: 50px; height: 50px;">
+                                <img [src]="message.image" class="rounded-circle w-100 h-100" alt="">
+                            </div>
+                        </td>
+                        <td class="fw-bold">{{ message.name }}</td>
+                        <td><div class="text-overflow-1">{{ message.message }}</div></td>
+                        <td>
+                            <div class="text-end">{{message.date}}</div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div class="row p-3">
+                <div class="review-form col-12">
+                    <input type="text" class="form-control" placeholder="Destinataires">
+                </div>
+                <div class="review-form col-12">
+                    <input type="text" class="form-control" placeholder="Objet">
+                </div>
+                <div class="review-form col-12">
+                    <textarea rows="10" class="form-control" placeholder="Message"></textarea>
+                </div>
+                <div class="col-12 d-flex align-items-center">
+                    <button class="btn-lightred me-3">
+                        <i class="fa fa-paper-plane me-3"></i>
+                        Envoyer
+                    </button>
+                    <label class="btn-secondary mb-0" for="file">
+                        <i class="fa fa-paperclip"></i>
+                        <input type="file" id="file" class="d-none">
+                    </label>
+                </div>
+            </div>
+        </div>
+      </div>
+</div>

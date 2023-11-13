@@ -1,0 +1,185 @@
+/*-----------------	
+    35. Checkout
+-----------------------*/
+
+.checkout-billings {
+    @include margin-padding(null, 80px 0); 
+    .checkout-login {
+        @include margin-padding(0 0 40px 0, null); 
+        h6 {
+            background: $__lightred__shadow;
+            @include margin-padding(null, 30px); 
+            font-weight: $__regular;
+            font-size: $__font__size__16;
+            color:$__dark__black;
+            span {
+                color: $__light__red;
+                font-weight: $__bold;
+                font-size: $__font__size__15;
+            }
+        }
+    }
+    .checkout-you-need-block {
+        .billing-title {
+            h3 {
+                font-weight: $__semibold;
+                font-size: $__font__size__20; 
+                color: $__black;
+            }
+        }
+        .billing-form {
+            .form-group {
+                label {
+                    font-weight: $__regular;
+                    font-size: $__font__size__16;
+                    color: $__grey__whitish;  
+                }
+            }
+            .form-check {
+                label {
+                    &.form-check-label {
+                        color: $__body__color;
+                        font-weight: $__medium;
+                        font-size: $__font__size__14;
+                    }
+                }
+            }
+        }
+    }
+    .checout-form {
+        .booking-time {
+            background:$__white;
+            box-shadow:$__card__white__shadow;
+            @include margin-padding(null, 20px); 
+            h3 {
+                font-weight: $__semibold;
+                font-size: $__font__size__20;
+                color: $__black__dark;
+            }
+            .booking-table {
+                .booking-invoice {
+                    thead {
+                        tr {
+                            th {
+                                font-weight: $__medium;
+                                font-size:$__font__size__16 !important;
+                                text-transform: $__capitalize;
+                                color: $__black__color !important;
+                                border: 0;
+                                @include margin-padding(null, 0 0 20px 0); 
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            .booking-head {
+                                font-weight: $__regular;
+                                font-size:$__font__size__16;
+                                color: $__black__black;
+                                @include margin-padding(null, 0 0 15px 0);
+                                @include respond-below(custom575) {    
+                                    font-size:$__font__size__14;
+                                }
+                            }
+                            .booking-head-two {
+                                font-weight: $__bold;
+                                font-size:$__font__size__15;
+                                color: $__black__black;
+                                @include margin-padding(null, 15px 0);
+                            }
+                            .billing-amount {
+                                font-weight: $__regular;
+                                font-size:$__font__size__16;
+                                color: $__body__color;
+                                @include margin-padding(null, 0 0 15px 0);
+                            }
+                            &:last-child {
+                                td {
+                                    border: 0;
+                                    @include margin-padding(null, 15px 0);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        .billing-payment {            
+            background:$__white;
+            box-shadow:$__card__white__shadow;
+            @include margin-padding(null, 20px); 
+            h5 {
+                font-weight: $__semibold;
+                font-size:$__font__size__20;
+                color: $__black__dark;
+            }
+            .payment-gateway {
+                p {
+                    font-weight: $__medium;
+                    font-size:$__font__size__16;
+                    color: $__black__color;
+                    span {
+                        color: $__red__color;
+                    }
+                }
+                .checkout-payment-method {
+                     @include margin-padding(0 0 20px 0, null);                     
+                     .debit-credit-bill {
+                        display: $__block;
+                        position: $__relative;
+                        padding-left: 35px;
+                        margin-bottom: 12px;
+                        font-weight: $__regular;
+                        color: $__body__color;
+                        cursor: $__pointer;
+                        font-size: $__font__size__16;
+                        -webkit-user-select: $__none;
+                        -moz-user-select: $__none;
+                        -ms-user-select: $__none;
+                        user-select: $__none;
+                        input {
+                            position: $__absolute;
+                            opacity: 0;
+                            cursor: $__pointer;
+                            ~ .checkmark-check {
+                                &:after {
+                                    content: "";
+                                    position: $__absolute;
+                                    display: $__none;
+                                }
+                            }
+                        &:checked {
+                                ~ .checkmark-check {
+                                    background-color: $__primarycolor;
+                                    &:after {
+                                        display: $__block;
+                                    }
+                                }
+                            }
+                        }
+                        .checkmark-check {
+                            position: $__absolute;
+                            top: 0;
+                            left: 0;
+                            height: 25px;
+                            width: 25px;
+                            background-color:$__white__color;
+                            border: 1px solid $__white__dark;
+                            border-radius: 50%;
+                            &:after {
+                                top: 8px;
+                                left: 8px;
+                                width: 8px;
+                                height: 8px;
+                                border-radius: 50%;
+                                background: $__white;
+                            }
+                         }
+                     }
+                     
+                }
+            }
+        }
+    }
+}
