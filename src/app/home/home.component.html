@@ -215,96 +215,101 @@
 	  </div>
 	  <div class="row">
 		<div class="col-md-12">
+			<div class="d-flex align-items-center justify-content-center">
+				<loader *ngIf="isLoading" type="ellipsis"></loader>
+			</div>
 		  <div class="feature-slider owl-carousel">
-			<div class="slider-col" *ngFor="let n of touslesBiens">
-			  <div
-				class="product-custom"
-				data-aos="fade-down"
-				data-aos-duration="1000"
-			  >
-				<div class="profile-widget">
-				  <div class="doc-img">
-					<a href="properties/0" class="property-img">
-					  <img
-						class="img-fluid"
-						alt="Property Image"
-						src="{{ urlg }}{{ n.bienImage }}"
-						style="height:293px; width:416px;"
-					  />
-					</a>
-					<div class="product-amount">
-					  <span>{{ n.bienPrix | number }} FCFA </span>
-					</div>
-					<div class="feature-rating">
-					  <div>
-						<div class="featured">
-						  <span>En vedette</span>
+			<ng-container *ngIf="!isLoading">
+				<div class="slider-col" *ngFor="let n of touslesBiens">
+					<div
+					  class="product-custom"
+					  data-aos="fade-down"
+					  data-aos-duration="1000"
+					>
+					  <div class="profile-widget">
+						<div class="doc-img">
+						  <a href="properties/0" class="property-img">
+							<img
+							  class="img-fluid"
+							  alt="Property Image"
+							  src="{{ urlg }}{{ n.bienImage }}"
+							  style="height:293px; width:416px;"
+							/>
+						  </a>
+						  <div class="product-amount">
+							<span>{{ n.bienPrix | number }} FCFA </span>
+						  </div>
+						  <div class="feature-rating">
+							<div>
+							  <div class="featured">
+								<span>En vedette</span>
+							  </div>
+							  <div class="new-featured ms-2">
+								<span>{{ n.bienCategorie }}</span>
+							  </div>
+							</div>
+							<a href="javascript:void(0)">
+							  <div class="favourite selected">
+								<span><i class="fa-regular fa-heart"></i></span>
+							  </div>
+							</a>
+						  </div>
+						  <div class="user-avatar">
+							<img src="assets/img/profiles/avatar-01.jpg" alt="User" />
+						  </div>
 						</div>
-						<div class="new-featured ms-2">
-						  <span>{{ n.bienCategorie }}</span>
+						<div class="pro-content">
+						  <div class="rating">
+							<span class="rating-count">
+							  <i class="fa-solid fa-star checked"></i>
+							  <i class="fa-solid fa-star checked"></i>
+							  <i class="fa-solid fa-star checked"></i>
+							  <i class="fa-solid fa-star checked"></i>
+							  <i class="fa-solid fa-star checked"></i>
+							</span>
+							<p class="rating-review">
+							  <span>5.0</span>(20 Commentaires)
+							</p>
+						  </div>
+						  <h3 class="title">
+							<a href="properties/0">{{ n.bienLibelle }}</a>
+						  </h3>
+						  <p>
+							<span><i class="feather-map-pin"></i></span
+							>{{ n.bienAdresse }}
+						  </p>
+						  <ul class="d-flex details">
+							<li>
+							  <img src="assets/img/icons/bed-icon.svg" alt="bed-icon" />
+							  {{ n.bienNbrePiece }} Pièces
+							</li>
+							<li></li>
+							<li>
+							  <img
+								src="assets/img/icons/building-icon.svg"
+								alt="building-icon"
+							  />
+							  {{ n.bienSurface }} m2
+							</li>
+						  </ul>
+		
+						  <ul class="property-category d-flex justify-content-between">
+							<li>
+							  <span class="list">Ajouté le : </span>
+							  <span class="date">16 Jan 2023</span>
+							</li>
+							<li>
+							  <span class="category list">Catégorie : </span>
+							  <span class="category-value date">{{
+								n.typebien.libelleTypebien
+							  }}</span>
+							</li>
+						  </ul>
 						</div>
 					  </div>
-					  <a href="javascript:void(0)">
-						<div class="favourite selected">
-						  <span><i class="fa-regular fa-heart"></i></span>
-						</div>
-					  </a>
-					</div>
-					<div class="user-avatar">
-					  <img src="assets/img/profiles/avatar-01.jpg" alt="User" />
 					</div>
 				  </div>
-				  <div class="pro-content">
-					<div class="rating">
-					  <span class="rating-count">
-						<i class="fa-solid fa-star checked"></i>
-						<i class="fa-solid fa-star checked"></i>
-						<i class="fa-solid fa-star checked"></i>
-						<i class="fa-solid fa-star checked"></i>
-						<i class="fa-solid fa-star checked"></i>
-					  </span>
-					  <p class="rating-review">
-						<span>5.0</span>(20 Commentaires)
-					  </p>
-					</div>
-					<h3 class="title">
-					  <a href="properties/0">{{ n.bienLibelle }}</a>
-					</h3>
-					<p>
-					  <span><i class="feather-map-pin"></i></span
-					  >{{ n.bienAdresse }}
-					</p>
-					<ul class="d-flex details">
-					  <li>
-						<img src="assets/img/icons/bed-icon.svg" alt="bed-icon" />
-						{{ n.bienNbrePiece }} Pièces
-					  </li>
-					  <li></li>
-					  <li>
-						<img
-						  src="assets/img/icons/building-icon.svg"
-						  alt="building-icon"
-						/>
-						{{ n.bienSurface }} m2
-					  </li>
-					</ul>
-  
-					<ul class="property-category d-flex justify-content-between">
-					  <li>
-						<span class="list">Ajouté le : </span>
-						<span class="date">16 Jan 2023</span>
-					  </li>
-					  <li>
-						<span class="category list">Catégorie : </span>
-						<span class="category-value date">{{
-						  n.typebien.libelleTypebien
-						}}</span>
-					  </li>
-					</ul>
-				  </div>
-				</div>
-			  </div>
-			</div>
+			</ng-container>
   
 			<!--div class="slider-col">
 								  <div class="product-custom" data-aos="fade-down" data-aos-duration="1000">

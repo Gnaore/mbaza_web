@@ -21,6 +21,7 @@ import { PaymentFailedComponent } from './payment-failed/payment-failed.componen
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { LoaderModule } from './loader/loader.module';
 
 registerLocaleData(localeFr);
 
@@ -49,7 +50,7 @@ registerLocaleData(localeFr);
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    LoaderModule
   ],
   providers: [ {provide: LOCALE_ID, useValue: "fr" }],
   bootstrap: [AppComponent]

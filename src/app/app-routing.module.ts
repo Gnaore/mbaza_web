@@ -26,12 +26,12 @@ const routes: Routes = [
       { path: 'about-us', component: AboutUsComponent },
       { path: 'terms', component: TermsComponent },
       { path: 'pay-for-somebody', component: PayForSomebodyComponent },
-      { path: 'payment-success', component: PayementSuccessComponent },
-      { path: 'payment-failed', component: PaymentFailedComponent },
       { path: 'tenant', loadChildren: () => import('./tenant/tenant.module').then(m => m.TenantModule) },
       { path: 'owner', loadChildren: () => import('./owner/owner.module').then(m => m.OwnerModule) },
     ]
   },
+  { path: 'payment-success', component: PayementSuccessComponent },
+  { path: 'payment-failed', component: PaymentFailedComponent },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
 ];
 

@@ -33,6 +33,7 @@ export class SignInComponent {
   }
 
   login(f: any){
+    this.afficheErreur = false;
     this.isLoading = true;
    /* const loginFormData = new FormData();
     loginFormData.append('userName', f.userName);
