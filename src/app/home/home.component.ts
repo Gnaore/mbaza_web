@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   touslesBiens: any;
   urlg: any;
+  isLoading: boolean = false;
 
   ngOnInit() {
     
@@ -114,10 +115,10 @@ export class HomeComponent implements OnInit {
   }
 
   allBien() {
-    console.log("tttttttt");
+    this.isLoading = true;
     this.bienService.AllBien().subscribe((ret) => {
+      this.isLoading = false;
       this.touslesBiens = ret.data;
-      console.log(this.touslesBiens);
     });
   }
 }

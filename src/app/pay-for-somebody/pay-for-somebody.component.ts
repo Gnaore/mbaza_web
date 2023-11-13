@@ -15,6 +15,7 @@ export class PayForSomebodyComponent {
   items: MenuItem[] | undefined;
 
   activeIndex: number = 0;
+  isLoading: boolean = false;
 
   referenceLocataire = ""
   infosLocataire: any
@@ -49,9 +50,10 @@ export class PayForSomebodyComponent {
   }
 
   getOneByReference() {
-
+    this.isLoading = true;
     // alert(this.referenceLocataire)
     this.locataireService.getOneByReference(this.referenceLocataire).subscribe(ret => {
+      this.isLoading = false;
       console.log(ret.data)
       if (ret.data) {
         this.activeIndex = 1
@@ -60,7 +62,8 @@ export class PayForSomebodyComponent {
         this.proprieteId = this.infosLocataire.propriete.proprieteId
 
       } else {
-        this.activeIndex = 0
+        this.activeIndex = 0;
+        this.isLoading = false;
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -69,7 +72,8 @@ export class PayForSomebodyComponent {
       }
 
     }, (err) => {
-      this.activeIndex = 0
+      this.activeIndex = 0;
+      this.isLoading = false;
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -80,14 +84,14 @@ export class PayForSomebodyComponent {
   }
   suivanta2() {
     if (this.selectedMonth == "" || this.montantpayer == 0 || !this.montantpayer) {
-      alert("Choisissez le mois et le montant ä relger")
+      alert("Choisissez le mois et le montant à verser.")
     } else {
       this.activeIndex = 2
     }
-
   }
 
   payer() {
+    this.isLoading = true;
     var body = {
       amount: this.montantpayer.toString(),
       currency: "XOF",
@@ -100,12 +104,11 @@ export class PayForSomebodyComponent {
 
     this.locataireService.payer(body).subscribe(
       (ret) => {
-
-        window.location.href = ret.wave_launch_url;
-        this.activeIndex = 3
+        this.isLoading = false;
+        window.location.href = ret.wave_launch_url
       },
       (err) => {
-        console.log(err);
+        this.isLoading = false;
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

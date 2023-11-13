@@ -18,6 +18,7 @@ export class PropertyComponent {
 
   touslesBiens: any;
   urlg: any;
+  isLoading: boolean = false;
   
   ngOnInit(): void {
     this.allBien();
@@ -58,10 +59,10 @@ export class PropertyComponent {
   }
 
   allBien() {
-    console.log("tttttttt");
+    this.isLoading = true;
     this.bienService.AllBien().subscribe((ret) => {
+      this.isLoading = false;
       this.touslesBiens = ret.data;
-      console.log(this.touslesBiens);
     });
   }
 }
