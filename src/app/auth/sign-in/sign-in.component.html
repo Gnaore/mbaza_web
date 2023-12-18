@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <div class="form-group mb-5">
-                                <a class="forgot-link" href="forgot-password.html">Mot de passe oublié ?</a>
+                                <a class="forgot-link" (click)="visible = true">Mot de passe oublié ?</a>
                             </div>
                             <div class="form-group">
                                 <label class="custom_check mt-0 mb-0"><span>Se souvenir de moi</span>
@@ -65,6 +65,23 @@
             </div>
         </div>
     </div>
+
+    <p-dialog header="Changement de Mot de Passe" [(visible)]="visible" [modal]="true" [style]="{ width: '30vw' }" [draggable]="false" [resizable]="false">
+		<form [formGroup]="email" (ngSubmit)="verifEmail()">
+			
+			<div class="alert alert-danger" *ngIf="error.success">
+				<small>{{ error.errorMessage }}</small>
+			</div>
+			<div class="form-group mb-3">
+				<label class="form-label fw-semibold">E-mail <span class="text-danger">*</span></label>
+				<input type="email" formControlName="email" class="form-control" placeholder="Entrez votre email pour modifier du mot de passe">
+			</div>
+			<div class="text-center">
+				<button class="btn btn-primary w-100" type="submit" [disabled]="email.invalid">Vérifier</button>
+			</div>
+		</form>
+	</p-dialog>
+
 </div>
 
 <!-- /Main Wrapper -->

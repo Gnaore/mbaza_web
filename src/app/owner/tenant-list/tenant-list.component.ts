@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BailleurService } from 'src/app/services/bailleur.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { LocataireService } from 'src/app/services/locataire.service';
@@ -21,7 +22,8 @@ export class TenantListComponent {
     private uploadService: UploadService,
     private configService: ConfigService,
     private proprieteService: ProprieteService,
-    private locataireService: LocataireService
+    private locataireService: LocataireService,
+    private router: Router
   ) { }
 
   userId: number = 0
@@ -29,7 +31,7 @@ export class TenantListComponent {
   listProprietes: any
   codePropriete = "CODE PROPRIETE"
   laPropriete: any
-  listLocataire: any 
+  listLocataire: any
   url = this.configService.urlg
   urlphotoDefault = this.configService.urlg + "defaultprofil.png"
 
@@ -94,13 +96,11 @@ export class TenantListComponent {
       this.formGroup.controls['bailleurId'].setValue(
         ret.data.bailleur.bailleurId
       );
-
       this.bailleurInfo = ret.data.bailleur
-    
-
-    
       this.allProprieteBailleurDisponible(this.bailleurInfo.bailleurId)
       this.allLocataireByBailleur(this.bailleurInfo.bailleurId);
+    }, (error) => {
+      if (error.status == 401) { this.router.navigateByUrl("/auth") }
     });
 
 
@@ -110,6 +110,8 @@ export class TenantListComponent {
     this.bailleurService.allProprieteBailleurDisponible(id).subscribe(ret => {
       this.listProprietes = ret.data
       this.nbreDispo = this.listProprietes.length
+    }, (error) => {
+      if (error.status == 401) { this.router.navigateByUrl("/auth") }
     });
   }
 
@@ -124,20 +126,17 @@ export class TenantListComponent {
       formData.append('file', this.fileToUpload);
       this.uploadService.upload(formData).subscribe(
         (ret) => {
-          console.log(ret);
           this.lienPhotoretour = this.configService.urlg + ret.data;
           this.file = ret.data;
           this.isLoading = false;
         },
         (err) => {
-          console.log(err);
           this.previewImage = '';
           this.isLoading = false;
         }
       );
     }
   }
-
 
   submitLocataire(f: any) {
     var body = {
@@ -164,6 +163,7 @@ export class TenantListComponent {
       type: f.type,
       prix: parseInt(f.prix),
     };
+ 
 
     this.locataireService.ajoutLocataire(body).subscribe(
       (ret) => {
@@ -176,16 +176,22 @@ export class TenantListComponent {
         });
 
         this.allLocataireByBailleur(ret.data.bailleurId);
-        this.formGroup.reset();
+        this.ajoutUtilisateur(f)
+        
 
       },
       (err) => {
-        console.log(err);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: err.error.message,
-        });
+        if (err.status == 401) {
+          this.router.navigateByUrl("/auth")
+        }
+        else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.error.message,
+          });
+        }
+
       }
     );
     /* bailleurlienCNI,
@@ -199,16 +205,51 @@ export class TenantListComponent {
       this.localisation = this.laPropriete.proprieteAdresse
       this.type = this.laPropriete.typebien.libelleTypebien
       this.prix = this.laPropriete.proprietePrix
-    });
+    }, (error) => {
+      if (error.status == 401) { this.router.navigateByUrl("/auth") }
+    }
+    );
   }
-
 
   allLocataireByBailleur(bailleurId: any) {
-    this.bailleurService.onebailleur(bailleurId).subscribe(ret => {
+    this.bailleurService.onebailleurincludePropr(bailleurId).subscribe(ret => {
       this.listLocataire = ret.data.locataires
-      console.log(this.listLocataire)
-    });
+    }, (error) => {
+      if (error.status == 401) { this.router.navigateByUrl("/auth") }
+    }
+    );
   }
 
+  ajoutUtilisateur(f: any) {
+    this.isLoading = true;
+    var body = {
+      contact: f.locataireTel,
+      email: f.locataireEmail,
+      paysId: 1,
+      role: 'LOCATAIRE',
+      username: f.locataireNom,
+      lienphoto: this.file,
+    };
 
+    this.locataireService.saveUser(body).subscribe(
+      (result) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Creation du compte Locataire terminé avec succès',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.formGroup.reset();
+      },
+      (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.error.message,
+        });
+        this.isLoading = false;
+      }
+    );
+  }
 }

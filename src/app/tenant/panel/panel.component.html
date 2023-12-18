@@ -33,29 +33,29 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                                 <h5>Infos personnelles</h5>
-                                <p>ID : 0000897X</p>
-                                <p>Joseph Konan</p>
-                                <p>joseph.konan@yahoo.fr</p>
+                                <p>ID : {{infoLocataire.locataireRef}}</p>
+                                <p>{{infoLocataire.locataireNom}}</p>
+                                <p>{{infoLocataire.locataireEmail}}</p>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                                 <h5>Infos location </h5>
-                                <p>Villa</p>
-                                <p>6 personnes à charge</p>
-                                <p>45, 5th Rue Princesse, CI</p>
+                                <p>{{infoLocataire.propriete.typebien.libelleTypebien}}</p>
+                                <p>{{infoLocataire.locataireNbrecharge}} personnes à charge</p>
+                                <p>{{infoLocataire.propriete.proprieteAdresse}}</p>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                                 <table class="short-info w-100">
                                     <tr>
                                         <td>Réf : </td>
-                                        <td class="float-end"><span>HAB0089HJ</span></td>
+                                        <td class="float-end"><span>{{infoLocataire.propriete.proprieteCode}}</span></td>
                                     </tr>
                                     <tr>
                                         <td>Montant du loyer :</td>
-                                        <td class="float-end"><span>255,000 XOF</span></td>
+                                        <td class="float-end"><span>{{infoLocataire.propriete.proprietePrix}} XOF</span></td>
                                     </tr>
                                     <tr>
-                                        <td>Dernier règlement le :</td>
-                                        <td class="float-end"><span>02 Jan 2023</span></td>
+                                        <td>Date de Creation : </td>
+                                        <td class="float-end"><a>{{infoLocataire.createdAt | date: 'EEEE d MMMM yyyy'}}</a></td>
                                     </tr>
                                 </table>
                             </div>

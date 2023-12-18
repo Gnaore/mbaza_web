@@ -66,6 +66,17 @@ export class BailleurService {
     return this.httpClient.get(this.urlG + 'bailleur/' + id, { headers });
   }
 
+  onebailleurincludePropr(id: number): Observable<any> {
+    const currentUser = localStorage.getItem('currentUser');
+    const currentUserJSON = JSON.parse(currentUser!.toString());
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${currentUserJSON.token}`,
+    });
+    return this.httpClient.get(this.urlG + 'bailleur/includePropr/' + id, { headers });
+  }
+
+
   getOneByUserId(id: number): Observable<any> {
     const currentUser = localStorage.getItem('currentUser');
     const currentUserJSON = JSON.parse(currentUser!.toString());
@@ -88,6 +99,26 @@ export class BailleurService {
     return this.httpClient.get(this.urlG + 'propriete/bybailleur/' + id, { headers });
   }
 
+  allmsgRecuBailleur(id: number): Observable<any> {
+    const currentUser = localStorage.getItem('currentUser');
+    const currentUserJSON = JSON.parse(currentUser!.toString());
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${currentUserJSON.token}`,
+    });
+    return this.httpClient.get(this.urlG + 'msg/recu/' + id, { headers });
+  }
+
+  allmsgEnvyeBailleur(id: number): Observable<any> {
+    const currentUser = localStorage.getItem('currentUser');
+    const currentUserJSON = JSON.parse(currentUser!.toString());
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${currentUserJSON.token}`,
+    });
+    return this.httpClient.get(this.urlG + 'msg/envoye/' + id, { headers });
+  }
+
   allProprieteBailleurDisponible(id: number): Observable<any> {
     const currentUser = localStorage.getItem('currentUser');
     const currentUserJSON = JSON.parse(currentUser!.toString());
@@ -106,6 +137,16 @@ export class BailleurService {
       Authorization: `Bearer ${currentUserJSON.token}`,
     });
     return this.httpClient.get(this.urlG + 'bailleur/allpayementbyBailleur/' + id, { headers });
+  }
+
+  ajoutMsg(data: any): Observable<any> {
+    const currentUser = localStorage.getItem('currentUser');
+    const currentUserJSON = JSON.parse(currentUser!.toString());
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${currentUserJSON.token}`,
+    });
+    return this.httpClient.post(this.urlG + 'msg/create', data, { headers });
   }
 
 

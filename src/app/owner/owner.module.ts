@@ -10,6 +10,8 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ChipModule } from 'primeng/chip';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 
 
@@ -28,6 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InputTextModule,
     FormsModule,
     ReactiveFormsModule,
+    MultiSelectModule,
+    ChipModule
   ]
 })
 export class OwnerModule { }
