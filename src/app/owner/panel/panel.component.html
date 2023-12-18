@@ -39,9 +39,9 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                                 <h5>Infos propriétés & locataires </h5>
-                                <p>{{bailleurInfoSuite.proprietes.length}} Propriétés</p>
-                                <p> {{bailleurInfoSuite.locataires.length}} locataires</p>
-                                <p>{{proprieteLibre}} Propriétés libres </p>
+                                <p>{{bailleurInfoSuite.proprietes.length}} Propriété(s)</p>
+                                <p> {{bailleurInfoSuite.locataires.length}} locataire(s)</p>
+                                <p>{{proprieteLibre}} Propriété(s) libre(s) </p>
                             </div>
                             <!--div class="col-12 col-sm-12 col-md-4 col-lg-4">
                                 <h5>Infos propriétés & locataires </h5>
@@ -54,6 +54,7 @@
                                     alt="" width="80" height="80"  />
                                 <img *ngIf="bailleurInfo.bailleur.bailleurLienPhoto" src="{{ urlg }}{{ bailleurInfo.bailleur.bailleurLienPhoto }}" alt=""
                                     width="80" height="80" />
+                                    
                                 <!--table class="short-info w-100">
                                     <tr>
                                         <td>Réf : </td>

@@ -147,7 +147,7 @@
                 <th>Réf.</th>
                 <th>Photo.</th>
                 <th>Nom & Prénom(s)</th>
-                <th>Nationalité</th>
+                <th>Code Propriete | Prix</th>
                 <th>Téléphone</th>
                 <th>E-mail</th>
                 <th>Actions</th>
@@ -169,7 +169,7 @@
                         </div>
                     </td>
                     <td>{{unLocataire.locataireNom}}</td>
-                    <td>{{unLocataire.locataireNationalite}}</td>
+                    <td>{{unLocataire.propriete.proprieteCode }} | {{unLocataire.propriete.proprietePrix}} FCFA</td>
                     <td>{{unLocataire.locataireTel}}</td>
                     <td><a href="mailto:{{unLocataire.locataireEmail}}"
                             class="text-secondary">{{unLocataire.locataireEmail}}</a></td>

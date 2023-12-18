@@ -1,12 +1,12 @@
 <!-- Sort Result -->
 <div class="showing-result-head">
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-6">
             <div class="result-show">
-                <a href="tenant/pay-online" class="btn-secondary">Cliquez pour payer mon loyer</a>
+                <a href="tenant/pay-online" class="btn-secondary">Regler mon loyer</a>
             </div>
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-6">
             <div class="sort-result">
                 <div class="sort-by grid-head">
                     <div>
@@ -14,38 +14,23 @@
                     </div>
                     <div class="review-form">
                         <select class="select">
-                            <option value="0">Janvier</option>
-                            <option value="1">Février</option>
-                            <option value="1">...</option>
-                            <option value="1">Décembre</option>
+                            <option value="">Tous les mois</option>
+                            <option value="Janvier">Janvier</option>
+                            <option value="Février">Février</option>
+                            <option value="Mars">Mars</option>
+                            <option value="Avril">Avril</option>
+                            <option value="Mai">Mai</option>
+                            <option value="Juin">Juin</option>
+                            <option value="Juillet">Juillet</option>
+                            <option value="Aout">Aout</option>
+                            <option value="Septembre">Septembre</option>
+                            <option value="Octobre">Octobre</option>
+                            <option value="Novembre">Novembre</option>
+                            <option value="Décembre">Décembre</option>
                         </select>
                     </div>
                 </div>
-                <div class="price-range grid-head">
-                    <div>
-                        <p>Du</p>
-                    </div>
-                    <div class="review-form">
-                        <select class="select">
-                            <ng-container *ngFor="let n of [].constructor(30); let i = index">
-                                <option>{{ i + 1 }}</option>
-                            </ng-container>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="price-range grid-head">
-                    <div>
-                        <p>Au</p>
-                    </div>
-                    <div class="review-form">
-                        <select class="select">
-                            <ng-container *ngFor="let n of [].constructor(30); let i = index">
-                                <option>{{ i + 1 }}</option>
-                            </ng-container>
-                        </select>
-                    </div>
-                </div>
+          
             </div>
         </div>
     </div>

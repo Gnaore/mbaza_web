@@ -23,6 +23,12 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { LoaderModule } from './loader/loader.module';
 
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { SplitterModule } from 'primeng/splitter';
+
+import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
+
 registerLocaleData(localeFr);
 
 
@@ -50,9 +56,13 @@ registerLocaleData(localeFr);
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    LoaderModule
+    LoaderModule,
+    SplitterModule,
+    SplitButtonModule,
+    ToastModule,
+    DialogModule
   ],
-  providers: [ {provide: LOCALE_ID, useValue: "fr" }],
+  providers: [{provide: LOCALE_ID, useValue: "fr" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
