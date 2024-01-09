@@ -13,7 +13,10 @@ import { StepsModule } from 'primeng/steps';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ChipModule } from 'primeng/chip';
+import { LoaderModule } from '../loader/loader.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,12 @@ import { FormsModule } from '@angular/forms';
     StepsModule,
     TableModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MultiSelectModule,
+    ChipModule,
+    LoaderModule,
   ]
 })
 export class TenantModule { }

@@ -77,6 +77,30 @@ export class LocataireService {
     return this.httpClient.get(this.urlG + "locataire/email/" + email, { headers })
   }
 
+
+  allmsgRecuLocataire(id: number): Observable<any> {
+    const currentUser = localStorage.getItem('currentUser');
+    const currentUserJSON = JSON.parse(currentUser!.toString());
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${currentUserJSON.token}`,
+    });
+    return this.httpClient.get(this.urlG + 'msg/reculoc/' + id, { headers });
+  }
+
+  allmsgEnvyeLocataire(id: number): Observable<any> {
+    const currentUser = localStorage.getItem('currentUser');
+    const currentUserJSON = JSON.parse(currentUser!.toString());
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${currentUserJSON.token}`,
+    });
+    return this.httpClient.get(this.urlG + 'msg/envoyeloc/' + id, { headers });
+  }
+
+
+
+
   /*
   modifiBailleur(data: any): Observable<any> {
     const currentUser = localStorage.getItem('currentUser');

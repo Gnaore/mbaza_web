@@ -1,14 +1,17 @@
+
 <div class="p-3 container">
     <h3 class="mb-4">Envoyez une requête au bailleur</h3>
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa fa-inbox me-3"></i> Boîte de reception <span class="badge bg-danger ms-3">4</span></button>
-          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa fa-message me-3"></i> Nouveau message</button>
+          <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="true"><i class="fa fa-message me-3"></i> Nouveau message</button>
+          <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="false"><i class="fa fa-inbox me-3"></i> Boîte de reception <span class="badge bg-danger ms-3">{{this.listemsgRecu.length}}</span></button>
+          <button class="nav-link " id="nav-envoi-tab" data-bs-toggle="tab" data-bs-target="#nav-envoi" type="button" role="tab" aria-controls="nav-envoi" aria-selected="false"><i class="pi pi-send"></i> Envoye</button>
+         
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <p-table #dt1 [value]="messages" selectionMode="single" styleClass="p-datatable-striped p-datatable-sm" [(selection)]="selectedMessage" dataKey="code" [paginator]="true" [rows]="5" [selectionPageOnly]="true" [tableStyle]="{'min-width': '50rem'}">
+        <div class="tab-pane fade  " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <p-table #dt1 [value]="listemsgRecu" selectionMode="single" styleClass="p-datatable-striped p-datatable-sm" [(selection)]="selectedMessage" dataKey="code" [paginator]="true" [rows]="5" [selectionPageOnly]="true" [tableStyle]="{'min-width': '50rem'}">
                 <ng-template pTemplate="caption">
                     <div class="d-flex align-items-center justify-content-between">
                         <p-button type="button" icon="fa fa-refresh" styleClass="p-button-text"></p-button>
@@ -18,47 +21,111 @@
                         </span>
                     </div>
                 </ng-template>
-                <ng-template pTemplate="body" let-message>
+                <ng-template pTemplate="body" let-listemsgRecu>
                     <tr>
                         <td>
-                            <p-tableCheckbox [value]="message"></p-tableCheckbox>
+                            <p-tableCheckbox [value]="listemsgRecu"></p-tableCheckbox>
                         </td>
                         <td>
                             <div style="width: 50px; height: 50px;">
-                                <img [src]="message.image" class="rounded-circle w-100 h-100" alt="">
+                                <img [src]="this.ulrG + listemsgRecu.bailleurLienPhoto" class="rounded-circle w-100 h-100" alt="">
                             </div>
                         </td>
-                        <td class="fw-bold">{{ message.name }}</td>
-                        <td><div class="text-overflow-1">{{ message.message }}</div></td>
+                        <td class="fw-bold">{{ listemsgRecu.bailleurNomPrenoms }}</td>
+                        <td><div class="text-overflow-1">{{ listemsgRecu.msgObjet }}</div></td>
                         <td>
-                            <div class="text-end">{{message.date}}</div>
+                            <div class="text-end">{{listemsgRecu.msgDate}}</div>
                         </td>
                     </tr>
                 </ng-template>
             </p-table>
         </div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        
+        <div class="tab-pane fade " id="nav-envoi" role="tabpanel" aria-labelledby="nav-envoi-tab">
+            <p-table #dt1 [value]="listemsgEnvoye" selectionMode="single" styleClass="p-datatable-striped p-datatable-sm" [(selection)]="selectedMessage" dataKey="code" [paginator]="true" [rows]="5" [selectionPageOnly]="true" [tableStyle]="{'min-width': '50rem'}">
+                <ng-template pTemplate="caption">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <p-button type="button" icon="fa fa-refresh" styleClass="p-button-text"></p-button>
+                        <span class="p-input-icon-left ml-auto">
+                            <i class="fa fa-search"></i>
+                            <input pInputText  type="text" (input)="dt1.filterGlobal($event.target, 'contains')" placeholder="Mots clés..." />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="body" let-listemsgEnvoye>
+                    <tr>
+                        <td>
+                            <div style="width: 50px; height: 50px;">
+                                <img [src]="this.ulrG + listemsgEnvoye.bailleurLienPhoto" class="rounded-circle w-100 h-100" alt="">
+                            </div>
+                        </td>
+                        <td class="fw-bold">{{ listemsgEnvoye.bailleurNomPrenoms }}</td>
+                        <td><div class="text-overflow-1">{{ listemsgEnvoye.msgObjet }}</div></td>
+                        <td>
+                            <div class="text-end">{{listemsgEnvoye.msgDate}}</div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+          <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="row p-3">
+                <input type="text" class="form-control" placeholder="Expediteur" formControlName="expediteurId" hidden >
+              
+                    
+                   <label>Identification du bailleur</label>
+                   <input type="text" class="form-control" placeholder="Destinataires" formControlName="destinataireId" hidden>
+                    <!--p-multiSelect   [options]="destinataire" [(ngModel)]="selectedDestinataire" optionLabel="locataireNom" formControlName="destinataireId" ></p-multiSelect-->
+                
                 <div class="review-form col-12">
-                    <input type="text" class="form-control" placeholder="Destinataire">
+                    <input type="text" class="form-control" placeholder="Objet" formControlName="nomBailleur" readonly>
                 </div>
                 <div class="review-form col-12">
-                    <input type="text" class="form-control" placeholder="Objet">
+                    <input type="text" class="form-control" placeholder="Objet" formControlName="msgObjet">
                 </div>
                 <div class="review-form col-12">
-                    <textarea rows="10" class="form-control" placeholder="Message"></textarea>
+                    <textarea rows="10" class="form-control" placeholder="Message" formControlName="msgMessage"></textarea>
                 </div>
                 <div class="col-12 d-flex align-items-center">
-                    <button class="btn-lightred me-3">
+                    <button type="submit" class="btn-lightred me-3" [disabled]="formGroup.invalid" >
                         <i class="fa fa-paper-plane me-3"></i>
                         Envoyer
                     </button>
-                    <label class="btn-secondary mb-0" for="file">
+                    <!--label class="btn-secondary mb-0" for="file">
                         <i class="fa fa-paperclip"></i>
                         <input type="file" id="file" class="d-none">
-                    </label>
+                    </label-->
+                    <div class="col-6 mb-0  d-flex" >
+                     
+                          <label class="btn btn-light-primary" for="file" *ngIf="libpj==0" style="background-color: greenyellow;"
+                            ><i class="ti ti-upload"></i> Ajouter une piece jointe
+                            <span class="text-danger">*</span></label
+                          >
+                          <label class="btn btn-light-primary" for="file" *ngIf="libpj==1" style="background-color: antiquewhite;"
+                          ><i class="ti ti-upload"></i> Changer la piece jointe
+                          <span class="text-danger">*</span></label
+                        >
+                          <input
+                            type="file"
+                            id="file"
+                            class="form-control form-control-lg rounded-0 d-none"
+                           
+                            (change)="onFileChangeContrat($event)"
+                          />
+                          <input type="text" formControlName="msgLienpj" hidden/>
+                          <p-chip  
+                          [removable]="false" 
+                          (onRemove)="supContrat(libellepj)"
+                         (click)="openDoc(libellepj)"> <i class="fa fa-paperclip" *ngIf="libpj==1" style="padding: 5px;"> [ {{libpj}} Piece jointe ]</i> </p-chip>
+                        
+                      
+                      </div>
+                      
                 </div>
             </div>
-        </div>
+          </div>
+        </form>
       </div>
 </div>
