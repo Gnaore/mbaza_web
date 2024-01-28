@@ -3,14 +3,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FixMeLater, QRCodeElementType } from 'angularx-qrcode';
+import getTime from 'date-fns/getTime';
 import { BailleurService } from 'src/app/services/bailleur.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { LocataireService } from 'src/app/services/locataire.service';
 import { ProprieteService } from 'src/app/services/propriete.service';
 import { UploadService } from 'src/app/services/upload.service';
 import Swal from 'sweetalert2';
+//import * as speakeasy from 'speakeasy';
 
 elementType: "canvas" as QRCodeElementType;
+//var speakeasy = require("speakeasy");
+//var secret = speakeasy.generateSecret({length: 20});
 
 declare var $: any;
 @Component({
@@ -65,6 +69,7 @@ export class TenantListComponent {
 
 
   ngOnInit(): void {
+    //alert(Math.floor(Math.random() * 1000000))
     this.initForm()
     this.getOneBailleur()
 
@@ -88,7 +93,7 @@ export class TenantListComponent {
       locataireNomgarant: [''],
       locataireProfession: [''],
       locataireRef: [''],
-      locataireSalaire: [''],
+      locataireSalaire: ['',Validators.required],
       locataireSituationmatri: ['', Validators.required],
       locataireTel: ['', Validators.required],
       locataireTelgarant: [''],
@@ -154,6 +159,14 @@ export class TenantListComponent {
   }
 
   submitLocataire(f: any) {
+
+    const index = f.locataireNom.substring(0, 2);
+
+        const indexCorrige = index.replace(new RegExp(' ', 'g'), 'L')
+        var codeAleatoire = Math.floor(Math.random() * 1000000) +'_'+ indexCorrige;
+        const reference = codeAleatoire.padStart(6,'0')
+        this.qrcode = this.url+"tenant/pay-onlineqr/" + reference
+       
     var body = {
       locataireId: parseInt(f.locataireId),
       locataireBanque: f.locataireBanque,
@@ -165,7 +178,7 @@ export class TenantListComponent {
       locataireNom: f.locataireNom,
       locataireNomgarant: f.locataireNomgarant,
       locataireProfession: f.locataireProfession,
-      locataireRef: f.locataireRef,
+      locataireRef: reference,
       locataireSalaire: parseInt(f.locataireSalaire),
       locataireSituationmatri: f.locataireSituationmatri,
       locataireTel: f.locataireTel,
@@ -220,10 +233,10 @@ export class TenantListComponent {
       this.localisation = this.laPropriete.proprieteAdresse
       this.type = this.laPropriete.typebien.libelleTypebien
       this.prix = this.laPropriete.proprietePrix
-      this.qrcode = this.url+"tenant/pay-onlineqr/" + this.laPropriete.proprieteCode
+     // this.qrcode = this.url+"tenant/pay-onlineqr/" + this.laPropriete.proprieteCode
     }, (error) => {
       if (error.status == 401) { this.router.navigateByUrl("/auth") }
-      this.qrcode = ''
+      
     }
     );
   }

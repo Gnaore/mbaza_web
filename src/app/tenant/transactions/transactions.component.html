@@ -1,13 +1,16 @@
 <!-- Sort Result -->
 <div class="showing-result-head">
     <div class="row">
-        <div class="col-lg-6">
-            <div class="result-show">
-                <a href="tenant/pay-online" class="btn-secondary">Regler mon loyer</a>
+        <div class="col-lg-4">
+            <div style="text-align: center;">
+                <a href="tenant/pay-onlineqr/{{locatireRef}}">Regler mon loyer</a>
+                <br>
+                <img src="{{urlg+userQrCode}}" width="150" height="150"/>
+              
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="sort-result">
+        <div class="col-lg-8" style="text-align: center;">
+            <div class="sort-result" style="text-align: center;">
                 <div class="sort-by grid-head">
                     <div>
                         <p>Trier Par Mois</p>
@@ -30,7 +33,33 @@
                         </select>
                     </div>
                 </div>
-          
+                <div class="sort-by grid-head">
+                    <div>
+                        <p>Trier Par Mois</p>
+                    </div>
+                    <div class="review-form">
+                        <select class="select">
+                            <option value="">Tous</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2031</option>
+                            <option value="2032">2032</option>
+                            <option value="2033">2033</option>
+                            <option value="2034">2034</option>
+                            <option value="2035">2035</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <a type="button" class="btn-primary">
+                    <i class="feather-search"></i> Rechercher
+                </a>
             </div>
         </div>
     </div>

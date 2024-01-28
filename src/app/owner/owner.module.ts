@@ -16,6 +16,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 
 
 
+
 @NgModule({
   declarations: [
     PanelComponent,

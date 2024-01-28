@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { ConfigService } from 'src/app/services/config.service';
 import { LocataireService } from 'src/app/services/locataire.service';
 import { ProprieteService } from 'src/app/services/propriete.service';
 import Swal from 'sweetalert2';
@@ -15,19 +16,19 @@ export class PayOnlineqrComponent {
 
   constructor(
     private locataireService: LocataireService,
-    private proprieteService: ProprieteService,
+    private configService: ConfigService,
     private activateRoute: ActivatedRoute) {
     this.activateRoute.params.subscribe(params => {
-      this.codePropriete = params['id']
+      this.referenceLocataire = params['id']
     });
   }
 
   items: MenuItem[] | undefined;
+  urlFront = this.configService.urlFront;
 
   activeIndex: number = 0;
   isLoading: boolean = false;
 
-  codePropriete = ""
   referenceLocataire = ""
   infosLocataire: any
   montantpayer: number = 0
@@ -37,11 +38,8 @@ export class PayOnlineqrComponent {
   userEmail: string = ""
   infoLocataire: any
 
-  reponse: any;
-
   ngOnInit(): void {
 
-    this.oneProprieteByCode(this.codePropriete);
     //  this.onelocataireByEmail()
 
     $('.select').select2({
@@ -67,13 +65,6 @@ export class PayOnlineqrComponent {
         icon: 'pi pi-fw pi-invoice'
       }
     ];
-  }
-
-  oneProprieteByCode(code: string) {
-    this.proprieteService.oneproprietebyCode(code).subscribe(ret => {
-      this.reponse = ret.data
-      this.referenceLocataire = this.reponse.locataire.locataireRef
-    });
   }
 
   /*onelocataireByEmail() {
@@ -132,8 +123,8 @@ export class PayOnlineqrComponent {
     var body = {
       amount: this.montantpayer.toString(),
       currency: "XOF",
-      error_url: "https://mbaaza.com/payment-failed#ZWNoZWM=",
-      success_url: "https://mbaaza.com/payment-success#c3VjY2Vzcw==",
+      error_url: this.urlFront + "payment-failed#ZWNoZWM=",
+      success_url: this.urlFront + "payment-success#c3VjY2Vzcw==",
       proprieteId: this.proprieteId,
       locataireRef: this.referenceLocataire,
       mois: this.selectedMonth
