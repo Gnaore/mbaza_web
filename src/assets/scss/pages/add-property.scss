@@ -1,0 +1,181 @@
+/*-----------------	
+    36. Add Property
+-----------------------*/
+
+.property-tabs {
+    background: $__white;
+    box-shadow: $__lightgray__shadow;
+    @include margin-padding(0 0 50px, 20px 20px 10px);
+    ul {
+        li {
+            display: $__inline__block;
+            margin-right: 10px;
+            a {
+                font-weight: $__bold;
+                font-size: $__font__size__15;
+                color: $__dark__black;
+                border-radius: 10px;
+                display: $__inline__block;
+                @include margin-padding(0 0 10px, 14px 20px);
+                &.active {
+                    background-color: $__primarycolor;
+                    color: $__white;
+                }         
+                @include respond-below(custom767){
+                    @include margin-padding(0 0 10px, 10px 20px);
+                    width: $__full__width;
+                    font-size: $__font__size__14;
+                    text-align: $__center;
+                }
+            }            
+	        @include respond-below(custom575){
+                display: $__block;
+                margin-right: 0;
+            }
+        }
+    }
+}
+.property-info {
+    margin-bottom: 24px;
+    h4 {
+        margin-bottom: 12px;
+        @include respond-below(custom991) {
+            font-size: $__font__size__22;
+        }
+        @include respond-below(custom767) {
+            font-size: $__font__size__18;
+        }
+    }
+}
+.add-property-wrap {
+    background: $__white;
+    box-shadow: 0px 4px 4px $__white__shade;
+    border-radius: 10px;
+    @include margin-padding(0 0 33px, 24px 24px 0);    
+    .select2-container {
+        .select2-selection--single {
+            height: 45px;
+            .select2-selection__rendered {            
+                line-height: 45px;
+            }
+            .select2-selection__arrow {
+                height: 45px;
+            }
+        }
+    }
+    .custom_check {
+        color: $__body__color;
+    }
+}
+.property-submit {
+    background: $__white;
+    box-shadow: $__lightgray__shadow;
+    @include margin-padding(null, 20px 20px 10px);
+    text-align: $__right;
+    .btn {
+        min-width: 238px;
+        @include margin-padding(0 20px 10px 0, 17px);
+        @extend %display-inline-flex;
+        &:last-child {
+            margin-right: 0;
+            @include respond-below(custom767) {
+                margin-right: 10px;
+            }
+        }
+        @include respond-below(custom767) {
+            min-width: 180px;
+            @include margin-padding(0 10px 10px, 11px);
+        }
+    }
+    @include respond-below(custom767) {
+        text-align: $__center;
+    }
+}
+.upload-list {
+    margin-bottom: 24px;
+    ul {
+        li {
+            position: $__relative;
+            @include margin-padding(0 0 20px, 0 0 0 20px);
+            &::before {
+                content: "";
+                @include position($__absolute, 50%, null, null, 0);    
+                @include transform(translateY(-50%));            
+				font-family: $__fontawesome; 
+				font-size: $__font__size__8; 
+				content: "\f111"; 
+            }
+        }
+    }
+    p {
+        color: $__green__light;
+        i {
+            margin-right: 10px;
+        }
+    }
+}
+.upload-file {
+    background: $__light__gray;
+    border: 1px solid $__white__border;
+    border-radius: 5px;
+    @include margin-padding(null, 10px 20px);
+    position: $__relative;
+    input {
+        width: $__full__width;
+        height: $__full__height;
+        opacity: 0;
+        cursor: $__pointer;
+        @include position($__absolute, 0, null, null, 0);    
+    }
+    span {
+        font-size: $__font__size__14;
+        font-weight: $__medium;
+    }
+}
+.btn-upload {
+    i {
+        margin-right: 8px;
+        font-size: $__font__size__16;
+    }
+}
+.gallery-property {
+    ul {
+        li {
+            position: $__relative;
+            display: $__inline__block;
+            @include margin-padding(0 24px 24px 0, null);
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: 10px;    
+                object-fit: $__cover;
+            }
+            a {
+                width: 34px;
+                height: 34px;
+                border-radius: 50%;   
+                background: $__light__red;
+                @extend %flex-align-center;
+                color: $__white;
+                @include position($__absolute, 5px, 5px, null, null);
+            }
+            @include respond-below(custom767) {
+                margin-right: 20px;
+            }
+        }
+    }
+}
+.google-maps {
+    iframe {
+        width: $__full__width;
+        height: 400px;
+    }
+}
+.add-more {
+    color: $__light__red;
+    font-weight: $__medium;
+    font-size: $__font__size__14;
+    &:hover {
+        color: $__primarycolor;
+    }
+}

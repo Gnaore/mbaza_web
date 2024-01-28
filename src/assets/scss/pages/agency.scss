@@ -1,0 +1,135 @@
+/*-----------------	
+    25. Agency
+-----------------------*/
+
+.agent-card {
+    border-radius: 10px;
+    color: $__inherit;
+    &.agency {
+        .agent-img {
+            background: $__light__gray;
+            @include margin-padding(null, 80px 0);
+            text-align: $__center;
+            min-height: 280px;
+            img {
+                width: $__auto;
+            }
+        }
+        .agency-user {
+            @extend %flex-center;
+            .agency-user-img {
+                margin-right: 10px;
+                img {
+                    width: 60px;
+                    height: 60px;
+                    border: 2px solid $__white;
+                    border-radius: 50%;
+                }
+            }
+            .agency-user-info {
+                h6 {
+                    font-size: $__font__size__20;
+                    font-weight: $__semibold;
+                    margin-bottom: 10px;
+                    a {
+                        color: $__dark__black;
+                        &:hover {
+                            color: $__primarycolor;
+                        }
+                    }
+                }
+                p {
+                    white-space: $__nowrap;
+                    text-overflow: $__ellipsis;
+                    overflow: $__hidden;                 
+                    @extend %flex-center;
+                    i {
+                        margin-right: 5px;
+                    }
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+.agency-user {
+    @extend %flex-center;
+    .agency-user-img {
+        margin-right: 10px;
+        flex-shrink: 0;
+        img {
+            width: 60px;
+            height: 60px;
+            border: 2px solid $__white;
+            border-radius: 50%;
+        }
+    }
+    .agency-user-info {
+        h6 {
+            margin-bottom: 8px;
+            a {
+                color: $__dark__black;
+                &:hover {
+                    color: $__primarycolor;
+                }
+            }
+        }
+        p {
+            white-space: $__nowrap;
+            text-overflow: $__ellipsis;
+            overflow: $__hidden;
+            i {
+                margin-right: 5px;
+            }
+            margin-bottom: 0;
+        }
+    }
+}
+
+.agent-list {
+    &.agency {
+        .agent-img {
+            background: $__light__gray;
+            @include margin-padding(null, 20px);
+            text-align: $__center;
+            min-height: 207px;
+            @extend %flex-align-center;;
+        }
+        .agent-content {
+            .rating {
+                margin-bottom: 15px;
+            }
+            .agency-user-img {
+                img {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+            .agency-user {
+                margin-bottom: 15px;
+                .agency-user-info {
+                    width: $__auto;
+                    text-align: $__left;
+                    h6 {
+                        font-size: $__font__size__20;
+                        font-weight: $__semibold;
+                        @include respond-below(custom991) {
+                            text-align: $__center;
+                        }
+                    }
+                    p {
+                        @include margin-padding(0, 0);
+                        border: 0;
+                        font-size: $__font__size__14;
+                        font-weight: $__medium;
+                        @extend %flex-center;
+                    }
+                }
+                @include respond-below(custom991) {
+                    justify-content: $__center;
+                }
+            }
+        }
+    }
+}

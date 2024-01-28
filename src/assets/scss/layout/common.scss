@@ -1,0 +1,464 @@
+/*-----------------
+	13. Common
+-----------------------*/
+
+.custom_check {
+    color: $__body__color;
+    position: $__relative;
+    font-size: $__font__size__14;
+    font-weight: $__medium;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    @extend %flex-inline-center;
+    cursor: $__pointer;
+    -webkit-user-select: $__none;
+    -moz-user-select: $__none;
+    -ms-user-select: $__none;
+    user-select: $__none;
+    height: 20px;
+    input {
+        position: $__absolute;
+        opacity: 0;
+        cursor: $__pointer;
+        &:checked {
+            ~ {
+                .checkmark {
+                    background-color: $__primarycolor;
+                    border-color: $__primarycolor;
+                    &:after {
+                        display: $__block;
+                    }
+                }
+            }
+        }
+    }
+    .checkmark {
+        @include position($__absolute, 0, null, null, 0);
+        height: 20px;
+        width: 20px;
+        border: 1px solid $__white__border;
+        background-color: $__light__gray;
+        border-radius: 5px;
+        @include transition(all 0.4s ease);
+        &::after {
+            content: "\f00c";
+            font-family: $__fontawesome;
+            font-weight: $__bold;
+            position: $__absolute;
+            display: $__none;
+            color: $__white;
+            font-size: $__font__size__12;
+            @include position($__absolute,50%,null,null,50%);
+            transform: translate(-50%,-50%);
+            line-height: 0;
+        }
+    }
+}
+.custom_radio {
+    color: $__dark__black;
+    display: $__inline__block;
+    position: $__relative;
+    font-size: $__font__size__14;
+    padding-top: 3px;
+    padding-right: 35px;
+    margin-right: 50px;
+    margin-bottom: 0 !important;
+    cursor: $__pointer;
+    -webkit-user-select: $__none;
+    -moz-user-select: $__none;
+    -ms-user-select: $__none;
+    user-select: $__none;
+    &:last-child {
+       margin-right: 0; 
+    }
+    input {
+        position: $__absolute;
+        opacity: 0;
+        &:checked {
+            ~ {
+                .checkmark {
+                    &:after {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    .checkmark {
+        position: $__absolute;
+        top: 0;
+        right: 0;
+        height: 25px;
+        width: 25px;
+        background-color: $__light__gray;
+        border: 2px solid $__dark__black;
+        border-radius: 50%;
+        &:after {
+            display: $__block;
+            content: "";
+            position: $__absolute;
+            opacity: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -1px;
+            width: 23px;
+            height: 23px;
+            border-radius: 50%;
+            border: 5px solid $__primarycolor;
+            background: $__white;
+            @include transition(all 0.4s ease);
+        }
+    }
+}
+
+// 404 and 405
+
+.error-page {
+    @include margin-padding(null, 50px);
+	align-items: center;
+    font-weight: $__bold;
+    @extend %flex-align-center;
+    @include respond-below(custom575) {
+        @include margin-padding(null, 50px);
+    }
+	.main-wrapper {
+		@extend %flex-align-center;
+		flex-wrap: wrap;
+		height: auto;
+		width: 100%;
+		min-height: unset;
+	}
+}
+.error-box {
+    @include margin-padding(auto, 98px 0);
+	text-align: $__center;
+    max-width: 630px;
+    @include respond-below(custom1399) {
+        @include margin-padding(auto, 60px 0);
+    }
+    @include respond-below(custom991) {
+        @include margin-padding(auto, 50px 0);
+    }
+    @include respond-below(custom767) {
+        @include margin-padding(auto, 40px 0);
+    }
+    img {
+        @include margin-padding(0 0 40px, null);
+    }
+	h1 {
+        font-size: $__font__size__54;
+        @include margin-padding(0 0 11px, null);
+        @include respond-below(custom1399) {
+            font-size: $__font__size__42;
+        }
+        @include respond-below(custom991) {
+            font-size: $__font__size__28;
+        }
+        @include respond-below(custom767) {
+            font-size: $__font__size__26;
+        }
+	}
+    p {
+        @include margin-padding($__auto $__auto 30px, null);
+        font-weight: $__medium;
+        max-width: 574px;
+    }
+    .error-content {
+        max-width: 318px !important;
+    }
+    h6 {
+        font-weight: $__medium;
+        font-size: $__font__size__16;
+    }
+	.btn-maintance {
+		@include rounded(5px);
+		font-weight: $__semibold;
+        font-size: $__font__size__16;
+        display: $__inline__block;
+        @include margin-padding(null, 12px 20px);
+            @include respond-below(custom767) {
+                @include margin-padding(null, 8px 12px);
+                font-size: $__font__size__14;
+            }
+	}
+    .error-500 {
+        @include margin-padding(0 0 60px, null);
+    }
+    .coming-soon {
+        @include margin-padding(0 0 20px, null);
+    }
+    .back-button {
+       .btn  {
+            @include margin-padding(null, 11px 13px);
+            font-size: $__font__size__15;
+            color: $__dark__black;
+            font-weight: $__semibold;
+            border-radius: 10px;
+            background-color: $__light__gray;
+            border: 1px solid $__light__gray;
+            box-shadow: inset 0 0 0 0 $__white;
+                @include respond-below(custom575) {
+                    @include margin-padding(null, 10px);
+                    font-size: $__font__size__14;
+                }
+            &:focus, &:hover, &:active, &.active {
+                color: $__white;
+                background-color: $__white;
+                border-color: $__light__gray;    
+                box-shadow: inset 0 50px 0 0 $__primarycolor;
+                @include transition(0.5s);
+            }
+        }
+    }
+    &.come-box {
+        p {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+// Comming soon
+
+.serve-form {
+    @include margin-padding(0 0 39px, null);
+	@include respond-below(custom767) {
+		padding-bottom: 30px;
+	}
+	.form-group {
+		margin-bottom: 0;
+		@extend %flex-align-center;
+		.form-control {
+			margin-right: 10px;
+            min-height: 45px;
+			&::placeholder {
+				color: $__black__grey;
+				font-weight: $__medium;
+			}
+			@include respond-below(custom767) {
+				min-height: 46px;
+				font-size: $__font__size__14;
+			}
+		}
+		.button-notific {
+			min-width: 115px;
+			height: 45px;
+            font-weight: $__semibold;
+            font-size: $__font__size__15;
+            @extend %flex-align-center;
+			@include respond-below(custom767) {
+				min-width: 100px;
+				font-size: $__font__size__14;
+			}
+		}
+	}
+}
+
+// policy and terms
+
+.privacy-section {
+    position: $__relative;
+    .terms-policy {
+        p {
+            @include margin-padding(0 0 38px, null);
+            @include respond-below(custom991) {
+                @include margin-padding(0 0 28px, null);
+            }
+            @include respond-below(custom767) {
+                @include margin-padding(0 0 20px, null);
+            }
+        }
+        ul {
+            @include margin-padding(0 0 38px, null);
+            li {
+                @include margin-padding(0 0 11px, null);
+                @extend %flex-center;
+                span {
+                    margin-right: 10px;
+                    color: $__primarycolor;
+                }
+            }
+        }
+    }
+}
+.section {
+    position: $__relative;
+    @include margin-padding(null, 60px 0);
+    @include respond-below(custom991) {
+        @include margin-padding(null, 50px 0);
+    }
+    @include respond-below(custom767) {
+        @include margin-padding(null, 40px 0);
+    }
+    &.faq-section {
+        @include margin-padding(null, 60px 0);
+        @include respond-below(custom991) {
+            @include margin-padding(null, 50px 0);
+        }
+        @include respond-below(custom767) {
+            @include margin-padding(null, 40px 0);
+        }
+    }
+    &.price-section {
+        @include margin-padding(null, 60px 0);
+        @include respond-below(custom991) {
+            @include margin-padding(null, 50px 0 26px);
+        }
+        @include respond-below(custom767) {
+            @include margin-padding(null, 40px 0 16px);
+        }
+    }
+}
+.listing-section {
+    position: $__relative;
+    @include margin-padding(null, 60px 0 36px);
+    @include respond-below(custom991) {
+        @include margin-padding(null, 50px 0 26px);
+    }
+    @include respond-below(custom767) {
+        @include margin-padding(null, 40px 0 16px);
+    }
+    &.feature-property-sec {
+        @include margin-padding(null, 60px 0 36px);
+        @include respond-below(custom991) {
+            @include margin-padding(null, 50px 0 26px);
+        }
+        @include respond-below(custom767) {
+            @include margin-padding(null, 40px 0 16px);
+        }
+    }
+}
+.btn-outline-light {
+    color: $__white;
+    background-color: $__primarycolor;
+    border: 1px solid $__primarycolor;
+    box-shadow: inset 0 0 0 0 $__white;
+    &:hover {
+        background-color: $__white;
+        border-color: $__primarycolor;
+        color: $__primarycolor;
+        box-shadow: inset 0 50px 0 0 $__white;
+    }
+}
+.btn-size {
+    @include margin-padding(null, 18px 10px);
+    line-height: 23px;
+    font-weight: $__bold;
+    @include respond-below(custom991) {
+        @include margin-padding(null, 15px 10px);
+        line-height: 15px;
+    }
+}
+
+.progress-wrap.active-progress {
+	opacity: 1;
+	visibility: $__visible;
+    @include transform(translateY(0));
+}
+.progress-wrap {
+    @include position($__fixed, null, 12px, 12px, null);
+	height: 35px;
+	width: 35px;
+	cursor: $__pointer;
+	display: $__block;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 2px rgb(75 64 237 / 20%);
+	z-index: 99;
+	opacity: 0;
+	visibility: $__hidden;
+    @include transition(all 200ms linear);
+    @include transform(translateY(15px));
+	svg.progress-circle {
+		path {
+			stroke: $__primarycolor;
+			stroke-width: 4;
+			box-sizing: border-box;
+            @include transition(all 200ms linear);
+		}
+	}
+	svg {
+		path {
+			fill: $__none;
+		}
+	}
+	&::after {
+        @include position($__absolute, 0, null, null, 0);
+		content: '\f062';
+		font-family: $__fontawesome;
+		text-align: $__center;
+		line-height: 35px;
+		font-size: 17px;
+		color: $__primarycolor;
+		height: 35px;
+		width: 35px;
+		cursor: $__pointer;
+		display: $__block;
+		z-index: 1;
+        @include transition(all 200ms linear);
+	}
+}
+
+// Loader
+
+.page-loader {
+    @include position($__fixed, 0, null, null, 0);
+    z-index: 999999;
+    width: $__full__width;
+    height: $__full__height;
+    background: $__white;
+    .page-loader-inner {
+        @include transform(translateY(-50%));
+        @include position($__absolute, 50%, null, null, null);
+        width: $__full__width;
+        padding: 0 100px;
+        text-align: $__center;
+        img {
+            @include position($__relative, -40px, null, null, 40px);
+            z-index: 9;
+            width: 45px;
+            @include respond-below(custom575) {
+                left: 17px;
+            }
+        }
+        label {
+            font-size: $__font__size__10;
+            opacity: 0;
+            display: $__inline__block;
+            color: $__primarycolor;
+            @include margin-padding(0 2px, null);
+            &:nth-child(1) {
+                -webkit-animation: lol 3s 500ms infinite ease-in-out;
+                animation: lol 3s 500ms infinite ease-in-out;
+            }
+            &:nth-child(2) {
+                -webkit-animation: lol 3s 400ms infinite ease-in-out;
+                animation: lol 3s 400ms infinite ease-in-out;
+            }
+            &:nth-child(3) {
+                -webkit-animation: lol 3s 300ms infinite ease-in-out;
+                animation: lol 3s 300ms infinite ease-in-out;
+            }
+            @include respond-below(custom575) {
+                @include position($__relative, null, null, null, -22px);
+            }
+        }
+    }
+}
+@keyframes lol {
+    0% {
+      opacity: 0;
+      @include transform(translateX(-200px));
+    }
+    33% {
+      opacity: 1;
+      @include transform(translateX(0px));
+    }
+    66% {
+      opacity: 1;
+      @include transform(translateX(0px));
+    }
+    100% {
+      opacity: 0;
+      @include transform(translateX(200px));
+    }
+}
+  

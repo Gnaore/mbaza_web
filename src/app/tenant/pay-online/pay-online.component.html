@@ -1,0 +1,304 @@
+<!--div class="card">
+    <div class="card-body p-1">
+        <p-steps [model]="items" [readonly]="false" [activeIndex]="activeIndex"></p-steps>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body p-1">
+        <div *ngIf="activeIndex === 0">
+            <form action="#" class="row">
+                <div class="review-form col-lg-6 col-md-6 col-sm-12 col-12">
+                    <input type="text" class="form-control" placeholder="Votre Référence Client">
+                </div>
+                <div class="review-form col-lg-6 col-md-5 col-sm-12 col-12">
+                    <input type="text" class="form-control" placeholder="Votre Nom & Prénom(s)">
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                    <button type="button" class="btn-lightred" (click)="activeIndex = 1">
+                        Suivant
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="activeIndex === 1">
+            <form action="#" class="row">
+                <div class="review-form col-12">
+                    <input type="text" class="form-control" placeholder="Votre Montant">
+                </div>
+                
+                <div class="d-flex justify-content-end align-items-center">
+                    <button type="button" class="btn-secondary me-2" (click)="activeIndex = 0">
+                        Précédent
+                    </button>
+                    <button type="button" class="btn-lightred" (click)="activeIndex = 2">
+                        Suivant
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="activeIndex === 2">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Réf.</th>
+                            <th>Nom & Prénom(s)</th>
+                            <th>Montant à payé</th>
+                            <th>Moyen de paiement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container>
+                            <tr>
+                                <td>TRS0786AYY</td>
+                                <td>KOFFI Archange</td>
+                                <td>$150,000</td>
+                                <td>
+                                    <div class="review-form">
+                                        <select class="select form-select">
+                                            <option value="">Wave Money</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-end align-items-center mt-3">
+                    <button type="button" class="btn-secondary me-2" (click)="activeIndex = 1">
+                        Précédent
+                    </button>
+                    <button type="button" class="btn-lightred" (click)="activeIndex = 3">
+                        <i class="fa fa-cart-plus me-3"></i>
+                        Payer
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="activeIndex === 3">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-12 m-auto">
+                <img src="assets/E-Wallet-pana.svg" alt="">
+                <div class="text-center">
+                    <a class="btn-lightred mt-3" href="assets/file.pdf" target="_blank">
+                        <i class="fa fa-print me-3"></i>
+                        Imprimer le reçu
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="invoice-table table table-bordered">
+        <thead>
+            <tr>
+                <th>Réf.</th>
+                <th>Montant versé</th>
+                <th>Pénalité</th>
+                <th>Versé le</th>
+                <th>Moyen de paiement</th>
+                <th>Régler par</th>
+                <th>Etat</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let n of [].constructor(4); let i = index">
+                <tr>
+                    <td>TRS0786AYY</td>
+                    <td>$150,000</td>
+                    <td>$20,000</td>
+                    <td>Lun 15 janvier 2023</td>
+                    <td>Wave Money</td>
+                    <td>Moi</td>
+                    <td align="center">
+                        <div style="width: 10px; height: 10px;" class="rounded-circle"
+                            [ngClass]="{ 'bg-danger': i%2 === 0, 'bg-success': i%2 === 1 }"></div>
+                    </td>
+                    <td>
+                        <a type="submit" href="assets/file.pdf" target="_blank" class="btn-primary">
+                            <i class="feather-download"></i>
+                        </a>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div-->
+
+<section class="invoice-section">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-12 m-auto">
+        <div class="card">
+            <div class="card-header text-capitalize fw-bold text-center text-primary">
+                Reglement de mon loyer
+            </div>
+            <div class="card-body p-1">
+                <p-steps [model]="items" [readonly]="false" [activeIndex]="activeIndex"></p-steps>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body p-1">
+                <div *ngIf="activeIndex === 0">
+                    <form class="row">
+                        <div class="review-form col-12">
+                            <input type="text" class="form-control" placeholder="Votre Référence"
+                                [(ngModel)]="referenceLocataire" [ngModelOptions]="{standalone: true}" readonly >
+
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <loader *ngIf="isLoading" type="ellipsis"></loader>
+                        </div>
+                        <div class="d-flex justify-content-end align-items-center">
+                            <button type="button" class="btn-lightred" (click)="getOneByReference()">
+                                Suivant
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div *ngIf="activeIndex === 1">
+                    <div class="dull-bg from-to">
+                        <div class="row">
+                            <div class="col-12">
+                                <h5>Infos personnelles</h5>
+                                <p>Réf. : {{infosLocataire.locataireRef}}</p>
+                                <p>{{infosLocataire.locataireNom}}</p>
+                                <p>{{infosLocataire.locataireEmail}}</p>
+                                <p>{{infosLocataire.locataireTel}}</p>
+                                <p>Montant du loyer : {{infosLocataire.propriete.proprietePrix}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning">Veuillez vérifiez la conformité des informations ci-dessus avant de
+                        procéder à un quelconque paiement. Merci !</div>
+                    <form action="#" class="row">
+                        <div class="review-form col-md-6 col-sm-12">
+                            <select class="select form-select"  [(ngModel)]="selectedMonth" [ngModelOptions]="{standalone: true}">
+                                <option value="" selected disabled>Choisissez le mois a regler</option>
+                                <option value="Janvier">Janvier</option>
+                                <option value="Février">Février</option>
+                                <option value="Mars">Mars</option>
+                                <option value="Avril">Avril</option>
+                                <option value="Mai">Mai</option>
+                                <option value="Juin">Juin</option>
+                                <option value="Juillet">Juillet</option>
+                                <option value="Août">Août</option>
+                                <option value="Septembre">Septembre</option>
+                                <option value="Octobre">Octobre</option>
+                                <option value="Novembre">Novembre</option>
+                                <option value="Décembre">Décembre</option>
+                            </select>
+                        </div>
+
+                        <div class="review-form col-md-6 col-sm-12">
+                            <input type="number" class="form-control"
+                                [(ngModel)]="montantpayer" [ngModelOptions]="{standalone: true}" style="color: red;" readonly>
+                        </div>
+                        <div class="d-flex justify-content-end align-items-center">
+                            <button type="button" class="btn-secondary me-2" (click)="activeIndex = 0">
+                                Précédent
+                            </button>
+                            <button type="button" class="btn-lightred" (click)="suivanta2()">
+                                Suivant
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div *ngIf="activeIndex === 2">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Réf.</th>
+                                    <th>Nom & Prénom(s)</th>
+                                    <th>Montant à payer</th>
+                                    <th>Mois à regler</th>
+                                    <th>Moyen de paiement</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container>
+                                    <tr>
+                                        <td>{{infosLocataire.locataireRef}}</td>
+                                        <td>{{infosLocataire.locataireNom}}</td>
+                                        <td>{{montantpayer}}</td>
+                                        <td>{{selectedMonth}}</td>
+                                        <td>
+                                            <div class="review-form">
+                                                <select class="select form-select">
+                                                    <option value="">Wave</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                        <div class="alert alert-warning">Veuillez vérifiez la conformité des informations ci-dessus
+                            avant de procéder à un quelconque paiement. Merci !</div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <loader *ngIf="isLoading" type="ellipsis"></loader>
+                            </div>
+                        <div class="d-flex justify-content-end align-items-center mt-3">
+                            <button type="button" class="btn-secondary me-2" (click)="activeIndex = 1">
+                                Précédent
+                            </button>
+                            <button type="button" class="btn-lightred" (click)="payer()">
+                                <i class="fa fa-cart-plus me-3"></i>
+                                Payer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="activeIndex === 3">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 m-auto">
+                        <img src="assets/E-Wallet-pana.svg" alt="">
+                        <!--div class="text-center">
+                            <a class="btn-lightred mt-3" href="assets/file.pdf" target="_blank">
+                                <i class="fa fa-print me-3"></i>
+                                Imprimer le reçu
+                            </a>
+                        </div-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="invoice-table table table-bordered">
+            <thead>
+                <tr>
+                    <th>Réf.</th>
+                    <th>Montant versé</th>
+                    <th>Pénalité</th>
+                    <th>Versé le</th>
+                    <th>Moyen de paiement</th>
+                    <th>Régler par</th>
+                    <th>Etat</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let n of [].constructor(4); let i = index">
+                    <tr>
+                        <td>TRS0786AYY</td>
+                        <td>$150,000</td>
+                        <td>$20,000</td>
+                        <td>Lun 15 janvier 2023</td>
+                        <td>Wave Money</td>
+                        <td>Moi</td>
+                        <td align="center">
+                            <div style="width: 10px; height: 10px;" class="rounded-circle"
+                                [ngClass]="{ 'bg-danger': i%2 === 0, 'bg-success': i%2 === 1 }"></div>
+                        </td>
+                        <td>
+                            <a type="submit" href="assets/file.pdf" target="_blank" class="btn-primary">
+                                <i class="feather-download"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</section>

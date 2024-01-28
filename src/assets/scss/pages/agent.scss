@@ -1,0 +1,318 @@
+/*-----------------	
+    16. Agent
+-----------------------*/
+
+.agent-card {
+    box-shadow: 0px 4px 14px rgba(214, 214, 214, 0.24);
+    @include margin-padding(0 0 24px, 24px);
+    @include transition(0.5s all);
+    border: 0;
+    .agent-img {
+        @include margin-padding(0 0 24px, null);
+        overflow: $__hidden;
+        border-radius: 10px;
+        position: $__relative;
+        img {
+            border-radius: 10px;
+            @include transition(0.5s all);
+            width: $__full__width;
+        }
+        .list-feature {
+            @include position($__absolute, null, null, 10px, 10px);
+            span {
+                background: $__light__red;
+                border-radius: 5px;
+                font-size: $__font__size__15;
+                font-weight: $__bold;
+                color: $__white;
+                @include margin-padding(null, 4px 14px);
+                display: $__inline__block;
+                @include respond-below(custom991) {
+                    font-size: $__font__size__14;
+                }
+            }
+        }
+    }
+    .agent-content {
+        .rating {
+            font-size: $__font__size__14;
+            font-weight: $__medium;            
+            margin-bottom: 15px;
+            .rating-count {
+                margin-right: 4px;
+            }
+            .rating-review {
+                display: $__inline__block;
+                span {
+                    margin-right: 5px;
+                }               
+            }
+        }
+        h6 {
+            font-size: $__font__size__20;
+            font-weight: $__semibold;
+            margin-bottom: 10px;
+            a {
+                color: $__dark__black;
+                &:hover {
+                    color: $__primarycolor;
+                }
+            }
+            @include respond-below(custom991) {
+                font-size: $__font__size__18;
+            }
+        }
+        p {
+            font-weight: $__medium;
+            font-size: $__font__size__14;
+            @extend %flex-center;
+            i {
+                margin-right: 5px;
+                font-size: $__font__size__18;
+            }
+        }
+    }
+    &:hover {
+        .agent-img {
+            img {
+                transform: scale(1.14);
+            }
+        }
+    }
+}
+.rating {
+    font-size: $__font__size__14;
+    font-weight: $__medium;
+    @extend %flex-center;
+    flex-wrap: $__wrap;
+    i {
+        color: $__light__ash;
+        margin-right: 3px;
+        &.checked {
+            color: $__warning;
+        }
+    }
+    .rating-count {
+        margin-right: 3px;
+        @extend %flex-center;
+        flex-wrap: $__wrap;
+        i {
+            margin-right: 3px;
+        }
+    }
+    .rating-review {
+        display: $__inline__block;
+        margin-bottom: 0;
+        span {
+            margin-right: 5px;
+        }
+    }
+}
+.showing-result-head {
+    &.show-list {
+        padding-bottom: 0;
+    }
+}
+.show-list {
+    label {
+        margin-bottom: 10px;
+    }
+}
+.load-more {
+    &.loader {
+        margin-top: 16px;
+        @include respond-below(custom991) {
+            margin-top: 6px;
+        }
+    }
+}
+.grid-pagination { 
+    margin-top: 16px;
+    &.grid-pagination-map{
+        padding-bottom: 24px;
+    }
+	.pagination {
+		@include margin-padding(0, null);
+		li {
+            @include margin-padding(0 8px 0 0, null);
+			a {
+                width: 45px;
+                height: 45px;
+                font-size: $__font__size__14;
+			    font-weight: $__medium;
+			    color: $__dark__black;
+			    border-radius: 50%;
+                border-color: $__white;
+                @extend %flex-align-center;
+                @include margin-padding(null, 5px 12px);
+                &:focus {
+                    background: $__primarycolor;
+                    color: $__white;
+                    border-color: $__primarycolor;
+                    box-shadow: $__none;
+                }
+                @include respond-below(custom991) {
+                    width: 32px;
+                    height: 32px;
+                    @include margin-padding(null, 5px 8px);
+                }
+			}
+			&.active, &:hover {
+                a {
+                    background: $__primarycolor;
+                    color: $__white;
+                    border-color: $__primarycolor;
+                }
+			}
+            &.next, &.prev {
+                a {
+                    width: $__auto;
+                    border-radius: 5px !important;
+                }
+            }
+            &.prev {
+                i {
+                    margin-right: 12px;
+                }
+            }
+            &.next {
+                i {
+                    margin-left: 12px;
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+            @include respond-below(custom991) {
+                margin-right: 5px;
+            }
+		}
+	}
+}
+
+.agent-list {
+    box-shadow: $__shadow2;
+    @include margin-padding(0 0 24px, 24px);
+    border-radius: 10px;
+    @include transition(0.5s all);
+    @extend %display-flex;    
+    @include respond-below(custom991) {
+        flex-direction: $__column;
+    }
+    .agent-img {
+        width: 180px;
+        margin-right: 20px;
+        flex-shrink: 0;
+        overflow: $__hidden;
+        border-radius: 10px;
+        @include transition(0.5s all);
+        img {
+            border-radius: 10px;
+            @include transition(0.5s all);
+        }
+        &:hover {
+            img {
+                transform: scale(1.14);
+            }
+        }
+        @include respond-below(custom991) {
+            text-align: $__center;
+            @include margin-padding(0 $__auto 15px, null);
+        }
+    }
+    .agent-content {
+        .agent-info {
+            @extend %flex-align-between;
+            flex-wrap: $__wrap;
+            .rating {
+                margin-bottom: 5px;
+                @extend %flex-inline-center;
+                font-size: $__font__size__14;
+                .rating-count {
+                    margin-right: 2px;
+                }
+                .rating-review {
+                    display: $__inline__block;
+                    font-size: $__font__size__14;
+                    font-weight: $__medium;
+                    margin-bottom: 0;
+                    span {
+                        margin-right: 5px;
+                    }               
+                }
+            }
+            h6 {
+                font-size: $__font__size__20;
+                font-weight: $__semibold;
+                margin-bottom: 10px;
+                a {
+                    color: $__dark__black;
+                    &:hover {
+                        color: $__primarycolor;
+                    }
+                }
+                @include respond-below(custom991) {
+                    font-size: $__font__size__18;
+                }
+            }
+            h5 {
+                font-size: $__font__size__14;
+                font-weight: $__medium;
+                margin-bottom: 15px;
+                color: $__body__color;
+                @extend %display-inline-flex;
+                i {
+                    margin-right: 5px;
+                    font-size: $__font__size__16;
+                    line-height: 1.2;
+                }
+            }  
+            .list-feature {
+                @include respond-below(custom991) {
+                    margin-bottom: 15px;
+                }
+            }
+            @include respond-below(custom991) {
+                flex-direction: $__column;
+            }
+        }
+        p {
+            @include margin-padding(0 0 15px, null);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: $__hidden;
+        }
+        ul {
+            @include margin-padding(15px 0 0, 15px 0 0);
+            border-top: 1px solid $__light__ash;
+            li {
+                display: $__inline__block;
+                margin-right: 15px;
+                a {
+                    color: $__dark__black;
+                    &:hover {
+                        color: $__primarycolor;
+                    }
+                }
+            }
+        }
+        @include respond-below(custom991) {
+            text-align: $__center;
+        }
+    }
+}
+.list-feature {
+    span {
+        background: $__light__red;
+        border-radius: 5px;
+        font-size: $__font__size__15;
+        font-weight: $__bold;
+        color: $__white;
+        @include margin-padding(null, 4px 14px);
+        display: $__inline__block;
+        @include respond-below(custom991) {
+            font-size: $__font__size__14;
+        }
+    }
+}

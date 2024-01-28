@@ -1,0 +1,252 @@
+/*-----------------	
+    24. Invoice
+-----------------------*/
+
+.invoice-section {
+    @include margin-padding(null, 60px 0 36px);
+    @include respond-below(custom991) {
+        @include margin-padding(null, 50px 0 26px);
+    }
+    @include respond-below(custom767) {
+        @include margin-padding(null, 40px 0 16px);
+    }
+	.card {
+		box-shadow: $__none;
+		border: 1px solid $__light__ash;
+		border-radius: 10px;
+		@include margin-padding(null, 24px);
+		.head {
+			@extend %flex-justify-between;
+			@include respond-below(custom767) {
+				display: $__block;
+			}
+			img {
+				@include respond-below(custom767) {
+					@include margin-padding(0 0 14px, null);
+					width: 150px;
+				}
+			}
+		}
+		.head-info {
+			h4 {
+				@include margin-padding(0 0 14px, null);
+				font-weight: $__semibold;
+				font-size: $__font__size__20;
+			}
+			h5 {
+				@include margin-padding(0 0 10px, null);
+				font-weight: $__semibold;
+			}
+			p {
+				font-weight: $__medium;
+				font-size: $__font__size__14;
+				@include margin-padding(0 0 10px, null);
+			}
+		}
+		hr {
+			@include margin-padding(40px 0, null);
+		}
+		.from-to {
+			@include margin-padding(0 0 30px, 24px);
+			background: $__light__grey;
+			@include respond-below(custom767) {
+				@include margin-padding(null, 24px 24px 14px);
+			}
+			h5 {
+				font-size: $__font__size__15;
+				margin-bottom: 5px;
+				@include respond-below(custom767) {
+					@include margin-padding(24px 0 0 , null);
+					&:first-child {
+						@include margin-padding(0, null);
+					}
+				}
+				@include respond-below(custom767) {
+					&:first-child {
+						@include margin-padding(0 0 10px, null);
+					}
+				}
+			}
+			p {
+				margin-bottom: 4px;
+				&:last-child {
+					margin-bottom: 0;
+					@include respond-below(custom767) { 
+						margin-bottom: 20px !important;
+					}
+				}
+			}
+		}
+		table {
+			border-collapse: collapse;
+			border: 1px solid $__white__border;
+        	border-radius: 3px;
+			@include margin-padding(0, null);
+			tr {
+				border: 1px solid $__white__gray__smoke;
+				th {
+					background: $__light__grey;
+				}
+				th {
+					border-width: 0;
+					@include margin-padding(null, 10px);
+					font-weight: $__regular;
+					font-size: $__font__size__16;
+					color: $__dark__black;
+				}
+				td {
+					border-width: 0;
+					@include margin-padding(null, 10px);
+					font-weight: $__regular;
+					font-size: $__font__size__16;
+					color: $__body__color;
+				}
+			}
+			&.short-info {
+				border: $__none;
+				tr {
+					border: $__none;
+					td {
+						@include margin-padding(null, 5px 0);
+						font-weight: $__medium;
+						font-size: $__font__size__14;
+						color: $__dark__black;
+						@include respond-below(custom767) {
+							display: $__block;
+							text-align: $__left;
+							float: $__left;
+							@include margin-padding(0 0 0, null);
+						}
+						span {
+							color: $__body__color;
+							font-weight: $__regular;
+							font-size: $__font__size__16;
+							@include respond-below(custom767) {
+								font-size: $__font__size__14;
+							}
+						}
+					}
+					&:first-child {
+						td {
+							padding-top: 0;
+						}
+					}
+					&:last-child {
+						td {
+							padding-bottom: 0;
+						}
+					}
+				}
+			}
+			&.total {
+				border: $__none;
+				@include margin-padding(0, null);
+        		tr {
+        			border: $__none;
+					.total-price {
+						float: $__right;
+						@include respond-below(custom575) {
+							float: $__left;
+						}
+					}
+        			td {
+						@include margin-padding(null, 0 0 12px 0);
+						@include respond-below(custom575) { 
+							display: $__block;
+							text-align: $__left;
+						}
+						&:last-child {
+							margin-bottom: 0;
+						}
+        				h6 {
+							font-weight: $__regular;
+							font-size: $__font__size__16;
+							margin-bottom: 0;
+							span {
+								font-weight: $__medium;
+								font-size: $__font__size__14;
+								color: $__body__color;
+								@include respond-below(custom575) {
+									@include margin-padding(0 0 10px, null);
+									display: $__block;
+									&:last-child {
+										margin-bottom: 0;
+									}
+								}
+							}
+        				}
+        			}
+        		}
+				.credit-amount {
+					td {
+						h6 {
+							span {
+								margin-bottom: 14px;
+								display: $__block;
+							}
+						}
+					}
+				}
+				.total-amount {
+					@include margin-padding(14px 0 0 , null);
+					td {
+						@include margin-padding(null, 0);						
+						h6 {
+							font-weight: $__bold;
+							font-size: $__font__size__15;
+							span {
+								@include margin-padding(null, 0 0 0 39px);
+								color: $__dark__black;
+								font-weight: $__bold;
+								font-size: $__font__size__15;								
+								@include respond-below(custom767) { 
+									@include margin-padding(null, 0);
+								}
+							}
+							&:last-child {
+								margin-bottom: 0;
+								padding-bottom: 0;
+								display: $__block;
+							}
+						}
+					}
+				}
+			}
+		}
+		.total-wrap {
+			@include margin-padding(25px 0 0, 20px);
+			border-radius: 3px;
+			background: $__light__grey;
+			border: 1px solid $__white__border;
+			border-radius: 3px;
+		}
+		.payment-detail {
+			background: $__light__grey;
+			@include margin-padding(25px 0 0, 20px);
+			@include respond-below(custom767) { 
+				display: $__block !important;
+			}
+			h6 {
+				@include margin-padding(0 0 15px, null);
+				font-weight: $__bold;
+				font-size: $__font__size__15;	
+			}
+			h5 {
+				font-weight: $__bold;
+				font-size: $__font__size__15;
+				@include margin-padding(0 0 4px, null);
+			}
+			p {
+				@include margin-padding(0 0 4px, null);
+			}
+			.pay-online {
+				@include respond-below(custom767) { 
+					@include margin-padding(25px 0 0, null);
+				}
+				h5 {
+					@include margin-padding(0 0 15px, null);
+				}
+			}
+		}
+	}
+}

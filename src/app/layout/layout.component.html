@@ -1,0 +1,229 @@
+<!-- Loader -->
+<div class="page-loader">
+	<div class="page-loader-inner">
+		<img src="assets/logo.png" width="32" alt="Loader">
+		<label><i class="fa-solid fa-circle"></i></label>
+		<label><i class="fa-solid fa-circle"></i></label>
+		<label><i class="fa-solid fa-circle"></i></label>
+	</div>
+</div>
+<!-- /Loader -->
+
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+	<!-- Header -->
+	<header class="header header-fix">
+		<nav class="navbar navbar-expand-lg header-nav">
+			<div class="navbar-header">
+				<a id="mobile_btn" href="javascript:void(0);">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</a>
+				<a href="index.html" class="navbar-brand logo">
+					<img src="assets/logo.png" width="64" class="img-fluid" alt="Logo">
+				</a>
+			</div>
+			<div class="main-menu-wrapper">
+				<div class="menu-header">
+					<a href="index.html" class="menu-logo">
+						<img src="assets/logo.png" width="64" class="img-fluid" alt="Logo">
+					</a>
+
+					<a id="menu_close" class="menu-close" href="javascript:void(0);">
+						<i class="fas fa-times"></i>
+					</a>
+				</div>
+				<ul class="main-nav">
+					<li
+						[ngClass]="{ 'active': location.pathname === '/' && (location.hash === '' || location.hash === '#faq' || location.hash === '#newsletter') }">
+						<a href="/">Accueil</a>
+					</li>
+					<li [ngClass]="{ 'active': location.hash === '#our-services' }">
+						<a href="#our-services">Nos services</a>
+					</li>
+					<li [ngClass]="{ 'active': location.pathname === '/properties' }">
+						<a href="properties">Nos propriétés</a>
+					</li>
+					<li [ngClass]="{ 'active': location.pathname === '/contact-us' }">
+						<a href="contact-us">Contactez-nous</a>
+					</li>
+					<li [ngClass]="{ 'active': location.pathname === '/about-us' }">
+						<a href="about-us">A propos de nous</a>
+					</li>
+					<li class="has-submenu" *ngIf="role == 'BAILLEUR' || role == 'LOCATAIRE'  ">
+						<a href="javascript:void(0);">Mon espace <i class="fas fa-chevron-down"></i></a>
+						<ul class="submenu">
+							<!-- options locataire -->
+							<li *ngIf="role=='LOCATAIRE'"><a href="tenant">Mon compte</a></li>
+							<li *ngIf="role=='LOCATAIRE'"><a href="tenant/pay-online/{{locataireCode}}">Régler mon loyer</a></li>
+							<li *ngIf="role=='LOCATAIRE'"><a href="tenant/pay-onlineqr/B-23-50480">Test Régler mon loyer</a></li>
+							<li *ngIf="role=='LOCATAIRE'"><a href="tenant/due-date">Mes échéances de loyer</a></li>
+							<li *ngIf="role=='LOCATAIRE'"><a href="tenant/help-me-bank">Au secours ! ma banque</a></li>
+							<li *ngIf="role=='LOCATAIRE'"><a href="tenant/messages">Envoyer une requête</a></li>
+							<!-- options bailleur -->
+							<li *ngIf="role=='BAILLEUR'"><a href="owner/tenant-list">Liste des locataires</a></li>
+							<li *ngIf="role=='BAILLEUR'"><a href="owner/messages">Avis aux locataires</a></li>
+							<li *ngIf="role=='BAILLEUR'"><a href="owner/payment-list">Mon compte paiement loyer</a></li>
+						</ul>
+					</li>
+
+					<li class="login-link"><a href="auth/sign-in">Se connecter</a></li>
+
+				</ul>
+			</div>
+
+			<ul class="nav header-navbar-rht">
+				<li *ngIf="role == 'BAILLEUR' || role == 'LOCATAIRE'  " style="text-align: center;">
+					<a >{{utilisateur}} | </a>
+					<br>
+					<small (click)="visible = true" style="color: red; font-size: xx-small; cursor: pointer;">Modifiez votre mot de passe ici</small>
+				
+				</li>
+				 
+				<li *ngIf="role != 'BAILLEUR' && role != 'LOCATAIRE'  ">
+					<a href="/auth/sign-in" class="btn btn-primary"><i class="feather-unlock"></i>Se connecter</a>
+				</li>
+				<li *ngIf="role == 'BAILLEUR' || role == 'LOCATAIRE'  ">
+					<a class="btn btn-danger" (click)="logout()"><i class="feather-unlock"></i>Se deconnecter</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<!-- /Header -->
+
+	<router-outlet></router-outlet>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<!-- Footer Top -->
+		<div class="footer-top">
+			<div class="footer-border-img">
+				<img src="assets/img/bg/line-bg.png" alt="image">
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-6 col-sm-8">
+						<div class="footer-widget footer-about">
+							<div class="footer-app-content">
+								<div class="footer-content-heading">
+									<h4>Mbaaza</h4>
+									<p>La plateforme d’intermédiation idéale pour se faciliter la vie en toute
+										simplicité et sécurité !</p>
+								</div>
+								<div class="social-links">
+									<h4>Restez connecté avec nous</h4>
+									<ul>
+										<li><a href="javascript:void(0);"><i
+													class="fa-brands fa-facebook-f hi-icon"></i></a></li>
+										<li><a href="javascript:void(0);"><i
+													class="fa-brands fa-instagram hi-icon"></i></a></li>
+										<li><a href="javascript:void(0);"><i
+													class="fa-brands fa-pinterest-p hi-icon"></i></a></li>
+										<li><a href="javascript:void(0);"><i
+													class="fa-brands fa-linkedin hi-icon"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-4">
+						<div class="footer-widget-list">
+							<div class="footer-content-heading">
+								<h4>Explorez</h4>
+							</div>
+							<ul>
+								<li><a href="properties">Nos propriétés</a></li>
+								<li><a href="#newsletter">Newsletter</a></li>
+								<li><a href="auth">Se connecter</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-4">
+						<div class="footer-widget-list">
+							<div class="footer-content-heading">
+								<h4>Categories</h4>
+							</div>
+							<ul>
+								<li><a href="javascript:void(0);">Appartements</a></li>
+								<li><a href="javascript:void(0);">Villas</a></li>
+								<li><a href="javascript:void(0);">Résidences meublées</a></li>
+								<li><a href="javascript:void(0);">Bureaux</a></li>
+								<li><a href="javascript:void(0);">Terrains</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-4">
+						<div class="footer-widget-list">
+							<div class="footer-content-heading">
+								<h4>Localisations</h4>
+							</div>
+							<ul>
+								<li><a href="javascript:void(0);">Côte d'Ivoire</a></li>
+								<li><a href="javascript:void(0);">Cameroun</a></li>
+								<li><a href="javascript:void(0);">Sénégal</a></li>
+								<li><a href="javascript:void(0);">Mali</a></li>
+								<li><a href="javascript:void(0);">Guinée</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-4 col-sm-4">
+						<div class="footer-widget-list">
+							<div class="footer-content-heading">
+								<h4>Liens rapides</h4>
+							</div>
+							<ul>
+								<li><a href="about-us">A propos</a></li>
+								<li><a href="#faq">Faq</a></li>
+								<li><a href="terms">Termes & Conditions</a></li>
+								<li><a href="properties">Nos annonces</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Footer Top -->
+
+		<!-- Footer Bottom -->
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="footer-bottom-content">
+					<div class="copyright">
+						<p>Copyright 2023 - Tous droits reservés à Mbaza</p>
+					</div>
+					<div class="company-logo">
+						<p>Un produit de</p>
+						<a href="https://dreamguystech.com/" target="_blank"><img src="assets/img/company-logo.png"
+								alt="Logo"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Footer Bottom -->
+
+	</footer>
+	<!-- /Footer -->
+
+	<p-dialog header="Changement de Mot de Passe" [(visible)]="visible" [modal]="true" [style]="{ width: '30vw' }" [draggable]="false" [resizable]="false">
+		<form [formGroup]="email" (ngSubmit)="verifEmail()">
+			
+			<div class="alert alert-danger" *ngIf="error.success">
+				<small>{{ error.errorMessage }}</small>
+			</div>
+			<div class="form-group mb-3">
+				<label class="form-label fw-semibold">E-mail <span class="text-danger">*</span></label>
+				<input type="email" formControlName="email" class="form-control" placeholder="Entrez votre email pour modifier du mot de passe">
+			</div>
+			<div class="text-center">
+				<button class="btn btn-primary w-100" type="submit" [disabled]="email.invalid">Vérifier</button>
+			</div>
+		</form>
+	</p-dialog>
+
+</div>
+<!-- /Main Wrapper -->
+

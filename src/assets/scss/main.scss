@@ -1,0 +1,95 @@
+/*
+Author       : Dreamguys
+Template Name: DreamsEstate - Bootstrap Template
+Version      : 1.0
+*/
+
+/*============================
+ [Table of CSS]
+
+1. Typography
+2. Colors
+3. General
+4. Grid
+5. Buttons
+6. Bootstrap Class
+7. Switch
+8. Select
+9. Avatar
+10. Content
+11. Footer
+12. Header
+13. Common
+14. Breadcrumb
+15. Home
+16. Agent
+17. Compare
+18. Detail View
+19. Rent List
+20. Property Grid Sidebar
+21. Rent
+22. Login
+23. FAQ
+24. Invoice
+25. Agency
+26. Gallery
+27. Testimonial
+28. Agent Details
+29. About Us
+30. Contact
+31. Our Team
+32. Blog
+33. Shop
+34. Wishlist
+35. Checkout
+36. Add Property
+
+========================================*/
+
+// UTILS
+@import "utils/variables";
+@import "utils/mixins";
+
+//  BASE
+@import "base/typography";
+@import "base/colors"; 
+@import "base/base";
+@import "base/grid";
+
+// COMPONENTS
+@import "components/button";
+@import "components/bootstrap-class";
+@import "components/switch";
+@import "components/select";
+
+// LAYOUT 
+@import "layout/avatar";
+@import "layout/content";
+@import "layout/footer";
+@import "layout/header";
+@import "layout/common";
+@import "layout/breadcrumb";
+
+// PAGES
+@import "pages/home";
+@import "pages/agent";
+@import "pages/compare";
+@import "pages/detail-view";
+@import "pages/rent-list";
+@import "pages/property-grid-sidebar";
+@import "pages/rent";
+@import "pages/login";
+@import "pages/faq";
+@import "pages/invoice";
+@import "pages/agency";
+@import "pages/gallery";
+@import "pages/testiminial";
+@import "pages/agent-details";
+@import "pages/about-us";
+@import "pages/contact";
+@import "pages/our-team";
+@import "pages/blog";
+@import "pages/shop";
+@import "pages/wishlist";
+@import "pages/checkout";
+@import "pages/add-property";

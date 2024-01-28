@@ -1,0 +1,268 @@
+/*-----------------	
+    22. Login
+-----------------------*/
+
+.login-body {    
+    position: $__relative;
+    margin: $__auto;
+    background-image: url(../img/bg/bg-auth1.png);
+    background-size: $__auto;
+    background-position: $__center;
+    min-height: 100vh;
+    overflow-y: $__auto;
+    .log-header {
+        @include margin-padding(0 $__auto, 30px 0 0);
+        max-width: 595px;
+        width: $__full__width;
+    }
+}
+.logo-dark{
+	margin: $__auto;
+    display: $__block;
+}
+.login-wrapper {
+    width: $__full__width;
+    height: $__full__height;
+    vertical-align: $__middle;
+    height: calc(100vh - 80px);
+    @extend %flex-align-center;
+    flex-wrap: $__wrap;
+    .loginbox {
+        margin: $__auto;
+        max-width: 595px;
+        width: 100%;
+        @include margin-padding(0, 100px 0);
+            @include respond-below(custom1399) {
+                @include margin-padding(0, 70px 0);
+            }  
+            @include respond-below(custom991) {
+                @include margin-padding(0, 50px 0);
+            }  
+        .login-auth {
+            @include respond-below(custom767) {             
+                width: 100%;
+            }
+            .login-auth-wrap {
+                .sign-group {                    
+                    @include margin-padding(0 0 32px, 0);
+                    span {
+                        i {
+                            line-height: 0;
+                            margin-right: 6px;
+                        }
+                    }
+                    a {
+                        font-size: $__font__size__14;
+                        color: $__light__red;
+                        @include margin-padding(null, 0);
+                        font-weight: $__medium;
+                        border: 0;
+                        &:hover {
+                            color: $__primarycolor;
+                        }
+                    }
+                }
+                .form-group {
+                    label {
+                        @include margin-padding(0 0 5px 0, null);
+                        font-weight: $__regular;
+                        span {
+                            color: $__light__red;
+                        }
+                    } 
+                    .custom_check {
+                        @include margin-padding(20px 0 0, 0 0 0 24px);
+                        color: $__body__color;
+                        display: $__inline__block;
+                        position: $__relative;
+                        font-size: 14px;
+                        cursor: $__pointer;
+                        font-weight: $__regular;
+                        user-select: $__none;
+                        input:checked ~ .checkmark {
+                            background-color: $__body__color;
+                            border-color: $__body__color;
+                            &:after {
+                                display: $__block;
+                            }
+                        }
+                        span {
+                            color: $__body__color;
+                        }
+                        input {
+                            position: $__absolute;
+                            opacity: 0;
+                            cursor: $__pointer;
+                        }
+                        .checkmark {
+                            position: $__absolute;
+                            top: 2px;
+                            left: 0;                            
+                            font-size: 10px;
+                            width: 16px;
+                            height: 16px;
+                            border: 1px solid $__light__ash;
+                            background-color: $__white;
+                            border-radius: 2px;
+                            transition: all 0.3s ease-in-out;
+                            &::after {
+                                content: "\f00c";
+                                font-family: "Font Awesome 5 Free";
+                                font-weight: 900;
+                                position: $__absolute;
+                                display: $__none;
+                                color: $__white;
+                                font-size: 9px;
+                            }
+                        }
+                    }
+                }
+                h1 {
+                    @include margin-padding(0 0 32px, null);
+                    font-size: 32px;
+                    max-width: 500px;
+                    @include respond-below(custom991) {
+                        font-size: $__font__size__28;
+                        @include margin-padding(0 0 28px, null);
+                    }
+                    @include respond-below(custom767) {
+                        font-size: $__font__size__26;
+                    }
+
+                }
+            }
+            .forgotpass a {
+                color: $__white;
+                &:hover {
+                    color: $__white;
+                    text-decoration: $__underline;
+                }
+            }
+            .dont-have {
+                font-size: $__font__size__14;
+                font-weight: $__medium;
+                @include margin-padding(32px 0 0 , null);
+                a {
+                    color: $__light__red;
+                    font-weight: $__medium;
+                    &:hover {
+                        color: $__primarycolor;
+                    }
+                }
+            }
+            .social-login {
+                text-align: $__center;
+
+                span {
+                    color: $__white;
+                    margin-right: 8px;
+                }
+                a {
+                    background: $__white;
+                    border: 1px solid $__white;
+                    box-shadow: inset 0 0 0 0 $__white;
+                    text-align: $__center;
+                    @include margin-padding(0 0 10px, 10px 0);
+                    line-height: 20px;
+                    color: $__body__color;
+                    font-size: $__font__size__14;
+                    font-weight: $__medium;
+                    @include rounded(4px);                                     
+                    &:hover {
+                        color: $__dark__black;
+                        background-color: $__light__gray;
+                        border: 1px solid $__light__gray;
+                        box-shadow: inset 0 0 0 0 $__white;
+                    }
+                }
+            }
+        }
+        .account-subtitle {
+            color: $__white;
+            @include margin-padding(0 0 30px, null);
+        }
+        .login-or {
+            color: $__white;
+            @include margin-padding(30px auto, 0 0 30px);
+            position: $__relative;
+            max-width: 385px;
+            overflow: $__hidden;
+            @include respond-below(custom767) {
+                @include margin-padding(15px auto, 0 0 30px);
+            }
+        }
+        .or-line {
+            background-color: $__white;
+            height: 1px;
+            margin-bottom: 0;
+            margin-top: 0;
+            display: $__block;
+            @include respond-below(custom575) {
+                display: $__none;
+            }
+        }
+        .span-or-log {
+            color: $__black__grey;
+            font-size: $__font__size__14;
+            font-weight: $__medium;
+            display: $__block;
+            left: 25%;
+            position: $__absolute;
+            text-align: $__center;
+            top: 6px;
+            width: 200px;   
+            @include respond-below(custom575) {
+                left: 50%;
+                @include transform(translateX(-50%));
+            }
+            &::before {
+                width: 95px;
+                content: "";
+                border-top: 1px solid $__black__grey_light;
+                position: absolute;
+                top: 50%;
+                left: -95px
+            }      
+            &::after {
+                width: 95px;
+                content: "";
+                border-top: 1px solid $__black__grey_light;
+                position: absolute;
+                top: 50%;
+                right: -95px
+            }     
+        } 
+        .lock-user {
+            margin-bottom: 20px;
+            text-align: $__center;
+            img {
+                margin-bottom: 15px;
+                width: 100px;
+            }
+        }
+        .toggle-password {
+            position: $__absolute;
+            right: 17px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: $__pointer;
+            &.fa-eye {
+                margin-right: 1px;
+                font-weight: $__medium;
+            }
+        }
+    }
+}     
+.log-footer {  
+    .copyright {
+        border-top: 0;
+        @include margin-padding(null, 28px 0);
+        text-align: $__center;
+        .copyright-text {
+            p {
+                font-size: $__font__size__14;
+                color: $__white;
+            }
+        }
+    }
+}  
