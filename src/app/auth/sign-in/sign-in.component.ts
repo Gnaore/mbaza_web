@@ -32,6 +32,11 @@ export class SignInComponent {
 
   ngOnInit(): void {
     this.initForm();
+    const date = new Date();
+    const mois = date.getMonth() + 1; // Les mois commencent à 0, donc on ajoute 1
+    const jour = date.getDate()
+    const numjour = date.getDay()
+    console.log("Mois en cours :", mois, "Jour en cours :", jour, "Num Jour en cours :", numjour);
   }
 
   initForm() {

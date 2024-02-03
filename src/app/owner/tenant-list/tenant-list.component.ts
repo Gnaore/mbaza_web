@@ -1,9 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FixMeLater, QRCodeElementType } from 'angularx-qrcode';
-import getTime from 'date-fns/getTime';
+import { Table } from 'primeng/table';
 import { BailleurService } from 'src/app/services/bailleur.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { LocataireService } from 'src/app/services/locataire.service';
@@ -15,6 +15,9 @@ import Swal from 'sweetalert2';
 elementType: "canvas" as QRCodeElementType;
 //var speakeasy = require("speakeasy");
 //var secret = speakeasy.generateSecret({length: 20});
+
+
+
 
 declare var $: any;
 @Component({
@@ -42,7 +45,9 @@ export class TenantListComponent {
   laPropriete: any
   listLocataire: any
   url = this.configService.urlFront
+  urlg = this.configService.urlg
   urlphotoDefault = this.configService.urlg + "defaultprofil.png"
+  reponse: any;
 
   private builder = inject(FormBuilder);
   formGroup!: FormGroup;
@@ -64,9 +69,19 @@ export class TenantListComponent {
   nomQrcode = ""
   urlimg = ""
 
-  public qrCodeSrc!: SafeUrl
- 
+  detailsPaiementDialog = false;
 
+  provisions: any[] = [];
+
+  public qrCodeSrc!: SafeUrl
+
+  
+  locataires!: any[];
+  vlocataireNom="";
+  vlocataireTel="";
+  vlocataireEmail="";
+  vlocataireRef="";
+  vlocatairePhoto="";
 
   ngOnInit(): void {
     //alert(Math.floor(Math.random() * 1000000))
@@ -78,6 +93,15 @@ export class TenantListComponent {
       width: '100%'
     });
 
+  }
+
+  detailsPaiement(locataireRef: string, locataireNom: string, locataireTel: string, locataireEmail: string, locatairePhoto: string){
+    this.getOneLocataireByRef(locataireRef)
+    this.vlocataireNom = locataireNom
+    this.vlocataireTel = locataireTel
+    this.vlocataireRef = locataireRef
+    this.vlocataireEmail = locataireEmail
+    this.vlocatairePhoto = locatairePhoto
   }
 
   initForm() {
@@ -93,7 +117,7 @@ export class TenantListComponent {
       locataireNomgarant: [''],
       locataireProfession: [''],
       locataireRef: [''],
-      locataireSalaire: ['',Validators.required],
+      locataireSalaire: ['', Validators.required],
       locataireSituationmatri: ['', Validators.required],
       locataireTel: ['', Validators.required],
       locataireTelgarant: [''],
@@ -102,6 +126,7 @@ export class TenantListComponent {
       bailleurId: ['', Validators.required],
       proprieteCode: ['', Validators.required],
       localisation: [''],
+      locataireCaution: ['', Validators.required],
       type: [''],
       prix: [''],
     });
@@ -124,6 +149,16 @@ export class TenantListComponent {
     });
 
 
+  }
+
+  getOneLocataireByRef(locataireRef: string){
+    this.isLoading = true
+    this.locataireService.getProvisionByReference(locataireRef).subscribe(ret=>{
+      this.locataires = ret.data
+      this.isLoading = false
+      this.detailsPaiementDialog = true
+
+    });
   }
 
   allProprieteBailleurDisponible(id: any) {
@@ -162,39 +197,64 @@ export class TenantListComponent {
 
     const index = f.locataireNom.substring(0, 2);
 
-        const indexCorrige = index.replace(new RegExp(' ', 'g'), 'L')
-        var codeAleatoire = Math.floor(Math.random() * 1000000) +'_'+ indexCorrige;
-        const reference = codeAleatoire.padStart(6,'0')
-        this.qrcode = this.url+"tenant/pay-onlineqr/" + reference
-       
-    var body = {
-      locataireId: parseInt(f.locataireId),
-      locataireBanque: f.locataireBanque,
-      locataireDatenais: f.locataireDatenais + 'T00:00:00.000Z',
-      locataireEmail: f.locataireEmail,
-      locataireEmailgarant: f.locataireEmailgarant,
-      locataireNationalite: f.locataireNationalite,
-      locataireNbrecharge: parseInt(f.locataireNbrecharge),
-      locataireNom: f.locataireNom,
-      locataireNomgarant: f.locataireNomgarant,
-      locataireProfession: f.locataireProfession,
-      locataireRef: reference,
-      locataireSalaire: parseInt(f.locataireSalaire),
-      locataireSituationmatri: f.locataireSituationmatri,
-      locataireTel: f.locataireTel,
-      locataireTelgarant: f.locataireTelgarant,
-      locataireTypecontrat: f.locataireTypecontrat,
-      bailleurId: parseInt(f.bailleurId),
-      proprieteCode: f.proprieteCode,
-      locatairePhoto: this.file,
-      localisation: f.localisation,
-      locataireQrcode: this.nomQrcode,
-      type: f.type,
-      prix: parseInt(f.prix),
-    };
+    const indexCorrige = index.replace(new RegExp(' ', 'g'), 'L')
+    var codeAleatoire = Math.floor(Math.random() * 1000000) + '_' + indexCorrige;
+    const reference = codeAleatoire.padStart(6, '0')
+    this.qrcode = this.url + "pay-onlineqr/" + reference
 
-    this.locataireService.ajoutLocataire(body).subscribe(
-      (ret) => {
+    //Creation de la provision
+    const date = new Date()
+    const mois = date.getMonth()
+    const annee = date.getFullYear()
+
+    this.locataireService.moisrestant(mois).subscribe(ret => {
+
+      ret.data.forEach((unmois:any) => {
+        // this.provisions = [];
+        this.provisions.push({
+          mois: unmois.moisLibelle,
+          annee: annee,
+          status: false,
+          idWave: "",
+          locataireRef: reference,
+          idWaveCallback: "", 
+          amount: "",
+          when_completed: null,
+          nummois: unmois.moisNumero
+        })
+      });
+
+
+      var body = {
+        locataireId: parseInt(f.locataireId),
+        locataireBanque: f.locataireBanque,
+        locataireDatenais: f.locataireDatenais + 'T00:00:00.000Z',
+        locataireEmail: f.locataireEmail,
+        locataireEmailgarant: f.locataireEmailgarant,
+        locataireNationalite: f.locataireNationalite,
+        locataireNbrecharge: parseInt(f.locataireNbrecharge),
+        locataireNom: f.locataireNom,
+        locataireNomgarant: f.locataireNomgarant,
+        locataireProfession: f.locataireProfession,
+        locataireRef: reference,
+        locataireSalaire: parseInt(f.locataireSalaire),
+        locataireSituationmatri: f.locataireSituationmatri,
+        locataireTel: f.locataireTel,
+        locataireTelgarant: f.locataireTelgarant,
+        locataireTypecontrat: f.locataireTypecontrat,
+        bailleurId: parseInt(f.bailleurId),
+        proprieteCode: f.proprieteCode,
+        locatairePhoto: this.file,
+        localisation: f.localisation,
+        locataireQrcode: this.nomQrcode,
+        provisions: this.provisions,
+        locataireCaution: f.locataireCaution,
+        type: f.type,
+        prix: parseInt(f.prix),
+      };
+
+      this.locataireService.ajoutLocataire(body).subscribe(
+          (ret) => {
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -208,22 +268,30 @@ export class TenantListComponent {
 
 
       },
-      (err) => {
-        if (err.status == 401) {
-          this.router.navigateByUrl("/auth")
-        }
-        else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: err.error.message,
-          });
-        }
+        (err) => {
+          if (err.status == 401) {
+            this.router.navigateByUrl("/auth")
+          }
+          else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: err.error.message,
+            });
+          }
 
-      }
-    );
+        }
+      );
+
+    });
+    //--------------------------
+
     /* bailleurlienCNI,
     bailleurLienPhoto,*/
+  }
+
+  fermer(){
+    this.detailsPaiementDialog = false
   }
 
   onChangePropriete(event: any) {
@@ -233,10 +301,10 @@ export class TenantListComponent {
       this.localisation = this.laPropriete.proprieteAdresse
       this.type = this.laPropriete.typebien.libelleTypebien
       this.prix = this.laPropriete.proprietePrix
-     // this.qrcode = this.url+"tenant/pay-onlineqr/" + this.laPropriete.proprieteCode
+      // this.qrcode = this.url+"tenant/pay-onlineqr/" + this.laPropriete.proprieteCode
     }, (error) => {
       if (error.status == 401) { this.router.navigateByUrl("/auth") }
-      
+
     }
     );
   }
@@ -272,8 +340,8 @@ export class TenantListComponent {
           showConfirmButton: false,
           timer: 1500,
         });
-        this.formGroup.reset();
-        window.location.href = '/owner/tenant-list'
+          this.formGroup.reset();
+          window.location.href = '/owner/tenant-list'
       },
       (err) => {
         Swal.fire({
@@ -286,36 +354,36 @@ export class TenantListComponent {
     );
   }
 
-/*  onFileChangePropriete(event: any) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.fileToUploadPropriete = file;
-      const formData = new FormData();
-      formData.append('file', this.fileToUploadPropriete);
-      this.uploadService.upload(formData).subscribe(
-        (ret) => {
-          console.log(ret);
-          this.formProprieteGroup.patchValue({
-            proprieteLienPhoto: ret.data
-          })
-          this.lienPhotoretourPropriete = this.configService.urlg + ret.data;
-          // this.previewImagePropriete =  ret.data;
-          this.file = ret.data;
-          this.isLoading = false;
-        },
-        (err) => {
-          console.log(err);
-          this.previewImagePropriete = '';
-          this.isLoading = false;
-        }
-      );
-    }
-  }*/
+  /*  onFileChangePropriete(event: any) {
+      if (event.target.files.length > 0) {
+        const file = event.target.files[0];
+        this.fileToUploadPropriete = file;
+        const formData = new FormData();
+        formData.append('file', this.fileToUploadPropriete);
+        this.uploadService.upload(formData).subscribe(
+          (ret) => {
+            console.log(ret);
+            this.formProprieteGroup.patchValue({
+              proprieteLienPhoto: ret.data
+            })
+            this.lienPhotoretourPropriete = this.configService.urlg + ret.data;
+            // this.previewImagePropriete =  ret.data;
+            this.file = ret.data;
+            this.isLoading = false;
+          },
+          (err) => {
+            console.log(err);
+            this.previewImagePropriete = '';
+            this.isLoading = false;
+          }
+        );
+      }
+    }*/
   onChangeURL(urlqr: SafeUrl, parent: FixMeLater) {
     this.qrCodeSrc = urlqr
     this.saveAsImage(parent)
   }
-  
+
   saveAsImage(parent: FixMeLater) {
     let parentElement = null
 
@@ -343,15 +411,15 @@ export class TenantListComponent {
 
 
 
-    /*  const url = window.URL.createObjectURL(blob)
-      const link = document.createElement("a")
-      link.href = url
-      this.urlimg  = url
-      // name of the file
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-      link.download = "qrcode_"+uniqueSuffix;
-      link.href = "assets/qrcode_"+uniqueSuffix;
-      link.click()*/
+      /*  const url = window.URL.createObjectURL(blob)
+        const link = document.createElement("a")
+        link.href = url
+        this.urlimg  = url
+        // name of the file
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+        link.download = "qrcode_"+uniqueSuffix;
+        link.href = "assets/qrcode_"+uniqueSuffix;
+        link.click()*/
     }
   }
 
@@ -370,5 +438,51 @@ export class TenantListComponent {
     }
     // return blob image after conversion
     return new Blob([uInt8Array], { type: imageType })
+  }
+
+  fincontrat(locataireRef: string, proprieteCode: string, locataireEmail: string) {
+    Swal.fire({
+      title: 'Etes-vous vraiment certain ?',
+      text: 'Ceci mettra fin au contrat!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, mettre fin au contrat!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.isLoading = true
+        var body = {
+          locataireRef: locataireRef,
+          locataireEmail: locataireEmail,
+          proprieteCode: proprieteCode
+        }
+        this.bailleurService.fincontrat(body).subscribe(ret => {
+          this.reponse = ret.data
+          if (this.reponse.success == true) {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Opération terminée avec succès',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            this.getOneBailleur()
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: this.reponse.msg,
+            });
+          }
+        });
+        this.isLoading = false
+      } else {
+        this.isLoading = false
+        return
+      }
+    });
+
+
   }
 }

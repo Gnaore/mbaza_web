@@ -68,7 +68,7 @@ export class LayoutComponent implements OnInit {
   onelocataireByEmail() {
     const userConnect = JSON.parse(localStorage.getItem('currentUser')!);
     this.userEmail = userConnect.user.useremail;
-    if ( userConnect.user.userrole =  "LOCATAIRE") {
+    if ( userConnect.user.userrole ==  "LOCATAIRE") {
       this.locataireService.onelocataireByEmail(this.userEmail).subscribe(rep => {
         this.infoLocataire = rep.data
         this.locataireCode = this.infoLocataire.locataireRef

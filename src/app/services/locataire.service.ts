@@ -55,6 +55,16 @@ export class LocataireService {
     return this.httpClient.get(this.urlG + 'locataire/reference/' + id);
   }
 
+  getProvisionByReference(id: any): Observable<any> {
+      const currentUser = localStorage.getItem('currentUser');
+      const currentUserJSON = JSON.parse(currentUser!.toString());
+    
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${currentUserJSON.token}`,
+      });
+    return this.httpClient.get(this.urlG + 'locataire/provision/' + id, { headers });
+  }
+
   payer(data: any): Observable<any> {
     return this.httpClient.post(this.urlG + 'wcallback/payementtiers', data);
   }
@@ -99,6 +109,15 @@ export class LocataireService {
   }
 
 
+  moisrestant(moisEncours: number): Observable<any> {
+    const currentUser = localStorage.getItem('currentUser');
+    const currentUserJSON = JSON.parse(currentUser!.toString());
+  
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${currentUserJSON.token}`,
+    });
+    return this.httpClient.get(this.urlG + "mois/" + moisEncours, { headers })
+  }
 
 
   /*

@@ -33,11 +33,9 @@ export class PaymentListComponent  {
 
   getAllpayementbyBailleur(UserId: number) {
     this.bailleurService.getOneByUserId(UserId).subscribe(rep => {
-      this.bailleurService.allpayementbyBailleur(rep.data.bailleur.bailleurId).subscribe(ret => {
-       
+      this.bailleurService.allpayementbyBailleur(rep.data.bailleurId).subscribe(ret => {
         this.listPayement = ret.data[0].wcallbacks
         console.log(this.listPayement);
-        
       })
     })
 

@@ -64,7 +64,7 @@
                     <div class="alert alert-warning">Veuillez vérifiez la conformité des informations ci-dessus avant de
                         procéder à un quelconque paiement. Merci !</div>
                     <form action="#" class="row">
-                        <div class="review-form col-md-6 col-sm-12">
+                        <div class="review-form col-md-8 col-sm-12">
                             <select class="select form-select"  [(ngModel)]="selectedMonth" [ngModelOptions]="{standalone: true}">
                                 <option value="" selected disabled>Choisissez le mois a regler</option>
                                 <option value="Janvier">Janvier</option>
@@ -81,7 +81,10 @@
                                 <option value="Décembre">Décembre</option>
                             </select>
                         </div>
-
+                        <div class="review-form col-md-4 col-sm-12">
+                            <input type="number" class="form-control"
+                                [(ngModel)]="loyer_annee" [ngModelOptions]="{standalone: true}" >
+                        </div>
                         <div class="review-form col-md-6 col-sm-12">
                             <input type="number" class="form-control"
                                 [(ngModel)]="montantpayer" [ngModelOptions]="{standalone: true}" style="color: red;">

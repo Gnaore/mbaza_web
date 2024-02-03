@@ -16,10 +16,10 @@ const routes: Routes = [
       { path: 'due-date', component: DueDateComponent },
       { path: 'help-me-bank', component: HelpMeBankComponent },
       { path: 'pay-online/:id', component: PayOnlineComponent },
-      { path: 'pay-onlineqr/:id', component: PayOnlineqrComponent },
       { path: 'messages', component: MessagesComponent },
     ]
-  }
+  },
+  { path: 'pay-onlineqr/:id', component: PayOnlineqrComponent }
 ];
 
 @NgModule({

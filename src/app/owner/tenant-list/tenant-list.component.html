@@ -18,7 +18,7 @@
                         {{propriete.proprieteCode}}</option>
 
                 </select>
-                
+
             </div>
             <div class="review-form col-lg-4 col-md-5 col-sm-12 col-12">
                 <input type="text" class="form-control" placeholder="Localisation" readonly [(ngModel)]="localisation"
@@ -31,27 +31,17 @@
             <div class="review-form col-lg-2 col-md-2 col-sm-12 col-12">
                 <input type="number" class="form-control" readonly [(ngModel)]="prix" formControlName="prix">
             </div>
-            
+
             <div class="hcenter" *ngIf="qrcode!=''">
-                    <!--img src="{{urlimg}}" width="100px"-->
-                    <div class="qrcodeImage"  style="text-align: center;">
-                        <qrcode
-                           #parent
-                          [qrdata]="qrcode"
-                          [allowEmptyString]='false'
-                          [elementType]="'img'"
-                          [errorCorrectionLevel]="'M'"
-                          [width]="100"
-                          [margin]="4"
-                          [scale]="1"
-                          (qrCodeURL)="onChangeURL($event, parent)"
-                        ></qrcode>
-                     
-              
-                    </div>
+                <!--img src="{{urlimg}}" width="100px"-->
+                <div class="qrcodeImage" style="text-align: center;">
+                    <qrcode #parent [qrdata]="qrcode" [allowEmptyString]='false' [elementType]="'img'"
+                        [errorCorrectionLevel]="'M'" [width]="100" [margin]="4" [scale]="1"
+                        (qrCodeURL)="onChangeURL($event, parent)"></qrcode>
+                </div>
             </div>
 
-            
+
             <hr style="margin-top: 0px;" />
             <div class="review-form col-lg-6 col-md-6 col-sm-12 col-12">
                 <input type="text" class="form-control" placeholder="Nom & Prénom(s)" formControlName="locataireNom">
@@ -103,7 +93,7 @@
                     formControlName="locataireSalaire">
             </div>
             <div class="review-form col-lg-3 col-md-3 col-sm-12 col-12">
-                <input type="text" class="form-control" placeholder="Nom & Adresse de votre banque"
+                <input type="text" class="form-control" placeholder="Email du gestionnaire"
                     formControlName="locataireBanque">
             </div>
             <div class="review-form col-lg-3 col-md-3 col-sm-12 col-12">
@@ -117,6 +107,9 @@
             <div class="review-form col-lg-3 col-md-3 col-sm-12 col-12">
                 <input type="email" class="form-control" placeholder="Email de votre garant"
                     formControlName="locataireEmailgarant">
+            </div>
+            <div class="review-form col-lg-3 col-md-3 col-sm-12 col-12">
+                <input type="number" class="form-control" placeholder="Caution " formControlName="locataireCaution">
             </div>
             <div class="review-form col-lg-3 col-md-3 col-sm-12 col-12">
                 <div class="col-6 input-group mb-3">
@@ -183,7 +176,7 @@
                     <td>{{unLocataire.locataireRef}}</td>
                     <td>
                         <div style="width: 50px; height: 50px;" *ngIf="unLocataire.locatairePhoto">
-                            <img src="{{url + unLocataire.locatairePhoto}}" alt="" class="w-100 h-100">
+                            <img src="{{urlg + unLocataire.locatairePhoto}}" alt="" class="w-100 h-100">
                         </div>
                         <div style="width: 50px; height: 50px;" *ngIf="!unLocataire.locatairePhoto">
                             <img src="{{urlphotoDefault}}" alt="" class="w-100 h-100">
@@ -196,19 +189,136 @@
                             class="text-secondary">{{unLocataire.locataireEmail}}</a></td>
                     <td>
                         <div class="d-flex">
-                            <button class="btn btn-primary me-2">
+                            <button class="btn btn-primary me-2" title="Edition">
                                 <i class="fa fa-edit"></i>
                             </button>
-                            <button class="btn btn-secondary">
-                                <i class="fa fa-trash"></i>
+
+                            <button class="btn btn-lightred  me-2" title="Suivi paiements"
+                                (click)="detailsPaiement(unLocataire.locataireRef,unLocataire.locataireNom,unLocataire.locataireTel,unLocataire.locataireEmail, unLocataire.locatairePhoto)">
+                                <i class="fa fa-search"></i>
                             </button>
-                            <!-- <a class="btn btn-lightred" href="assets/file.pdf" target="_blank">
+
+                            <button class="btn btn-danger  me-2" title="Fin de contrat"
+                                (click)="fincontrat(unLocataire.locataireRef,unLocataire.propriete.proprieteCode,unLocataire.locataireEmail)">
+                                <i class="fa fa-hourglass-end"></i>
+                            </button>
+                            <!--a class="btn btn-lightred" href="assets/file.pdf" target="_blank">
                                 <i class="fa fa-file-pdf"></i>
-                            </a> -->
+                            </a-->
                         </div>
                     </td>
                 </tr>
             </ng-container>
         </tbody>
     </table>
+
+
+
+
+    <p-dialog [(visible)]="detailsPaiementDialog" [style]="{width: '80%'}"
+        header="Suivi du Locatire :  {{vlocataireRef}} " [modal]="true" styleClass="p-fluid" [maximizable]="true"
+        [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+
+
+        <ng-template pTemplate="content">
+            <div class="card">
+                <div class="row mb-2">
+                    <div class="col-md-8">
+                        <h5 style="color: blueviolet;">{{vlocataireNom}}</h5>
+                        <a> <strong style="color: blueviolet;">Email: </strong> {{vlocataireEmail}} | <strong
+                                style="color: blueviolet;">Tel. : </strong> {{vlocataireTel}}</a>
+                    </div>
+                    <div class="col-md-4" style="text-align: right;">
+                        <img src="{{urlg + vlocatairePhoto}}" alt="" width="45px" height="50px">
+                    </div>
+                </div>
+
+
+                <p-table #dt1 [value]="locataires" dataKey="id" [rows]="12" [showCurrentPageReport]="true"
+                    [rowsPerPageOptions]="[12,24,48]" [loading]="isLoading" styleClass="p-datatable-gridlines"
+                    [paginator]="true"
+                    currentPageReportTemplate="Affichage de {first} à {last} sur {totalRecords} éléments"
+                    [globalFilterFields]="['idWave','mois','annee']">
+                    <ng-template pTemplate="caption">
+                        <div class="flex">
+                            <span class="p-input-icon-left ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text"
+                                    (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                                    placeholder="Recherche rapide" />
+                            </span>
+                        </div>
+                    </ng-template>
+
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>
+                                <div class="flex justify-content-center align-items-center">
+                                    Reference
+                                    <p-columnFilter type="text" field="idWave" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="flex justify-content-center align-items-center">
+                                    Mois
+                                    <p-columnFilter type="text" field="mois" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="flex justify-content-center align-items-center">
+                                    Année
+                                    <p-columnFilter type="text" field="annee" display="menu"></p-columnFilter>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="flex justify-content-center align-items-center">
+                                    Montant versé
+                                </div>
+                            </th>
+                            <th>
+                                <div class="flex justify-content-center align-items-center">
+                                    Date du versement
+                                </div>
+                            </th>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-locataire>
+                        <tr>
+                            <td>
+                                {{locataire.idWave}}
+                            </td>
+                            <td>
+                                <span class="image-text">{{locataire.mois}}</span>
+                            </td>
+                            <td>
+                                <span class="image-text">{{locataire.annee}}</span>
+                            </td>
+                            <td>
+                                <span class="image-text">{{locataire.amount}}</span>
+                            </td>
+                            <td>
+                                {{locataire.when_completed | date: 'MM/dd/yyyy'}}
+                            </td>
+
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td colspan="7">Aucun enregistrement </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="fermer()"></button>
+        </ng-template>
+    </p-dialog>
+
+
+
 </div>

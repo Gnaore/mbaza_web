@@ -18,6 +18,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { ChipModule } from 'primeng/chip';
 import { LoaderModule } from '../loader/loader.module';
 import { PayOnlineqrComponent } from './pay-onlineqr/pay-onlineqr.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { PayOnlineqrComponent } from './pay-onlineqr/pay-onlineqr.component';
     MultiSelectModule,
     ChipModule,
     LoaderModule,
+    QRCodeModule
   ]
 })
 export class TenantModule { }

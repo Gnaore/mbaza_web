@@ -21,13 +21,13 @@ export class TransactionsComponent implements OnInit {
   locatireRef! : string;
 
   urlg: string = this.configService.urlg;
-
+  url: string = this.configService.urlFront
   userConnect = JSON.parse(localStorage.getItem('currentUser')!);
 
   userEmail = this.userConnect.user.useremail;
   userId = this.userConnect.user.userId;
   userPhoto = this.userConnect.user.userPhoto;
-  userQrCode = this.userConnect.user.userQrCode;
+  //userQrCode = this.userConnect.user.userQrCode;
   useremail = this.userConnect.user.useremail;
   username = this.userConnect.user.username;
   userrole = this.userConnect.user.userrole;

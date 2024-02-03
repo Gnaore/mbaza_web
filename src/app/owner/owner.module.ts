@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChipModule } from 'primeng/chip';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { QRCodeModule } from 'angularx-qrcode';
+import { DialogModule } from 'primeng/dialog';
+import {ContextMenuModule} from 'primeng/contextmenu';
 
 
 
@@ -34,7 +36,9 @@ import { QRCodeModule } from 'angularx-qrcode';
     ReactiveFormsModule,
     MultiSelectModule,
     ChipModule,
-    QRCodeModule
+    QRCodeModule,
+    DialogModule,
+		ContextMenuModule,
   ]
 })
 export class OwnerModule { }

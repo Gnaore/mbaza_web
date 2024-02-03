@@ -28,6 +28,7 @@ import { SplitterModule } from 'primeng/splitter';
 
 import { ToastModule } from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
+import { PaymentqrcodeComponent } from './paymentqrcode/paymentqrcode.component';
 
 registerLocaleData(localeFr);
 
@@ -46,7 +47,8 @@ registerLocaleData(localeFr);
     TermsComponent,
     PayForSomebodyComponent,
     PayementSuccessComponent,
-    PaymentFailedComponent
+    PaymentFailedComponent,
+    PaymentqrcodeComponent
   ],
   imports: [
     BrowserModule,

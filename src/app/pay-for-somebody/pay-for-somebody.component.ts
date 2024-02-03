@@ -22,6 +22,9 @@ export class PayForSomebodyComponent {
   montantpayer: number = 0
   selectedMonth: string = ""
   proprieteId: number = 0
+  loyer_annee: number =  new Date().getFullYear();
+  nomlocataire: string = ""
+  emailBailleur: string = ""	
 
   ngOnInit(): void {
     $('.select').select2({
@@ -60,6 +63,8 @@ export class PayForSomebodyComponent {
         this.infosLocataire = ret.data
         this.montantpayer = this.infosLocataire.propriete.proprietePrix
         this.proprieteId = this.infosLocataire.propriete.proprieteId
+        this.nomlocataire = this.infosLocataire.locataireNom
+        this.emailBailleur = this.infosLocataire.bailleur.bailleurEmail
 
       } else {
         this.activeIndex = 0;
@@ -83,7 +88,7 @@ export class PayForSomebodyComponent {
     });
   }
   suivanta2() {
-    if (this.selectedMonth == "" || this.montantpayer == 0 || !this.montantpayer) {
+    if (this.selectedMonth == "" || this.montantpayer == 0 || !this.montantpayer  || this.loyer_annee==0 || this.loyer_annee < 2024) {
       alert("Choisissez le mois et le montant à verser.")
     } else {
       this.activeIndex = 2
@@ -99,7 +104,10 @@ export class PayForSomebodyComponent {
       success_url: "https://mbaaza.com/payment-success#c3VjY2Vzcw==",
       proprieteId: this.proprieteId,
       locataireRef: this.referenceLocataire,
-      mois: this.selectedMonth
+      mois: this.selectedMonth,
+      loyer_annee: this.loyer_annee,
+      nomlocataire: this.nomlocataire,
+      emailBailleur: this.emailBailleur
     };
 
     this.locataireService.payer(body).subscribe(

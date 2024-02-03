@@ -11,6 +11,7 @@ import { TermsComponent } from './terms/terms.component';
 import { PayForSomebodyComponent } from './pay-for-somebody/pay-for-somebody.component';
 import { PayementSuccessComponent } from './payement-success/payement-success.component';
 import { PaymentFailedComponent } from './payment-failed/payment-failed.component';
+import { PaymentqrcodeComponent } from './paymentqrcode/paymentqrcode.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
           { path: ':id', component: ShowPropertyComponent },
         ]
       },
+      { path: 'pay-onlineqr/:id', component: PaymentqrcodeComponent },
       { path: 'contact-us', component: ContactComponent },
       { path: 'about-us', component: AboutUsComponent },
       { path: 'terms', component: TermsComponent },

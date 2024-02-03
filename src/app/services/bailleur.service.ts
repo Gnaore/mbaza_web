@@ -149,5 +149,14 @@ export class BailleurService {
     return this.httpClient.post(this.urlG + 'msg/create', data, { headers });
   }
 
+  fincontrat(data: any): Observable<any> {
+    const currentUser = localStorage.getItem('currentUser');
+    const currentUserJSON = JSON.parse(currentUser!.toString());
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${currentUserJSON.token}`,
+    });
+    return this.httpClient.post(this.urlG + 'locataire/fincontrat', data, { headers });
+  }
 
 }

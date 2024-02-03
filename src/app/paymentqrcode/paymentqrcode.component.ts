@@ -1,17 +1,17 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
+import { LocataireService } from '../services/locataire.service';
+import { ConfigService } from '../services/config.service';
 import { ActivatedRoute } from '@angular/router';
-import { MenuItem } from 'primeng/api';
-import { ConfigService } from 'src/app/services/config.service';
-import { LocataireService } from 'src/app/services/locataire.service';
 import Swal from 'sweetalert2';
+import { MenuItem } from 'primeng/api';
 
 declare var $: any;
 @Component({
-  selector: 'app-pay-online',
-  templateUrl: './pay-online.component.html',
-  styleUrls: ['./pay-online.component.scss']
+  selector: 'app-paymentqrcode',
+  templateUrl: './paymentqrcode.component.html',
+  styleUrls: ['./paymentqrcode.component.scss']
 })
-export class PayOnlineComponent {
+export class PaymentqrcodeComponent {
 
   constructor(
     private locataireService: LocataireService,
@@ -35,14 +35,14 @@ export class PayOnlineComponent {
   proprieteId: number = 0
   loyer_annee: number =  new Date().getFullYear();
   nomlocataire: string = ""
-  emailBailleur: string = ""	
+  emailBailleur: string = ""
 
   userEmail: string = ""
   infoLocataire: any
 
   ngOnInit(): void {
 
-    //  this.onelocataireByEmail()
+     this.getOneByReference()
 
     $('.select').select2({
       minimumResultsForSearch: -1,
@@ -115,8 +115,8 @@ export class PayOnlineComponent {
     });
   }
   suivanta2() {
-    if (this.selectedMonth == "" || this.montantpayer == 0 || !this.montantpayer  || this.loyer_annee==0 || this.loyer_annee < 2024) {
-      alert("Choisissez le mois et le montant à verser.")
+    if (this.selectedMonth == "" || this.montantpayer == 0 || !this.montantpayer || this.loyer_annee==0 || this.loyer_annee < 2024) {
+      alert("Choisissez le mois, l'année et le montant à verser.")
     } else {
       this.activeIndex = 2
     }
