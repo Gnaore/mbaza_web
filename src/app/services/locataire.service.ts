@@ -35,6 +35,16 @@ export class LocataireService {
     return this.httpClient.post(this.urlG + 'locataire/create', data, { headers });
   }
 
+  modificationLocataire(data: any): Observable<any> {
+    const currentUser = localStorage.getItem('currentUser');
+    const currentUserJSON = JSON.parse(currentUser!.toString());
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${currentUserJSON.token}`,
+    });
+    return this.httpClient.put(this.urlG + 'locataire/modif', data, { headers });
+  }
+
   allLocataireByBailleur(id: any): Observable<any> {
     const currentUser = localStorage.getItem('currentUser');
     const currentUserJSON = JSON.parse(currentUser!.toString());

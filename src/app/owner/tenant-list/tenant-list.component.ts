@@ -1,20 +1,19 @@
-import { Component, ViewChild, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { FixMeLater, QRCodeElementType } from 'angularx-qrcode';
-import { Table } from 'primeng/table';
+import { FixMeLater } from 'angularx-qrcode';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { BailleurService } from 'src/app/services/bailleur.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { LocataireService } from 'src/app/services/locataire.service';
 import { ProprieteService } from 'src/app/services/propriete.service';
 import { UploadService } from 'src/app/services/upload.service';
 import Swal from 'sweetalert2';
+//import * as html2pdf from 'html2pdf.js';
 //import * as speakeasy from 'speakeasy';
 
-elementType: "canvas" as QRCodeElementType;
-//var speakeasy = require("speakeasy");
-//var secret = speakeasy.generateSecret({length: 20});
+//elementType: "canvas" as QRCodeElementType;
 
 
 
@@ -23,7 +22,8 @@ declare var $: any;
 @Component({
   selector: 'app-tenant-list',
   templateUrl: './tenant-list.component.html',
-  styleUrls: ['./tenant-list.component.scss']
+  styleUrls: ['./tenant-list.component.scss'],
+  providers: [ConfirmationService, MessageService]
 })
 
 export class TenantListComponent {
@@ -35,6 +35,8 @@ export class TenantListComponent {
     private configService: ConfigService,
     private proprieteService: ProprieteService,
     private locataireService: LocataireService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
     private router: Router
   ) { }
 
@@ -70,18 +72,26 @@ export class TenantListComponent {
   urlimg = ""
 
   detailsPaiementDialog = false;
+  modifLocataire = false;
+  afficherFormulaire = false
 
   provisions: any[] = [];
 
   public qrCodeSrc!: SafeUrl
 
-  
+
+
   locataires!: any[];
-  vlocataireNom="";
-  vlocataireTel="";
-  vlocataireEmail="";
-  vlocataireRef="";
-  vlocatairePhoto="";
+  vlocataireNom = "";
+  vlocataireTel = "";
+  vlocataireEmail = "";
+  vlocataireRef = "";
+  vlocatairePhoto = "";
+  vproprieteCode = "";
+
+  selectedLocataire: any[] = []
+  loc = {}
+  oneLocataire: any;
 
   ngOnInit(): void {
     //alert(Math.floor(Math.random() * 1000000))
@@ -95,7 +105,14 @@ export class TenantListComponent {
 
   }
 
-  detailsPaiement(locataireRef: string, locataireNom: string, locataireTel: string, locataireEmail: string, locatairePhoto: string){
+  selectRow() {
+    console.log(this.selectedLocataire);
+  }
+
+  TogglAfficheFormulaire(){
+    this.afficherFormulaire = !this.afficherFormulaire
+  }
+  detailsPaiement(locataireRef: string, locataireNom: string, locataireTel: string, locataireEmail: string, locatairePhoto: string) {
     this.getOneLocataireByRef(locataireRef)
     this.vlocataireNom = locataireNom
     this.vlocataireTel = locataireTel
@@ -132,6 +149,11 @@ export class TenantListComponent {
     });
   }
 
+
+
+
+
+
   getOneBailleur() {
     const userConnect = JSON.parse(localStorage.getItem('currentUser')!);
     this.userId = userConnect.user.userId;
@@ -151,14 +173,58 @@ export class TenantListComponent {
 
   }
 
-  getOneLocataireByRef(locataireRef: string){
+  getOneLocataireByRef(locataireRef: string) {
     this.isLoading = true
-    this.locataireService.getProvisionByReference(locataireRef).subscribe(ret=>{
+    this.locataireService.getProvisionByReference(locataireRef).subscribe(ret => {
       this.locataires = ret.data
       this.isLoading = false
       this.detailsPaiementDialog = true
-
     });
+  }
+
+  oneLocataireByRef(locataireRef: string) {
+   //alert(locataireRef)
+    this.isLoading= true
+    this.locataireService.getOneByReference(locataireRef).subscribe(ret => {
+      this.oneLocataire = ret.data
+
+     // locataireDatenais
+   //   locatairePhoto
+
+      this.formGroup.controls['locataireId'].setValue(this.oneLocataire.locataireId);
+      this.formGroup.controls['locataireBanque'].setValue(this.oneLocataire.locataireBanque);
+     this.formGroup.controls['locataireDatenais'].setValue(this.oneLocataire.locataireDatenais.substring(0, 10));
+      this.formGroup.controls['locataireEmail'].setValue(this.oneLocataire.locataireEmail);
+      this.formGroup.controls['locataireEmailgarant'].setValue(this.oneLocataire.locataireEmailgarant);
+      this.formGroup.controls['locataireNationalite'].setValue(this.oneLocataire.locataireNationalite);
+      this.formGroup.controls['locataireNbrecharge'].setValue(this.oneLocataire.locataireNbrecharge);
+      this.formGroup.controls['locataireNom'].setValue(this.oneLocataire.locataireNom);
+      this.formGroup.controls['locataireNomgarant'].setValue(this.oneLocataire.locataireNomgarant);
+      this.formGroup.controls['locataireProfession'].setValue(this.oneLocataire.locataireProfession);
+      this.formGroup.controls['locataireRef'].setValue(this.oneLocataire.locataireRef);
+      this.formGroup.controls['locataireSalaire'].setValue(this.oneLocataire.locataireSalaire);
+      this.formGroup.controls['locataireSituationmatri'].setValue(this.oneLocataire.locataireSituationmatri);
+      this.formGroup.controls['locataireTel'].setValue(this.oneLocataire.locataireTel);
+      this.formGroup.controls['locataireTelgarant'].setValue(this.oneLocataire.locataireTelgarant);
+      this.formGroup.controls['locataireTypecontrat'].setValue(this.oneLocataire.locataireTypecontrat);
+      //this.formGroup.controls['locatairePhoto'].setValue(this.oneLocataire.locatairePhoto);
+      this.lienPhotoretour = this.configService.urlg + this.oneLocataire.locatairePhoto;
+     // this.formGroup.controls['bailleurId'].setValue(this.oneLocataire.bailleurId);
+      this.formGroup.controls['proprieteCode'].setValue(this.oneLocataire.propriete.proprieteCode);
+     // this.formGroup.controls['localisation'].setValue(this.oneLocataire.localisation);
+      this.formGroup.controls['locataireCaution'].setValue(this.oneLocataire.locataireCaution);
+      
+    //  this.formGroup.controls['type'].setValue(this.oneLocataire.type);
+    //  this.formGroup.controls['prix'].setValue(this.oneLocataire.prix);
+      this.vproprieteCode = this.oneLocataire.propriete.proprieteCode
+    //  alert(this.oneLocataire.propriete.proprieteCode)
+      this.CherchePropriete(this.oneLocataire.propriete.proprieteCode)
+    });
+    this.vlocataireRef = locataireRef
+    
+    this.isLoading= false
+    this.modifLocataire = true
+
   }
 
   allProprieteBailleurDisponible(id: any) {
@@ -193,6 +259,75 @@ export class TenantListComponent {
     }
   }
 
+  
+  submitModifLocataire(f: any) {
+      var body = {
+        locataireId: parseInt(f.locataireId),
+        locataireBanque: f.locataireBanque,
+        locataireDatenais: f.locataireDatenais + 'T00:00:00.000Z',
+        locataireEmail: f.locataireEmail,
+        locataireEmailgarant: f.locataireEmailgarant,
+        locataireNationalite: f.locataireNationalite,
+        locataireNbrecharge: parseInt(f.locataireNbrecharge),
+        locataireNom: f.locataireNom,
+        locataireNomgarant: f.locataireNomgarant,
+        locataireProfession: f.locataireProfession,
+        locataireRef: f.locataireRef,
+        locataireSalaire: parseInt(f.locataireSalaire),
+        locataireSituationmatri: f.locataireSituationmatri,
+        locataireTel: f.locataireTel,
+        locataireTelgarant: f.locataireTelgarant,
+        locataireTypecontrat: f.locataireTypecontrat,
+        bailleurId: parseInt(f.bailleurId),
+        proprieteCode: f.proprieteCode,
+        locatairePhoto: this.file,
+        localisation: f.localisation,
+        locataireQrcode: this.nomQrcode,
+        provisions: [],
+        locataireCaution: f.locataireCaution,
+        type: f.type,
+        prix: parseInt(f.prix),
+      };
+      this.locataireService.modificationLocataire(body).subscribe(
+        (ret) => {
+          if (ret.data.success == true) {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Modification terminé avec succès',
+              showConfirmButton: false,
+              timer: 1500,
+            });
+  
+          //  this.allLocataireByBailleur(ret.data.msg.bailleur.bailleurId);
+          this.formGroup.reset();
+          window.location.href = '/owner/tenant-list'
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: ret.data.msg,
+            });
+          }
+        
+        },
+        (err) => {
+          if (err.status == 401) {
+            this.router.navigateByUrl("/auth")
+          }
+          else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: err.error.message,
+            });
+          }
+
+        }
+      );
+  }
+
+
   submitLocataire(f: any) {
 
     const index = f.locataireNom.substring(0, 2);
@@ -209,7 +344,7 @@ export class TenantListComponent {
 
     this.locataireService.moisrestant(mois).subscribe(ret => {
 
-      ret.data.forEach((unmois:any) => {
+      ret.data.forEach((unmois: any) => {
         // this.provisions = [];
         this.provisions.push({
           mois: unmois.moisLibelle,
@@ -217,7 +352,7 @@ export class TenantListComponent {
           status: false,
           idWave: "",
           locataireRef: reference,
-          idWaveCallback: "", 
+          idWaveCallback: "",
           amount: "",
           when_completed: null,
           nummois: unmois.moisNumero
@@ -254,20 +389,20 @@ export class TenantListComponent {
       };
 
       this.locataireService.ajoutLocataire(body).subscribe(
-          (ret) => {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Enregistrement terminé avec succès',
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        (ret) => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Enregistrement terminé avec succès',
+            showConfirmButton: false,
+            timer: 1500,
+          });
 
-        this.allLocataireByBailleur(ret.data.bailleurId);
-        this.ajoutUtilisateur(f, this.nomQrcode)
+          this.allLocataireByBailleur(ret.data.bailleurId);
+          this.ajoutUtilisateur(f, this.nomQrcode)
 
 
-      },
+        },
         (err) => {
           if (err.status == 401) {
             this.router.navigateByUrl("/auth")
@@ -290,13 +425,28 @@ export class TenantListComponent {
     bailleurLienPhoto,*/
   }
 
-  fermer(){
+  fermer() {
     this.detailsPaiementDialog = false
+    this.modifLocataire = false
   }
 
   onChangePropriete(event: any) {
     this.codePropriete = event.target.value
     this.proprieteService.oneproprietebyCode(this.codePropriete).subscribe(ret => {
+      this.laPropriete = ret.data;
+      this.localisation = this.laPropriete.proprieteAdresse
+      this.type = this.laPropriete.typebien.libelleTypebien
+      this.prix = this.laPropriete.proprietePrix
+      // this.qrcode = this.url+"tenant/pay-onlineqr/" + this.laPropriete.proprieteCode
+    }, (error) => {
+      if (error.status == 401) { this.router.navigateByUrl("/auth") }
+
+    }
+    );
+  }
+
+  CherchePropriete(vproprieteCode: string){
+    this.proprieteService.oneproprietebyCode(vproprieteCode).subscribe(ret => {
       this.laPropriete = ret.data;
       this.localisation = this.laPropriete.proprieteAdresse
       this.type = this.laPropriete.typebien.libelleTypebien
@@ -340,8 +490,8 @@ export class TenantListComponent {
           showConfirmButton: false,
           timer: 1500,
         });
-          this.formGroup.reset();
-          window.location.href = '/owner/tenant-list'
+        this.formGroup.reset();
+        window.location.href = '/owner/tenant-list'
       },
       (err) => {
         Swal.fire({
@@ -484,5 +634,29 @@ export class TenantListComponent {
     });
 
 
+  }
+
+  confirm1(event: Event) {
+    alert("ffff")
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Voulez-vous envoyer une alerte à votre Hussier ?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      acceptIcon: "none",
+      rejectIcon: "none",
+      rejectButtonStyleClass: "p-button-text",
+      accept: () => {
+        this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
+      },
+      reject: () => {
+        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+      }
+    });
+  }
+
+  onAnnuler(){
+    this.formGroup.reset();
+    window.location.href = '/owner/tenant-list'
   }
 }

@@ -15,8 +15,10 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { QRCodeModule } from 'angularx-qrcode';
 import { DialogModule } from 'primeng/dialog';
 import {ContextMenuModule} from 'primeng/contextmenu';
-
-
+import { CheckboxModule } from 'primeng/checkbox';
+import { NgxPrintModule } from 'ngx-print';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -30,6 +32,7 @@ import {ContextMenuModule} from 'primeng/contextmenu';
     CommonModule,
     OwnerRoutingModule,
     TableModule,
+    MultiSelectModule,
     ButtonModule,
     InputTextModule,
     FormsModule,
@@ -39,6 +42,10 @@ import {ContextMenuModule} from 'primeng/contextmenu';
     QRCodeModule,
     DialogModule,
 		ContextMenuModule,
+    CheckboxModule,
+    NgxPrintModule,
+    ConfirmDialogModule, 
+    ToastModule
   ]
 })
 export class OwnerModule { }
