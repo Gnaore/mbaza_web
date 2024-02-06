@@ -19,7 +19,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { NgxPrintModule } from 'ngx-print';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
-
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { ToastModule } from 'primeng/toast';
     CheckboxModule,
     NgxPrintModule,
     ConfirmDialogModule, 
-    ToastModule
+    ToastModule,
+    BadgeModule
   ]
 })
 export class OwnerModule { }
