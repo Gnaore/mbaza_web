@@ -12,6 +12,8 @@ import { PayForSomebodyComponent } from './pay-for-somebody/pay-for-somebody.com
 import { PayementSuccessComponent } from './payement-success/payement-success.component';
 import { PaymentFailedComponent } from './payment-failed/payment-failed.component';
 import { PaymentqrcodeComponent } from './paymentqrcode/paymentqrcode.component';
+import { AirConditionningComponent } from './air-conditionning/air-conditionning.component';
+import { HomeProComponent } from './home-pro/home-pro.component';
 
 const routes: Routes = [
   {
@@ -27,6 +29,8 @@ const routes: Routes = [
       { path: 'contact-us', component: ContactComponent },
       { path: 'about-us', component: AboutUsComponent },
       { path: 'terms', component: TermsComponent },
+      { path: 'air-conditionning', component: AirConditionningComponent },
+      { path: 'home-pro', component: HomeProComponent },
       { path: 'pay-for-somebody', component: PayForSomebodyComponent },
       { path: 'tenant', loadChildren: () => import('./tenant/tenant.module').then(m => m.TenantModule) },
       { path: 'owner', loadChildren: () => import('./owner/owner.module').then(m => m.OwnerModule) },

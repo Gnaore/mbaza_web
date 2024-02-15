@@ -29,6 +29,8 @@ import { SplitterModule } from 'primeng/splitter';
 import { ToastModule } from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
 import { PaymentqrcodeComponent } from './paymentqrcode/paymentqrcode.component';
+import { AirConditionningComponent } from './air-conditionning/air-conditionning.component';
+import { HomeProComponent } from './home-pro/home-pro.component';
 
 registerLocaleData(localeFr);
 
@@ -38,6 +40,8 @@ registerLocaleData(localeFr);
   declarations: [
     AppComponent,
     HomeComponent,
+    AirConditionningComponent,
+    HomeProComponent,
     LayoutComponent,
     ContactComponent,
     AboutUsComponent,
