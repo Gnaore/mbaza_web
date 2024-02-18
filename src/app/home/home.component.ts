@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
       });
 
       $('.partners-slider').owlCarousel({
-        loop: true,
+        loop: false,
         autoplay: true,
         margin: 24,
         nav: false,

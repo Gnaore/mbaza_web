@@ -12,7 +12,7 @@ export class AboutUsComponent implements OnInit {
   ngOnInit(): void {
     $(document).ready(function(){
       $('.partners-slider').owlCarousel({
-        loop:true,
+        loop:false,
         autoplay:true,
         margin:24,
         nav:false,
