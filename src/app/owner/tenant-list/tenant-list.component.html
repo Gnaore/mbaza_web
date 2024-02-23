@@ -1,8 +1,8 @@
 <p-toast></p-toast>
 
-<button *ngIf=" afficherFormulaire == false && nbreDispo != 0 " (click)="TogglAfficheFormulaire()">Affiche
+<!--button *ngIf=" afficherFormulaire == false && nbreDispo != 0 " (click)="TogglAfficheFormulaire()">Affiche
     Formulaire</button>
-<button *ngIf=" afficherFormulaire == true" (click)="TogglAfficheFormulaire()">Cacher Formulaire</button>
+<button *ngIf=" afficherFormulaire == true" (click)="TogglAfficheFormulaire()">Cacher Formulaire</button-->
 
 <div class="card" *ngIf=" afficherFormulaire == true ">
     <div class="card-header text-uppercase text-primary fw-bold">
@@ -157,11 +157,11 @@
     <ng-template pTemplate="caption">
         <div class="flex align-items-center justify-content-between">
             <p-confirmDialog></p-confirmDialog>
-            <button class="btn btn-primary me-2 mb-2 mt-2" [disabled]="!selectedLocataire || !selectedLocataire.length"
+            <!--button class="btn btn-primary me-2 mb-2 mt-2" [disabled]="!selectedLocataire || !selectedLocataire.length"
                 (click)="confirm1($event)">
                 <i class="fa fa-bell me-2"></i>
                 Alerte Huissier
-            </button>
+            </button-->
             <span class="p-input-icon-left">
                 <i class="pi pi-search"></i>
                 <input pInputText type="text" (input)="dt2.filterGlobal($any($event.target).value, 'contains')"
@@ -230,10 +230,10 @@
                         <i class="fa fa-search"></i>
                     </button>
 
-                    <button class="btn btn-danger  me-2" title="Fin de contrat"
+                    <!--button class="btn btn-danger  me-2" title="Fin de contrat"
                         (click)="fincontrat(loc.locataireRef,loc.propriete.proprieteCode,loc.locataireEmail)">
                         <i class="fa fa-hourglass-end"></i>
-                    </button>
+                    </button-->
 
                 </div>
             </td>
