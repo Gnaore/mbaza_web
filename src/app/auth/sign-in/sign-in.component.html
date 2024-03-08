@@ -9,79 +9,78 @@
 </div>
 <!-- /Loader -->
 
-<!-- Main Wrapper -->
-<div class="main-wrapper login-body">
-    <div class="container">
-        <div class="login-wrapper">
-            <div class="loginbox">
-                <a href="index.html"><img class="img-fluid logo-dark mb-5" src="assets/logo.png" width="100"
-                        alt="Logo"></a>
-
-                <div class="login-auth">
-                    <div class="login-auth-wrap">
-                        <h1>Salut !!! Content de te revoir.</h1>
-
-                        <form [formGroup]="formGroup" (ngSubmit)="login(formGroup.value)">
-                            <div class="form-group">
-                                <label class="form-label">Email <span>*</span></label>
-                                <input type="email" class="form-control" placeholder="Entrez Votre Email"
-                                    formControlName="email">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Mot de passe <span>*</span></label>
-                                <div class="pass-group">
-                                    <input [type]="showPwd ? 'text' : 'password'" class="form-control pass-input"
-                                        placeholder="Entrez Votre Mot De Passe" formControlName="password">
-                                    <span class="fas {{ !showPwd ? 'fa-eye' : 'fa-eye-slash' }} toggle-password"
-                                        (click)="showPwd = !showPwd"></span>
+<div class="vh-100" style="background: url(assets/background.png);">
+    <div class="row h-100">
+        <div class="col-md-6 h-100 d-md-block d-none text-center">
+            <img src="assets/flyer.png" class="h-100">
+        </div>
+        <div class="col-md-6 h-100 d-flex align-items-center justify-content-center">
+            <div class="login-wrapper">
+                <div class="loginbox p-0" style="width: 350px;">
+                    <a href="index.html"><img class="img-fluid logo-dark mb-5" src="assets/logo.png" width="100"
+                            alt="Logo"></a>
+    
+                    <div class="login-auth">
+                        <div class="login-auth-wrap">
+                            <form [formGroup]="formGroup" (ngSubmit)="login(formGroup.value)">
+                                <div class="form-group">
+                                    <label class="form-label">Email <span>*</span></label>
+                                    <input type="email" class="form-control border shadow-sm" placeholder="Entrez Votre Email"
+                                        formControlName="email">
                                 </div>
-                            </div>
-                            <div class="form-group mb-5">
-                                <a class="forgot-link" (click)="visible = true">Mot de passe oublié ?</a>
-                            </div>
-                            <div class="form-group">
-                                <label class="custom_check mt-0 mb-0"><span>Se souvenir de moi</span>
-                                    <input type="checkbox" name="remeber">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="alert alert-danger mt-3" *ngIf="afficheErreur">
-                                <small>Echec lors de l'authentification, verifiez votre e-mail et mot de passe. </small>
-                                <small>Vérifiez l'état de la touche majuscule.</small>
-                            </div>
-                            <button href="#" type="submit" class="btn btn-outline-light w-100 btn-size"
-                                [disabled]="formGroup.invalid">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <loader *ngIf="isLoading" type="ellipsis"></loader>
+                                <div class="form-group">
+                                    <label class="form-label">Mot de passe <span>*</span></label>
+                                    <div class="pass-group">
+                                        <input [type]="showPwd ? 'text' : 'password'" class="form-control shadow-sm border pass-input"
+                                            placeholder="Entrez Votre Mot De Passe" formControlName="password">
+                                        <span class="fas {{ !showPwd ? 'fa-eye' : 'fa-eye-slash' }} toggle-password"
+                                            (click)="showPwd = !showPwd"></span>
+                                    </div>
                                 </div>
-
-                                <div *ngIf="!isLoading">Se connecter</div>
-                            </button>
-                            <div class="text-center dont-have">Je n'ai pas de compte ? <a (click)="logout()">Retour au
-                                    site</a></div>
-                        </form>
+                                <div class="form-group mb-5">
+                                    <a class="forgot-link" (click)="visible = true">Mot de passe oublié ?</a>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label class="custom_check mt-0 mb-0"><span>Se souvenir de moi</span>
+                                        <input type="checkbox" name="remeber">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div> -->
+                                <div class="alert alert-danger mt-3" *ngIf="afficheErreur">
+                                    <small>Echec lors de l'authentification, verifiez votre e-mail et mot de passe. </small>
+                                    <small>Vérifiez l'état de la touche majuscule.</small>
+                                </div>
+                                <button href="#" type="submit" class="btn shadow-sm btn-outline-light w-100 mt-3 btn-size"
+                                    [disabled]="formGroup.invalid">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <loader *ngIf="isLoading" type="ellipsis"></loader>
+                                    </div>
+    
+                                    <div *ngIf="!isLoading">Se connecter</div>
+                                </button>
+                                <div class="text-center dont-have">Je n'ai pas de compte ? <a (click)="logout()">Retour au
+                                        site</a></div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <p-dialog header="Changement de Mot de Passe" [(visible)]="visible" [modal]="true" [style]="{ width: '30vw' }" [draggable]="false" [resizable]="false">
-		<form [formGroup]="email" (ngSubmit)="verifEmail()">
-			
-			<div class="alert alert-danger" *ngIf="error.success">
-				<small>{{ error.errorMessage }}</small>
-			</div>
-			<div class="form-group mb-3">
-				<label class="form-label fw-semibold">E-mail <span class="text-danger">*</span></label>
-				<input type="email" formControlName="email" class="form-control" placeholder="Entrez votre email pour modifier du mot de passe">
-			</div>
-			<div class="text-center">
-				<button class="btn btn-primary w-100" type="submit" [disabled]="email.invalid">Vérifier</button>
-			</div>
-		</form>
-	</p-dialog>
-
 </div>
 
-<!-- /Main Wrapper -->
+<p-dialog header="Changement de Mot de Passe" [(visible)]="visible" [modal]="true" [style]="{ width: '30vw' }" [draggable]="false" [resizable]="false">
+    <form [formGroup]="email" (ngSubmit)="verifEmail()">
+        
+        <div class="alert alert-danger" *ngIf="error.success">
+            <small>{{ error.errorMessage }}</small>
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label fw-semibold">E-mail <span class="text-danger">*</span></label>
+            <input type="email" formControlName="email" class="form-control" placeholder="Entrez votre email pour modifier du mot de passe">
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary w-100" type="submit" [disabled]="email.invalid">Vérifier</button>
+        </div>
+    </form>
+</p-dialog>

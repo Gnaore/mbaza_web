@@ -9302,9 +9302,8 @@ textarea {
     margin: 0 0 40px 0;
   }
 }
-.aboutus-page .about-content h6 {
-  font-size: 15px;
-  color: #007586;
+.aboutus-page .about-content h3 {
+  color: #f08521;
   font-weight: 700;
   margin: 0 0 20px;
 }
