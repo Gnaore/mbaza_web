@@ -10,7 +10,11 @@ export class ConfigService {
  // urlFront = "http://localhost:4200/"
 
   //EN PROD HEROKU
-  urlg = 'https://mbaza-eb3d8ec0412e.herokuapp.com/'
+  //urlg = 'https://mbaza-eb3d8ec0412e.herokuapp.com/'
+  //urlFront = "https://mbaaza.com/"
+
+  //EN PROD LWS
+  urlg = 'https://apimbaza.mbaaza.com/'
   urlFront = "https://mbaaza.com/"
 
   //EN PROD VERCEL
