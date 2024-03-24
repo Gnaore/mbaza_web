@@ -28,7 +28,6 @@ declare var $: any;
 
 export class TenantListComponent {
 
-
   constructor(
     private bailleurService: BailleurService,
     private uploadService: UploadService,
@@ -48,7 +47,8 @@ export class TenantListComponent {
   listLocataire: any
   url = this.configService.urlFront
   urlg = this.configService.urlg
-  urlphotoDefault = this.configService.urlg + "defaultprofil.png"
+  urlgimg = this.configService.urlgimg
+  urlphotoDefault = this.configService.urlgimg + "defaultprofil.png"
   reponse: any;
 
   private builder = inject(FormBuilder);
@@ -88,6 +88,7 @@ export class TenantListComponent {
   vlocataireRef = "";
   vlocatairePhoto = "";
   vproprieteCode = "";
+  vproprietePrix = 0;
 
   selectedLocataire: any[] = []
   loc = {}
@@ -121,13 +122,14 @@ export class TenantListComponent {
     this.afficherFormulaire = !this.afficherFormulaire
   }
 
-  detailsPaiement(locataireRef: string, locataireNom: string, locataireTel: string, locataireEmail: string, locatairePhoto: string) {
+  detailsPaiement(locataireRef: string, locataireNom: string, locataireTel: string, locataireEmail: string, locatairePhoto: string, proprietePrix: number) {
     this.getOneLocataireByRef(locataireRef)
     this.vlocataireNom = locataireNom
     this.vlocataireTel = locataireTel
     this.vlocataireRef = locataireRef
     this.vlocataireEmail = locataireEmail
     this.vlocatairePhoto = locatairePhoto
+    this.vproprietePrix = proprietePrix
   }
 
   initForm() {
@@ -217,6 +219,7 @@ export class TenantListComponent {
     this.isLoading = true
     this.locataireService.getProvisionByReference(locataireRef).subscribe(ret => {
       this.locataires = ret.data
+      console.log("------------------------" + this.locataires)
       this.isLoading = false
       this.detailsPaiementDialog = true
     });
@@ -248,7 +251,7 @@ export class TenantListComponent {
       this.formGroup.controls['locataireTelgarant'].setValue(this.oneLocataire.locataireTelgarant);
       this.formGroup.controls['locataireTypecontrat'].setValue(this.oneLocataire.locataireTypecontrat);
       //this.formGroup.controls['locatairePhoto'].setValue(this.oneLocataire.locatairePhoto);
-      this.lienPhotoretour = this.configService.urlg + this.oneLocataire.locatairePhoto;
+      this.lienPhotoretour = this.configService.urlgimg + this.oneLocataire.locatairePhoto;
       // this.formGroup.controls['bailleurId'].setValue(this.oneLocataire.bailleurId);
       this.formGroup.controls['proprieteCode'].setValue(this.oneLocataire.propriete.proprieteCode);
       // this.formGroup.controls['localisation'].setValue(this.oneLocataire.localisation);
@@ -287,7 +290,7 @@ export class TenantListComponent {
       formData.append('file', this.fileToUpload);
       this.uploadService.upload(formData).subscribe(
         (ret) => {
-          this.lienPhotoretour = this.configService.urlg + ret.data;
+          this.lienPhotoretour = this.configService.urlgimg + ret.data;
           this.file = ret.data;
           this.isLoading = false;
         },

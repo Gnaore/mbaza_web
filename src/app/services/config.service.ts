@@ -16,6 +16,7 @@ export class ConfigService {
   //EN PROD LWS
   urlg = 'https://apimbaza.mbaaza.com/'
   urlFront = "https://mbaaza.com/"
+  urlgimg = 'https://apimbaza.mbaaza.com/files/'
 
   //EN PROD VERCEL
   // urlg = 'https://mbaza-api.vercel.app/'

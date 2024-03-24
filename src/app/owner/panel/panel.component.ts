@@ -20,6 +20,7 @@ export class PanelComponent {
   bailleurInfoSuite: any
   proprieteLibre = 0
   urlg = '';
+  urlgimg = '';
 
   bailleurNumero: string = ""
   bailleurNomPrenoms: string = ""
@@ -32,6 +33,7 @@ export class PanelComponent {
   ngOnInit() {
     this.getOneBailleurID()
     this.urlg = this.configService.urlg;
+    this.urlgimg = this.configService.urlgimg
   }
 
   //reccuperer le bailleurID qui se trouve dans la table user
