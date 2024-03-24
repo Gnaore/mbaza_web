@@ -62,13 +62,25 @@ export class SignInComponent {
     };
     //console.log(body);
     this.authService.login(body).subscribe(result => {
+      this.isLoading = false;
       this.reponse = result;
-      console.log(this.reponse)
-      //this.router.navigate(['/tableaudebord']);
-      window.location.href = '';
+      console.log(this.reponse.data)
+      if (this.reponse.data.succes == true) {
+        window.location.href = '';
+        console.log(this.reponse.data)
+      } else {
+      this.msgErreur = this.reponse.data.message
+      console.log( this.msgErreur);
+      this.afficheErreur = true;
+      localStorage.clear();
+     
+      }
+
+      //
+      //window.location.href = '';
     }, (err) => {
       localStorage.clear();
-      this.msgErreur = err.error.message
+      this.msgErreur = err.error
       console.log(err);
       this.afficheErreur = true;
       this.isLoading = false;
