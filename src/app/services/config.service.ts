@@ -22,9 +22,6 @@ export class ConfigService {
   // urlg = 'https://mbaza-api.vercel.app/'
   // urlFront = "https://mbaaza.com/"
 
-
-  
-
     //*sur server distant
     //urlg = 'https://apimbaza.empreinte-ci.net/';
     // urlg = 'https://apiparcauto.afinov.com';
