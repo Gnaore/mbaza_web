@@ -5,7 +5,7 @@
 			<div class="col-lg-8">
 				<div class="banner-content" data-aos="fade-down">
 					<h1>Découvrez une expérience unique axée sur <span>vos besoins</span></h1>
-					<p>Achetez, vendez et gérez vos locataires avec MBAAZA, plateforme de gestion immobilière.</p>
+					<p>Achetez, vendez et gérez vos locataires avec Mbaaza, plateforme de gestion immobilière.</p>
 				</div>
 			</div>
 		</div>
@@ -15,9 +15,8 @@
 					<div class="banner-tab">
 						<ul class="nav nav-tabs" id="bannerTab" role="tablist">
 							<li class="nav-item" role="presentation">
-								<a class="nav-link active" id="buy-property" data-bs-toggle="tab"
-									href="#buy_property" role="tab" aria-controls="buy_property"
-									aria-selected="true">
+								<a class="nav-link active" id="buy-property" data-bs-toggle="tab" href="#buy_property"
+									role="tab" aria-controls="buy_property" aria-selected="true">
 									<img src="assets/img/icons/buy-icon.svg" alt="icon"> Paiement en ligne
 								</a>
 							</li>
@@ -38,8 +37,7 @@
 									quittance du mois dans votre compte locataire.</p>
 							</div>
 						</div>
-						<div class="tab-pane fade" id="rent_property" role="tabpanel"
-							aria-labelledby="rent-property">
+						<div class="tab-pane fade" id="rent_property" role="tabpanel" aria-labelledby="rent-property">
 							<div class="banner-tab-property">
 								<p>En quelques étapes simples, effectuez un paiement pour un tiers et recevez un
 									reçu de paiement avec la quittance du mois dans le compte locataire.</p>
@@ -63,7 +61,7 @@
 				<span class="sec-line1"></span>
 				<span class="sec-line2"></span>
 			</div>
-			<p>Simplifiez-vous la vie avec MBAAZA !</p>
+			<p>Simplifiez-vous la vie avec Mbaaza !</p>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-lg-4 col-md-6">
@@ -86,7 +84,7 @@
 							<img src="assets/img/icons/work-icon-2.svg" alt="icon">
 						</span>
 					</div>
-					<h4>02. Climatisation à Domicile</h4>
+					<h4 routerLink="air-conditionning" style="cursor: pointer;">02. Climatisation à Domicile</h4>
 					<p class="text-overflow">Profitez d'un confort optimal chez vous grâce à nos services de
 						climatisation.</p>
 				</div>
@@ -98,7 +96,7 @@
 							<img src="assets/img/icons/work-icon-3.svg" alt="icon">
 						</span>
 					</div>
-					<h4>03. Maison Pro</h4>
+					<h4 routerLink="home-pro" style="cursor: pointer;">03. Maison Pro</h4>
 					<p class="text-overflow">Sélectionnez le service dont vous avez besoin, et nous vous mettons en
 						contact avec des prestataires qualifiés proches de chez-vous. </p>
 				</div>
@@ -205,113 +203,101 @@
 <!-- Feature Properties For Sale-->
 <section class="feature-property-sec">
 	<div class="container">
-	  <div class="section-heading text-center">
-		<h2>Propriétés En Vente</h2>
-		<div class="sec-line">
-		  <span class="sec-line1"></span>
-		  <span class="sec-line2"></span>
-		</div>
-		<p>Une sélection de lieux de qualité triés sur le volet</p>
-	  </div>
-	  <div class="row">
-		<div class="col-md-12">
-			<div class="d-flex align-items-center justify-content-center">
-				<loader *ngIf="isLoading" type="ellipsis"></loader>
+		<div class="section-heading text-center">
+			<h2>Propriétés En Vente</h2>
+			<div class="sec-line">
+				<span class="sec-line1"></span>
+				<span class="sec-line2"></span>
 			</div>
-		  <div class="feature-slider owl-carousel">
-			<ng-container *ngIf="!isLoading">
-				<div class="slider-col" *ngFor="let n of touslesBiens">
-					<div
-					  class="product-custom"
-					  data-aos="fade-down"
-					  data-aos-duration="1000"
-					>
-					  <div class="profile-widget">
-						<div class="doc-img">
-						  <a href="properties/0" class="property-img">
-							<img
-							  class="img-fluid"
-							  alt="Property Image"
-							  src="{{ urlg }}{{ n.bienImage }}"
-							  style="height:293px; width:416px;"
-							/>
-						  </a>
-						  <div class="product-amount">
-							<span>{{ n.bienPrix | number }} FCFA </span>
-						  </div>
-						  <div class="feature-rating">
-							<div>
-							  <div class="featured">
-								<span>En vedette</span>
-							  </div>
-							  <div class="new-featured ms-2">
-								<span>{{ n.bienCategorie }}</span>
-							  </div>
+			<p>Une sélection de lieux de qualité triés sur le volet</p>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="d-flex align-items-center justify-content-center">
+					<loader *ngIf="isLoading" type="ellipsis"></loader>
+				</div>
+				<div class="feature-slider owl-carousel">
+					<ng-container *ngIf="!isLoading">
+						<div class="slider-col" *ngFor="let n of touslesBiens">
+							<div class="product-custom" data-aos="fade-down" data-aos-duration="1000">
+								<div class="profile-widget">
+									<div class="doc-img">
+										<a href="properties/0" class="property-img">
+											<img class="img-fluid" alt="Property Image"
+												src="{{ urlg }}{{ n.bienImage }}" style="height:293px; width:416px;" />
+										</a>
+										<div class="product-amount">
+											<span>{{ n.bienPrix | number }} FCFA </span>
+										</div>
+										<div class="feature-rating">
+											<div>
+												<div class="featured">
+													<span>En vedette</span>
+												</div>
+												<div class="new-featured ms-2">
+													<span>{{ n.bienCategorie }}</span>
+												</div>
+											</div>
+											<a href="javascript:void(0)">
+												<div class="favourite selected">
+													<span><i class="fa-regular fa-heart"></i></span>
+												</div>
+											</a>
+										</div>
+										<div class="user-avatar">
+											<img src="assets/img/profiles/avatar-01.jpg" alt="User" />
+										</div>
+									</div>
+									<div class="pro-content">
+										<div class="rating">
+											<span class="rating-count">
+												<i class="fa-solid fa-star checked"></i>
+												<i class="fa-solid fa-star checked"></i>
+												<i class="fa-solid fa-star checked"></i>
+												<i class="fa-solid fa-star checked"></i>
+												<i class="fa-solid fa-star checked"></i>
+											</span>
+											<p class="rating-review">
+												<span>5.0</span>(20 Commentaires)
+											</p>
+										</div>
+										<h3 class="title">
+											<a href="properties/0">{{ n.bienLibelle }}</a>
+										</h3>
+										<p>
+											<span><i class="feather-map-pin"></i></span>{{ n.bienAdresse }}
+										</p>
+										<ul class="d-flex details">
+											<li>
+												<img src="assets/img/icons/bed-icon.svg" alt="bed-icon" />
+												{{ n.bienNbrePiece }} Pièces
+											</li>
+											<li></li>
+											<li>
+												<img src="assets/img/icons/building-icon.svg" alt="building-icon" />
+												{{ n.bienSurface }} m2
+											</li>
+										</ul>
+
+										<ul class="property-category d-flex justify-content-between">
+											<li>
+												<span class="list">Ajouté le : </span>
+												<span class="date">16 Jan 2023</span>
+											</li>
+											<li>
+												<span class="category list">Catégorie : </span>
+												<span class="category-value date">{{
+													n.typebien.libelleTypebien
+													}}</span>
+											</li>
+										</ul>
+									</div>
+								</div>
 							</div>
-							<a href="javascript:void(0)">
-							  <div class="favourite selected">
-								<span><i class="fa-regular fa-heart"></i></span>
-							  </div>
-							</a>
-						  </div>
-						  <div class="user-avatar">
-							<img src="assets/img/profiles/avatar-01.jpg" alt="User" />
-						  </div>
 						</div>
-						<div class="pro-content">
-						  <div class="rating">
-							<span class="rating-count">
-							  <i class="fa-solid fa-star checked"></i>
-							  <i class="fa-solid fa-star checked"></i>
-							  <i class="fa-solid fa-star checked"></i>
-							  <i class="fa-solid fa-star checked"></i>
-							  <i class="fa-solid fa-star checked"></i>
-							</span>
-							<p class="rating-review">
-							  <span>5.0</span>(20 Commentaires)
-							</p>
-						  </div>
-						  <h3 class="title">
-							<a href="properties/0">{{ n.bienLibelle }}</a>
-						  </h3>
-						  <p>
-							<span><i class="feather-map-pin"></i></span
-							>{{ n.bienAdresse }}
-						  </p>
-						  <ul class="d-flex details">
-							<li>
-							  <img src="assets/img/icons/bed-icon.svg" alt="bed-icon" />
-							  {{ n.bienNbrePiece }} Pièces
-							</li>
-							<li></li>
-							<li>
-							  <img
-								src="assets/img/icons/building-icon.svg"
-								alt="building-icon"
-							  />
-							  {{ n.bienSurface }} m2
-							</li>
-						  </ul>
-		
-						  <ul class="property-category d-flex justify-content-between">
-							<li>
-							  <span class="list">Ajouté le : </span>
-							  <span class="date">16 Jan 2023</span>
-							</li>
-							<li>
-							  <span class="category list">Catégorie : </span>
-							  <span class="category-value date">{{
-								n.typebien.libelleTypebien
-							  }}</span>
-							</li>
-						  </ul>
-						</div>
-					  </div>
-					</div>
-				  </div>
-			</ng-container>
-  
-			<!--div class="slider-col">
+					</ng-container>
+
+					<!--div class="slider-col">
 								  <div class="product-custom" data-aos="fade-down" data-aos-duration="1000">
 									  <div class="profile-widget">
 										  <div class="doc-img">
@@ -451,8 +437,8 @@
 									  </div>
 								  </div>
 							  </div-->
-  
-			<!--div class="slider-col">
+
+					<!--div class="slider-col">
 						  <div class="product-custom" data-aos="fade-down" data-aos-duration="1000">
 							  <div class="profile-widget">
 								  <div class="doc-img">
@@ -733,27 +719,22 @@
 							  </div>
 						  </div>
 					  </div-->
-		  </div>
-  
-		  <div
-			class="view-property-btn d-flex justify-content-center"
-			data-aos="fade-down"
-			data-aos-duration="1000"
-		  >
-			<a href="properties" class="btn-primary"
-			  >Voir Toutes Les Propriétés</a
-			>
-		  </div>
+				</div>
+
+				<div class="view-property-btn d-flex justify-content-center" data-aos="fade-down"
+					data-aos-duration="1000">
+					<a href="properties" class="btn-primary">Voir Toutes Les Propriétés</a>
+				</div>
+			</div>
 		</div>
-	  </div>
 	</div>
 	<div class="bg-imgs">
-	  <img src="assets/img/bg/price-bg.png" class="bg-01" alt="icon" />
-	  <img src="assets/img/icons/blue-circle.svg" class="bg-02" alt="icon" />
-	  <img src="assets/img/icons/red-circle.svg" class="bg-03" alt="icon" />
+		<img src="assets/img/bg/price-bg.png" class="bg-01" alt="icon" />
+		<img src="assets/img/icons/blue-circle.svg" class="bg-02" alt="icon" />
+		<img src="assets/img/icons/red-circle.svg" class="bg-03" alt="icon" />
 	</div>
-  </section>
-  <!-- /Feature Properties For Sale -->
+</section>
+<!-- /Feature Properties For Sale -->
 
 <!-- Partners -->
 <div class="partners-sec border-0 pb-4">
@@ -768,24 +749,15 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<div class="partners-slider owl-carousel">
+			<div class="partners-slider owl-carousel d-flex justify-content-center">
 				<div class="partner-icon">
-					<img src="assets/img/icons/partner-icon-1.svg" alt="Partners">
+					<img src="assets/isbackconcept.png" alt="Partners">
 				</div>
 				<div class="partner-icon">
-					<img src="assets/img/icons/partner-icon-2.svg" alt="Partners">
+					<img src="assets/wave.png" alt="Partners">
 				</div>
 				<div class="partner-icon">
-					<img src="assets/img/icons/partner-icon-3.svg" alt="Partners">
-				</div>
-				<div class="partner-icon">
-					<img src="assets/img/icons/partner-icon-4.svg" alt="Partners">
-				</div>
-				<div class="partner-icon">
-					<img src="assets/img/icons/partner-icon-5.svg" alt="Partners">
-				</div>
-				<div class="partner-icon">
-					<img src="assets/img/icons/partner-icon-6.svg" alt="Partners">
+					<img src="assets/uba.png" alt="Partners">
 				</div>
 			</div>
 		</div>
@@ -816,69 +788,140 @@
 				<div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
 					<h4 class="faq-title">
 						<a class="collapsed" data-bs-toggle="collapse" href="#faqone" aria-expanded="false">1. C’est
-							quoi MBAAZA ?</a>
+							quoi Mbaaza ?</a>
 					</h4>
-					<div id="faqone" class="card-collapse collapse">
+					<div id="faqone" class="card-collapse collapse show">
 						<div class="faq-info">
-							<p>MBAAZA est une plateforme en ligne qui permet de payer les loyers de manière pratique
-								et sécurisée. Elle facilite les transactions entre locataires et bailleurs en
-								offrant des fonctionnalités telles que des rappels de paiement, des reçus
-								électroniques et un suivi des paiements.</p>
+							<p>Mbaaza est bien plus qu'une simple plateforme de gestion immobilière. C'est une solution
+								numérique innovante qui vise à sécuriser, simplifier et optimiser la relation entre les
+								bailleurs, les locataires et les gestionnaires immobiliers. Mbaaza offre des outils
+								puissants pour faciliter les transactions, assurer le recouvrement des loyers et
+								garantir une gestion transparente et efficace.</p>
 						</div>
 					</div>
 				</div>
 				<div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
 					<h4 class="faq-title">
 						<a class="collapsed" data-bs-toggle="collapse" href="#faqtwo" aria-expanded="false">2.
-							Comment obtenir un compte MBAAZA ?</a>
+							Comment puis-je effectuer un paiement de loyer en ligne sur la plateforme Mbaaza ?</a>
 					</h4>
 					<div id="faqtwo" class="card-collapse collapse">
 						<div class="faq-info">
-							<p>Pour obtenir un compte MBAAZA , il faut être propriétaire d'un bien immobilier. Si
-								vous êtes locataire, votre bailleur doit d'abord avoir un compte chez nous. Cela
-								garantit que seules les personnes autorisées peuvent utiliser la plateforme</p>
+							<p>Pour faciliter encore plus vos paiements, scannez votre carte Qr code locataire
+								personnalisée et payez votre loyer sans frais. Une fois le paiement effectué avec
+								succès, vous recevrez instantanément un reçu de paiement ainsi qu'une quittance dans
+								votre compte locataire, confirmant la transaction.</p>
 						</div>
 					</div>
 				</div>
 				<div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
 					<h4 class="faq-title">
-						<a class="" data-bs-toggle="collapse" href="#faqthree" aria-expanded="false">3. Les données
-							personnelles sont elles protégées ?</a>
+						<a class="collapsed" data-bs-toggle="collapse" href="#faqthree" aria-expanded="false">3. Que se
+							passe-t-il si je ne suis pas en mesure de payer mon loyer à temps ?</a>
 					</h4>
-					<div id="faqthree" class="card-collapse collapse show">
+					<div id="faqthree" class="card-collapse collapse">
 						<div class="faq-info">
-							<p>En ce qui concerne la protection des données personnelles, MBAAZA prend la sécurité
-								très au sérieux. Les données des utilisateurs sont protégées par des mesures de
-								sécurité avancées pour assurer la confidentialité de leurs informations.</p>
+							<p>Si vous rencontrez des difficultés pour payer votre loyer à temps, vous pouvez utiliser
+								le service "Au Secours Ma Banque" de Mbaaza, qui vous offre une assistance en cas de
+								difficultés financières pour éviter les pénalités de retard.</p>
 						</div>
 					</div>
 				</div>
 				<div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
 					<h4 class="faq-title">
-						<a class="collapsed" data-bs-toggle="collapse" href="#faqfour" aria-expanded="false">4. A
-							quel moment peut on payer son loyer sur MBAAZA ?</a>
+						<a class="collapsed" data-bs-toggle="collapse" href="#faqfour" aria-expanded="false">4. Comment
+							puis-je obtenir des informations sur les échéances de mon loyer ?</a>
 					</h4>
 					<div id="faqfour" class="card-collapse collapse">
 						<div class="faq-info">
-							<p>La plateforme MBAAZA permet de payer ses loyers 24h/24 et sans se déplacer. Vous
-								pouvez accéder à votre compte en ligne et effectuer vos paiements à tout moment,
-								depuis n'importe quel endroit disposant d'une connexion internet.</p>
+							<p>Vous pouvez consulter facilement vos échéances de loyer en vous connectant à votre compte
+								Mbaaza. Toutes les informations relatives à vos paiements et échéances seront
+								disponibles dans votre espace personnel.</p>
 						</div>
 					</div>
 				</div>
 				<div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
 					<h4 class="faq-title">
-						<a class="collapsed" data-bs-toggle="collapse" href="#faqfive" aria-expanded="false">5. Je
-							peux devenir commercial freelance chez MBAAZA ?</a>
+						<a class="collapsed" data-bs-toggle="collapse" href="#faqfive" aria-expanded="false">5. Comment
+							puis-je envoyer une requête au bailleur via Mbaaza ?</a>
 					</h4>
 					<div id="faqfive" class="card-collapse collapse">
 						<div class="faq-info">
-							<p>Nous recrutons et formons des commerciaux qualifiés et expérimentés. Ces agents
-								seront responsables de la visite sur le terrain des immeubles, de la collecte
-								d'informations sur les propriétaires, de la négociation des contrats de location et
-								de la perception des commissions sur les loyers mensuels. Nous avons également en
-								place un système de suivi des performances et une rémunération basée sur les
-								résultats pour optimiser la motivation et la productivité de nos agents.</p>
+							<p>Pour envoyer une requête au bailleur, vous pouvez utiliser la fonctionnalité dédiée sur
+								la plateforme Mbaaza. Sélectionnez l'option pour envoyer une requête, saisissez les
+								détails et suivez les instructions pour soumettre votre demande de manière efficace.</p>
+						</div>
+					</div>
+				</div>
+				<div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
+					<h4 class="faq-title">
+						<a class="collapsed" data-bs-toggle="collapse" href="#faqsix" aria-expanded="false">6. Qu'est-ce
+							que l'Alerte Huissier et comment fonctionne-t-elle ?</a>
+					</h4>
+					<div id="faqsix" class="card-collapse collapse">
+						<div class="faq-info">
+							<p>L'Alerte Huissier de Mbaaza est un service qui notifie automatiquement un huissier en cas
+								de loyers impayés. Cela assure un recouvrement efficace et sécurisé pour les bailleurs,
+								tout en garantissant la bonne gestion des biens immobiliers.</p>
+						</div>
+					</div>
+				</div>
+				<div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
+					<h4 class="faq-title">
+						<a class="collapsed" data-bs-toggle="collapse" href="#faqseven" aria-expanded="false">7. A quel
+							moment peut-on payer son loyer sur Mbaaza ?</a>
+					</h4>
+					<div id="faqseven" class="card-collapse collapse">
+						<div class="faq-info">
+							<p>Avec Mbaaza, vous pouvez payer votre loyer 24h/24, en utilisant simplement votre
+								téléphone pour scanner votre QR code personnalisé. Ce processus sans frais offre une
+								flexibilité et une simplicité sans pareil pour honorer vos paiements de loyer de manière
+								pratique et sécurisée, à tout moment qui vous convient.</p>
+						</div>
+					</div>
+				</div>
+				<div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
+					<h4 class="faq-title">
+						<a class="collapsed" data-bs-toggle="collapse" href="#faqeight" aria-expanded="false">8. Puis-je
+							devenir commercial free-lance chez Mbaaza ?</a>
+					</h4>
+					<div id="faqeight" class="card-collapse collapse">
+						<div class="faq-info">
+							<p>Absolument ! Chez Mbaaza, nous offrons des opportunités passionnantes pour devenir
+								commercial free-lance. Nous vous formons et vous soutenons pour jouer un rôle clé en
+								convainquant les bailleurs d'utiliser la plateforme Mbaaza. Contribuez à révolutionner
+								la gestion immobilière avec une équipe dynamique et des perspectives de revenus
+								attractives.</p>
+						</div>
+					</div>
+				</div>
+				<div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
+					<h4 class="faq-title">
+						<a class="collapsed" data-bs-toggle="collapse" href="#faqnine" aria-expanded="false">9. Comment
+							Mbaaza assure-t-elle la sécurité des données de ses utilisateurs?</a>
+					</h4>
+					<div id="faqnine" class="card-collapse collapse">
+						<div class="faq-info">
+							<p>Nous sommes autorisés à collecter et à utiliser les données des utilisateurs pour la
+								plateforme Mbaaza, avec leur consentement. Mbaaza protège les données de ses
+								utilisateurs en utilisant des mesures de sécurité telles que le cryptage,
+								l'authentification à deux facteurs et des pare-feu pour empêcher l'accès non autorisé
+								aux informations personnelles.</p>
+						</div>
+					</div>
+				</div>
+				<div class="faq-card" data-aos="fade-down" data-aos-duration="2000">
+					<h4 class="faq-title">
+						<a class="collapsed" data-bs-toggle="collapse" href="#faqten" aria-expanded="false">10. Quels
+							sont les avantages de devenir partenaire de Mbaaza en tant qu'agence immobilière ?</a>
+					</h4>
+					<div id="faqten" class="card-collapse collapse">
+						<div class="faq-info">
+							<p>Devenir partenaire de Mbaaza en tant qu'agence immobilière vous offre l'accès à une
+								plateforme complète qui simplifie la gestion locative, réduit les tâches administratives
+								et offre des commissions avantageuses. En plus, bénéficiez de l'assistance de notre
+								service juridique dirigé par un cabinet d'huissier pour un recouvrement efficace et
+								transparent.</p>
 						</div>
 					</div>
 				</div>
@@ -904,14 +947,14 @@
 			</div>
 			<div class="col-md-4">
 				<div class="register-btn" data-aos="fade-down" data-aos-duration="2000">
-					<a href="contact-us" class="btn-primary">Laissez-nous un message</a>
+					<a href="contact-us" class="btn-lightred">Laissez-nous un message</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="bg-imgs">
 		<img src="assets/img/icons/blue-circle.svg" class="bg-06" alt="icon">
-		<img src="assets/img/icons/red-circle.svg" class="bg-07" alt="icon">
+		<!-- <img src="assets/img/icons/red-circle.svg" class="bg-07" alt="icon"> -->
 	</div>
 </section>
 <!-- /Agent Register -->
