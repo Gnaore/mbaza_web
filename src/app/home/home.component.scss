@@ -1,0 +1,7 @@
+.hover {
+    border: 1.5px solid transparent;
+    &:hover {
+        border: 1.5px solid #0000008d;
+        transform: scale(1.05);
+    }
+}
