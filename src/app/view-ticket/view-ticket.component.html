@@ -1,0 +1,124 @@
+<!-- Loader -->
+<div class="page-loader">
+    <div class="page-loader-inner">
+        <img src="assets/logo.png" width="32" alt="Loader">
+        <label><i class="fa-solid fa-circle"></i></label>
+        <label><i class="fa-solid fa-circle"></i></label>
+        <label><i class="fa-solid fa-circle"></i></label>
+    </div>
+</div>
+<!-- /Loader -->
+
+<!-- Ticket content -->
+<div class="vh-100 bg-white d-flex align-items-center justify-content-center" id="print">
+    <div style="width: 460px; min-width: 360px;  margin: auto;" class="scale">
+        <div class="card shadow-none border-0" id="ticket">
+            <div class="card-body">
+                <div class="row text-black">
+                    <div class="col-8">
+                        <h4 class="fw-bold m-0">-145.204 F</h4>
+                        <small class="d-block">à Isbackconcept</small>
+                        <small class="d-block">+225 07 78 98 90 20</small>
+                        <small class="d-block alert alert-primary px-2 py-1 mt-1"
+                            style="width: max-content; font-size: x-small;"> <i
+                                class="fa fa-square-arrow-up-right me-1"></i> Wave Money</small>
+                    </div>
+                    <div class="col-4">
+                        <div class="h-100 d-flex align-items-center">
+                            <img src="assets/isbackconcept.png">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card rounded-2 mb-1">
+                            <div class="card-body p-2">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <small>Réf transaction</small>
+                                    </div>
+                                    <div class="col-6 text-end text-uppercase">
+                                        <small>c3VjY2Vzcw</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card rounded-2 mb-1">
+                            <div class="card-body p-2">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <small>Date & Heure</small>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <small>07 / 11 /2023 18:22</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <small>Statut</small>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <small style="color: rgb(0, 181, 0);">Réussie</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <small>Montant</small>
+                                    </div>
+                                    <div class="col-6 text-end fw-bold">
+                                        <small>145.000 XOF</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <small>Mois de</small>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <small>Février</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card rounded-2 mb-0">
+                            <div class="card-body p-2">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <small>Réf locataire</small>
+                                    </div>
+                                    <div class="col-6 text-end text-uppercase">
+                                        <small>c3VjY2Vzcw</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <small>Réf bailleur</small>
+                                    </div>
+                                    <div class="col-6 text-end text-uppercase">
+                                        <small>c3VjY2Vzcw</small>
+                                    </div>
+                                </div>
+                                <div class="row no-print">
+                                    <div class="col-6">
+                                        <small>Reçu</small>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <small><button [useExistingCss]="true" printSectionId="print"
+                                                ngxPrint>Télécharger</button></small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 text-center mt-4">
+                                        <img src="assets/logo.png" width="80">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Ticket content -->

@@ -1,0 +1,17 @@
+#ticket {
+    image-rendering: crisp-edges;
+}
+
+
+@media print {
+    .no-print {
+        display: none;
+    }
+    .scale {
+        transform: scale(1.5);
+        position: absolute;
+        right: 0px;
+        left: 0px;
+        top: 150px;
+    }
+}
